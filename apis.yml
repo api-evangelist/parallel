@@ -1,25 +1,284 @@
 aid: parallel
 name: Parallel
-description: 'Parallel is a company surfaced as a portfolio company of kleiner-perkins and added to the
-  API Evangelist network as a stub for enrichment. Sector: ai. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  Parallel Web Systems builds web APIs purpose-built for AI agents: a
+  high-accuracy Search API, an Extract API that turns URLs into clean
+  LLM-ready markdown, a Task/Deep Research API with tiered processors
+  (lite through ultra), FindAll for natural-language entity discovery and
+  enrichment, a Monitor API for scheduled web-change tracking, and an
+  OpenAI-compatible Chat Completions endpoint. The platform is API-key
+  authenticated over https://api.parallel.ai, ships official Python and
+  TypeScript SDKs and a CLI, exposes free and authenticated MCP servers,
+  emits Standard Webhooks and SSE event streams, and is SOC 2 Type I/II
+  certified. Originally surfaced as a Kleiner Perkins portfolio company and
+  enriched from Parallel's public developer surface.
 url: https://raw.githubusercontent.com/api-evangelist/parallel/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://cdn.sanity.io/images/5hzduz3y/production/3e8afb3fd62096a800a8135910fdc375971e17ba-3600x1890.jpg?w=1200&h=630&fit=crop
 x-type: company
 x-source: kleiner-perkins-portfolio
-x-tier: stub
-x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
 - Ai
-apis: []
+- Web Search
+- Agents
+- Deep Research
+- Web Extraction
+- Data Enrichment
+- Web Monitoring
+- LLM Tools
+apis:
+- aid: parallel:parallel-chat-api-beta-api
+  name: Parallel Chat API (Beta) API
+  description: >-
+    The Chat API provides a programmatic chat-style text generation interface. It accepts a sequence of
+    messages and returns model responses. Intended for assistant-like interactions and evaluation. Streaming
+    responses are supported.
+  humanURL: https://docs.parallel.ai/getting-started/overview
+  baseURL: https://api.parallel.ai
+  tags:
+  - Chat API (Beta)
+  properties:
+  - type: OpenAPI
+    url: openapi/parallel-chat-api-beta-api-openapi.yml
+  - type: Documentation
+    url: https://docs.parallel.ai/home
+  - type: APIReference
+    url: https://docs.parallel.ai/api-reference
+  - type: GettingStarted
+    url: https://docs.parallel.ai/getting-started/overview
+  - type: Authentication
+    url: authentication/parallel-authentication.yml
+- aid: parallel:parallel-extract-api
+  name: Parallel Extract API
+  description: >-
+    Extract returns excerpts or full content from one or more URLs. Inputs are a list of URLs and an optional
+    search objective and keyword queries. The returned excerpts or full content is formatted as markdown
+    and suitable for LLM consumption.
+
+    - Result: excerpts or full content from the URL formatted as markdown
+  humanURL: https://docs.parallel.ai/getting-started/overview
+  baseURL: https://api.parallel.ai
+  tags:
+  - Extract
+  properties:
+  - type: OpenAPI
+    url: openapi/parallel-extract-api-openapi.yml
+  - type: Documentation
+    url: https://docs.parallel.ai/home
+  - type: APIReference
+    url: https://docs.parallel.ai/api-reference
+  - type: GettingStarted
+    url: https://docs.parallel.ai/getting-started/overview
+  - type: Authentication
+    url: authentication/parallel-authentication.yml
+- aid: parallel:parallel-findall-api
+  name: Parallel FindAll API
+  description: >-
+    The FindAll API discovers and evaluates entities that match complex criteria from natural language
+    objectives. Submit a high-level goal and the service automatically generates structured match conditions,
+    discovers relevant candidates, and evaluates each against the criteria. Returns comprehensive results
+    with detailed reasoning, citations, and confidence scores for each match decision. Streaming events
+    and webhooks are supported.
+  humanURL: https://docs.parallel.ai/getting-started/overview
+  baseURL: https://api.parallel.ai
+  tags:
+  - FindAll
+  properties:
+  - type: OpenAPI
+    url: openapi/parallel-findall-api-openapi.yml
+  - type: Documentation
+    url: https://docs.parallel.ai/home
+  - type: APIReference
+    url: https://docs.parallel.ai/api-reference
+  - type: GettingStarted
+    url: https://docs.parallel.ai/getting-started/overview
+  - type: Authentication
+    url: authentication/parallel-authentication.yml
+- aid: parallel:parallel-monitor-api
+  name: Parallel Monitor API
+  description: >-
+    The Monitor API watches the web for material changes on a fixed frequency. Each monitor runs once
+    on creation and then on its configured schedule, emitting events when meaningful changes are detected.
+
+    - `event_stream` monitors track a search query and emit an event for each new material change.
+
+    - `snapshot` monitors track a specific task run's output and emit an event when the output changes.
+
+
+    Results can be polled via the events endpoint or delivered via webhooks.
+  humanURL: https://docs.parallel.ai/getting-started/overview
+  baseURL: https://api.parallel.ai
+  tags:
+  - Monitor
+  properties:
+  - type: OpenAPI
+    url: openapi/parallel-monitor-api-openapi.yml
+  - type: Documentation
+    url: https://docs.parallel.ai/home
+  - type: APIReference
+    url: https://docs.parallel.ai/api-reference
+  - type: GettingStarted
+    url: https://docs.parallel.ai/getting-started/overview
+  - type: Authentication
+    url: authentication/parallel-authentication.yml
+- aid: parallel:parallel-search-api
+  name: Parallel Search API
+  description: >-
+    Search returns ranked URLs with extended excerpts suitable for LLM consumption. Inputs are a natural-language
+    objective and optional keyword queries. Source policies allow including or excluding specific domains
+    and have configurable output sizes. The returned extended snippets contain dense, relevant information
+    from relevant pages.
+
+    - Result: ranked list with URL, title, and long text excerpts
+  humanURL: https://docs.parallel.ai/getting-started/overview
+  baseURL: https://api.parallel.ai
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/parallel-search-api-openapi.yml
+  - type: Documentation
+    url: https://docs.parallel.ai/home
+  - type: APIReference
+    url: https://docs.parallel.ai/api-reference
+  - type: GettingStarted
+    url: https://docs.parallel.ai/getting-started/overview
+  - type: Authentication
+    url: authentication/parallel-authentication.yml
+- aid: parallel:parallel-tasks-api
+  name: Parallel Tasks API
+  description: >-
+    The Task API executes web research and extraction tasks. Clients submit a natural-language objective
+    with an optional input schema; the service plans retrieval, fetches relevant URLs, and returns outputs
+    that conform to a provided or inferred JSON schema. Supports deep research style queries and can return
+    rich structured JSON outputs. Processors trade-off between cost, latency, and quality. Each processor
+    supports calibrated confidences.
+
+    - Output metadata: citations, excerpts, reasoning, and confidence per field
+
+
+    Task Groups enable batch execution of many independent Task runs with group-level monitoring and failure
+    handling.
+
+    - Submit hundreds or thousands of Tasks as a single group
+
+    - Observe group progress and receive results as they complete
+
+    - Real-time updates via Server-Sent Events (SSE)
+
+    - Add tasks to an existing group while it is running
+
+    - Group-level retry and error aggregation
+  humanURL: https://docs.parallel.ai/getting-started/overview
+  baseURL: https://api.parallel.ai
+  tags:
+  - Tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/parallel-tasks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.parallel.ai/home
+  - type: APIReference
+    url: https://docs.parallel.ai/api-reference
+  - type: GettingStarted
+    url: https://docs.parallel.ai/getting-started/overview
+  - type: Authentication
+    url: authentication/parallel-authentication.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/parallel/overview
 - type: Website
   url: https://www.parallel.ai
+- type: DeveloperPortal
+  url: https://platform.parallel.ai
+- type: Documentation
+  url: https://docs.parallel.ai/home
+- type: APIReference
+  url: https://docs.parallel.ai/api-reference
+- type: GettingStarted
+  url: https://docs.parallel.ai/getting-started/overview
+- type: Pricing
+  url: https://docs.parallel.ai/getting-started/pricing
+- type: Blog
+  url: https://parallel.ai/blog
+- type: GitHubOrganization
+  url: https://github.com/parallel-web
+- type: SignUp
+  url: https://platform.parallel.ai
+- type: Support
+  url: https://docs.parallel.ai/resources/faqs
+- type: TermsOfService
+  url: https://parallel.ai/terms-of-service
+- type: PrivacyPolicy
+  url: https://parallel.ai/privacy-policy
+- type: ChangeLog
+  url: changelog/parallel-changelog.yml
+- type: StatusPage
+  url: https://status.parallel.ai/
+- type: Deprecation
+  url: lifecycle/parallel-lifecycle.yml
+- type: Authentication
+  url: authentication/parallel-authentication.yml
+- type: Packages
+  url: packages/parallel-packages.yml
+- type: SDKs
+  url: packages/parallel-packages.yml
+- type: CLI
+  url: cli/parallel-cli.yml
+- type: MCPServer
+  url: mcp/parallel-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/parallel-llms.txt
+- type: Overlay
+  url: overlays/parallel-openapi-overlay.yaml
+- type: WellKnown
+  url: well-known/parallel-well-known.yml
+- type: Conformance
+  url: conformance/parallel-conformance.yml
+- type: Compliance
+  url: security/parallel-trust-center.yml
+- type: TrustCenter
+  url: security/parallel-trust-center.yml
+- type: ErrorCatalog
+  url: errors/parallel-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/parallel-lifecycle.yml
+- type: Conventions
+  url: conventions/parallel-conventions.yml
+- type: DataModel
+  url: data-model/parallel-data-model.yml
+- type: RateLimits
+  url: rate-limits/parallel-rate-limits.yml
+- type: Webhooks
+  url: asyncapi/parallel-webhooks.yml
+- type: DomainSecurity
+  url: security/parallel-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/parallel-agentic-access.yml
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 20
+  pass: local-v1
