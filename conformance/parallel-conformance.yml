@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/parallel-openapi-original.json + https://docs.parallel.ai (FAQs, webhook-setup)
+standards:
+- id: openapi-3.1
+  conforms: true
+  evidence: Publishes an OpenAPI 3.1.0 document at https://docs.parallel.ai/public-openapi.json
+- id: api-key-auth
+  conforms: true
+  evidence: securityScheme ApiKeyAuth (apiKey in header x-api-key)
+- id: oauth2
+  conforms: false
+  evidence: Public API is API-key only; OAuth 2.0 device flow exists only on the separate Account/Service API.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors are returned as application/json, not application/problem+json.
+- id: standard-webhooks
+  conforms: true
+  evidence: Webhooks follow the Standard Webhooks spec (webhook-id/webhook-timestamp/webhook-signature, HMAC-SHA256, whsec_ secret).
+- id: server-sent-events
+  conforms: true
+  evidence: Task/TaskGroup/FindAll/Monitor expose SSE event streams (text/event-stream endpoints).
+- id: openai-chat-completions-compat
+  conforms: true
+  evidence: /v1beta/chat/completions is OpenAI ChatCompletions-compatible.
+- id: soc2
+  conforms: true
+  evidence: SOC 2 Type I and Type II (as of April 2025); full report available via Trust Center on request.
+- id: tls-1.2-plus
+  conforms: true
+  evidence: All data encrypted in transit (TLS 1.2+) and at rest in US-based data centers.

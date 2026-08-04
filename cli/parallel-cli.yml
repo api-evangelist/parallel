@@ -1,0 +1,37 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.parallel.ai/integrations/cli
+binary: parallel-cli
+install:
+- pipx install "parallel-web-tools[cli]"
+- uv tool install "parallel-web-tools[cli]"
+- pip install "parallel-web-tools[cli]"
+- brew install parallel-web/tap/parallel-cli
+- npm install -g parallel-web-cli
+- curl -fsSL https://parallel.ai/install.sh | bash
+auth:
+  commands: [login, auth]
+  notes: login supports interactive OAuth or device flow; auth checks status. Also reads PARALLEL_API_KEY.
+commands:
+- name: search
+  description: Web search with natural language or keywords.
+  flags: [--mode, --max-results, --include-domains, --after-date]
+- name: extract
+  description: Retrieve clean markdown from URLs.
+- name: research
+  description: Deep research on open-ended questions.
+  flags: [--processor, --timeout]
+- name: enrich
+  description: Augment CSV/JSON data via web research.
+  flags: [--source-type, --source, --target, --intent]
+- name: findall
+  description: Discover entities using natural language.
+  flags: [-g/--generator, -n/--match-limit]
+- name: monitor
+  description: Track web changes continuously.
+  flags: [--frequency, --webhook, --type]
+global_flags:
+- --json
+- -o/--output
+- --no-wait
+- --dry-run

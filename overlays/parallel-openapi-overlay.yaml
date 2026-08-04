@@ -1,0 +1,20 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Parallel API
+  version: 1.0.0
+extends: openapi/parallel-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: parallel
+    x-apievangelist-products: [Search, Extract, Tasks, FindAll, Monitor, Chat]
+    x-apievangelist-auth: api-key (x-api-key header)
+    x-apievangelist-mcp: https://search.parallel.ai/mcp
+    x-apievangelist-status-page: https://status.parallel.ai/
+    x-apievangelist-webhooks: Standard Webhooks (HMAC-SHA256)
+- target: $.info
+  update:
+    x-apievangelist-rating-notes: >-
+      OpenAPI 3.1 with 32 operations across 6 products; API-key auth; SSE event
+      streams; Standard Webhooks; SOC 2 Type I/II. No RFC 9457 errors and no
+      idempotency contract.

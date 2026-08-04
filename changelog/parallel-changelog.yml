@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.parallel.ai/resources/changelog
+scheme: dated
+entries:
+- date: '2026-07-13'
+  highlights: Search API Turbo mode — real-time web search at $1 / 1,000 requests, p50 ~200ms.
+  breaking: false
+- date: '2026-05-19'
+  highlights: Launched Index — lets content owners see how AI agents use their work and earn compensation.
+  breaking: false
+- date: '2026-05-06'
+  highlights: Monitor API reached general availability (new processors, event streams, snapshots, domain filtering).
+  breaking: false
+- date: '2026-04-23'
+  highlights: Search MCP made free by default for agents/AI tools — no account or API key required.
+  breaking: false
+- date: '2026-04-22'
+  highlights: Search & Extract upgrades — Basic and Advanced modes; global coverage across 30+ countries.
+  breaking: false
+- date: '2026-04-07'
+  highlights: DeepSearchQA benchmark — Parallel Ultra at 82% accuracy.
+  breaking: false
+- date: '2026-03-19'
+  highlights: Interactions in Task API — stateful web-research subagents via interaction_id.
+  breaking: false
+- date: '2026-03-18'
+  highlights: Agent payments for Parallel via the Machine Payments Protocol (Tempo + Stripe).
+  breaking: false

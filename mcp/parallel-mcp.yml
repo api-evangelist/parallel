@@ -1,0 +1,36 @@
+generated: '2026-07-20'
+method: searched
+status: published
+source: https://docs.parallel.ai/integrations/mcp/quickstart
+servers:
+- name: parallel-search
+  transport: http
+  url: https://search.parallel.ai/mcp
+  auth: none
+  notes: >-
+    Free to use with no account or API key required (basic Search mode). An
+    OAuth-capable endpoint is also available at https://search.parallel.ai/mcp-oauth,
+    and an optional Bearer API key raises rate limits.
+  tools:
+  - name: search
+    description: Real-time web search returning ranked URLs and LLM-optimized excerpts (Search API, basic mode).
+  - name: extract
+    description: Extract clean markdown content from specific web URLs.
+- name: parallel-task
+  transport: http
+  url: https://task-mcp.parallel.ai/mcp
+  auth: bearer
+  notes: Requires OAuth or a Parallel API key (Bearer) from https://platform.parallel.ai.
+  tools:
+  - name: createDeepResearch
+    description: Start a deep-research Task run.
+    source_operation: openapi/parallel-openapi-original.json#tasks_runs_post_v1_tasks_runs_post
+  - name: createTaskGroup
+    description: Create a Task Group to batch multiple runs.
+    source_operation: openapi/parallel-openapi-original.json#tasks_taskgroups_post_v1_tasks_groups_post
+  - name: getStatus
+    description: Retrieve the status of a Task run.
+    source_operation: openapi/parallel-openapi-original.json#tasks_runs_get_v1_tasks_runs__run_id__get
+  - name: getResultMarkdown
+    description: Retrieve a completed Task run result as markdown.
+    source_operation: openapi/parallel-openapi-original.json#tasks_runs_result_get_v1_tasks_runs__run_id__result_get

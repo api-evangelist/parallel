@@ -1,0 +1,22 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.parallel.ai (migration guides, status page, changelog)
+versioning:
+  scheme: uri-path
+  current: v1
+  stages: [v1 (GA), v1beta (beta), v1alpha (legacy)]
+  docs: https://docs.parallel.ai/getting-started/overview
+deprecation:
+  policy: >-
+    Parallel ships GA (v1) endpoints alongside beta (v1beta) and legacy alpha
+    (v1alpha) surfaces, and publishes per-product migration guides for moving off
+    older versions (Search beta->GA, Extract beta->GA, FindAll v0->v1, Monitor
+    alpha->GA).
+  migration_guides:
+  - https://docs.parallel.ai/search/search-migration-guide
+  - https://docs.parallel.ai/extract/extract-migration-guide
+  - https://docs.parallel.ai/findall-api/findall-migration-guide
+  - https://docs.parallel.ai/monitor-api/monitor-migration-guide
+status_page: https://status.parallel.ai/
+changelog: https://docs.parallel.ai/resources/changelog
+deprecated_operations: []

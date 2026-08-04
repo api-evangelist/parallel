@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.parallel.ai/getting-started/rate-limits
+notes: >-
+  Only POST requests that create new resources are rate-limited; GET requests
+  (retrieving results, checking status) do not count. Contact support@parallel.ai
+  for higher limits.
+limits:
+- endpoint: Search
+  limit_count: 600
+  window: minute
+- endpoint: Extract
+  limit_count: 600
+  window: minute
+- endpoint: Tasks / TaskGroups
+  limit_count: 2000
+  window: minute
+- endpoint: Chat
+  limit_count: 300
+  window: minute
+- endpoint: FindAll
+  limit_count: 300
+  window: hour
+- endpoint: Entity Search
+  limit_count: 600
+  window: minute
+- endpoint: Monitor
+  limit_count: 300
+  window: minute

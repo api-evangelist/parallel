@@ -1,0 +1,42 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/parallel-openapi-original.json (paths, id path-params, $ref links)
+entities:
+- name: SearchResult
+  product: Search
+  operations: [v1_search_v1_search_post]
+- name: ExtractResult
+  product: Extract
+  operations: [extract_v1_extract_post]
+- name: TaskRun
+  id_field: run_id
+  product: Tasks
+  operations: [tasks_runs_post_v1_tasks_runs_post, tasks_runs_get_v1_tasks_runs__run_id__get, tasks_runs_result_get_v1_tasks_runs__run_id__result_get]
+  relationships:
+  - {type: belongs_to, target: TaskGroup, via: taskgroup_id}
+- name: TaskGroup
+  id_field: taskgroup_id
+  product: Tasks
+  operations: [tasks_taskgroups_post_v1_tasks_groups_post, tasks_taskgroups_get_v1_tasks_groups__taskgroup_id__get]
+  relationships:
+  - {type: has_many, target: TaskRun, via: taskgroup_id}
+- name: FindAllRun
+  id_field: findall_id
+  product: FindAll
+  operations: [findall_runs_v1_v1beta_findall_runs_post, findall_runs_v1_get_v1beta_findall_runs__findall_id__get, get_findall_result_v1beta_findall_runs__findall_id__result_get]
+  relationships:
+  - {type: has_many, target: FindAllCandidate, via: findall_id}
+- name: FindAllCandidate
+  product: FindAll
+  relationships:
+  - {type: belongs_to, target: FindAllRun, via: findall_id}
+- name: Monitor
+  id_field: monitor_id
+  product: Monitor
+  operations: [create_monitor_v1_monitors_post, retrieve_monitor_v1_monitors__monitor_id__get, list_monitor_events_v1_monitors__monitor_id__events_get]
+  relationships:
+  - {type: has_many, target: MonitorEvent, via: monitor_id}
+- name: MonitorEvent
+  product: Monitor
+  relationships:
+  - {type: belongs_to, target: Monitor, via: monitor_id}

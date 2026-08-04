@@ -1,0 +1,1955 @@
+{
+  "info": {
+    "_postman_id": "fd2f06e2-d928-48c6-b72f-f6886c779c1b",
+    "name": "Parallel Chat API (Beta) Chat API (Beta) Monitor API",
+    "description": "Parallel API\n\nContact Support:\n Name: Parallel Support\n Email: support@parallel.ai",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:31:59.000Z",
+    "updatedAt": "2026-07-28T02:31:59.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fd2f06e2-d928-48c6-b72f-f6886c779c1b"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "monitors",
+          "item": [
+            {
+              "name": "{monitor_id}",
+              "item": [
+                {
+                  "name": "cancel",
+                  "item": [
+                    {
+                      "name": "Cancel Monitor",
+                      "id": "e951514e-8dd2-4895-bd8e-7fe4c93f0756",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/monitors/:monitor_id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "monitors",
+                            ":monitor_id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "id": "ca670168-fdb6-47f7-a116-2b959f07a875",
+                              "key": "monitor_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Cancel a monitor.\n\nPermanently stops the monitor from running. Cancellation is irreversible \u2014\ncreate a new monitor to resume monitoring. Cancelling an already-cancelled\nmonitor is a no-op."
+                      },
+                      "response": [
+                        {
+                          "id": "9aa58800-4c41-4f80-a8f1-6f13ddf45114",
+                          "name": "Monitor cancelled successfully.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/monitors/:monitor_id/cancel",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "monitors",
+                                ":monitor_id",
+                                "cancel"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "monitor_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"snapshot\",\n  \"monitor_id\": \"<string>\",\n  \"status\": \"active\",\n  \"frequency\": \"<string>\",\n  \"processor\": \"lite\",\n  \"created_at\": \"<dateTime>\",\n  \"settings\": {\n    \"query\": \"<string>\",\n    \"output_schema\": {\n      \"json_schema\": {\n        \"sed_b_\": \"laboris eu\",\n        \"sit55\": 73504234\n      },\n      \"type\": \"json\"\n    },\n    \"include_backfill\": \"<boolean>\",\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"exclude_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"after_date\": \"<date>\"\n      },\n      \"location\": \"<string>\"\n    }\n  },\n  \"webhook\": {\n    \"url\": \"<string>\",\n    \"event_types\": [\n      \"monitor.execution.failed\",\n      \"monitor.execution.completed\"\n    ]\n  },\n  \"metadata\": {\n    \"anim_2a_\": \"<string>\",\n    \"aliquip_1\": \"<string>\"\n  },\n  \"last_run_at\": \"<string>\",\n  \"output\": {\n    \"latest_snapshot\": {\n      \"basis\": [\n        {\n          \"field\": \"<string>\",\n          \"reasoning\": \"<string>\",\n          \"confidence\": \"<string>\"\n        },\n        {\n          \"field\": \"<string>\",\n          \"reasoning\": \"<string>\",\n          \"confidence\": \"<string>\"\n        }\n      ],\n      \"type\": \"<string>\",\n      \"content\": \"<string>\",\n      \"mcp_tool_calls\": [\n        {\n          \"tool_call_id\": \"<string>\",\n          \"server_name\": \"<string>\",\n          \"tool_name\": \"<string>\",\n          \"arguments\": \"<string>\",\n          \"content\": \"<string>\",\n          \"error\": \"<string>\"\n        },\n        {\n          \"tool_call_id\": \"<string>\",\n          \"server_name\": \"<string>\",\n          \"tool_name\": \"<string>\",\n          \"arguments\": \"<string>\",\n          \"content\": \"<string>\",\n          \"error\": \"<string>\"\n        }\n      ],\n      \"beta_fields\": {\n        \"anim6\": \"et officia\",\n        \"deserunt_44\": 69017456,\n        \"quic\": 59397196\n      }\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T02:32:00.000Z",
+                          "updatedAt": "2026-07-28T02:32:00.000Z",
+                          "uid": "35240-9aa58800-4c41-4f80-a8f1-6f13ddf45114"
+                        },
+                        {
+                          "id": "3690c18d-e465-4d53-9ee6-9e559c867dba",
+                          "name": "Unauthorized: invalid or missing credentials",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/monitors/:monitor_id/cancel",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "monitors",
+                                ":monitor_id",
+                                "cancel"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "monitor_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"deserunt3\": -41857871.57421306\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T02:32:00.000Z",
+                          "updatedAt": "2026-07-28T02:32:00.000Z",
+                          "uid": "35240-3690c18d-e465-4d53-9ee6-9e559c867dba"
+                        },
+                        {
+                          "id": "390ce4b6-ea09-4ff2-b7c4-fd1c9ae91565",
+                          "name": "Monitor not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/monitors/:monitor_id/cancel",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "monitors",
+                                ":monitor_id",
+                                "cancel"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "monitor_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"deserunt3\": -41857871.57421306\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T02:32:00.000Z",
+                          "updatedAt": "2026-07-28T02:32:00.000Z",
+                          "uid": "35240-390ce4b6-ea09-4ff2-b7c4-fd1c9ae91565"
+                        },
+                        {
+                          "id": "35080cfc-2863-4f08-aae1-e69c27e5c822",
+                          "name": "Unprocessable content: request validation error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/monitors/:monitor_id/cancel",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "monitors",
+                                ":monitor_id",
+                                "cancel"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "monitor_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"deserunt3\": -41857871.57421306\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T02:32:00.000Z",
+                          "updatedAt": "2026-07-28T02:32:00.000Z",
+                          "uid": "35240-35080cfc-2863-4f08-aae1-e69c27e5c822"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:32:00.000Z",
+                      "updatedAt": "2026-07-28T02:32:00.000Z",
+                      "uid": "35240-e951514e-8dd2-4895-bd8e-7fe4c93f0756"
+                    }
+                  ],
+                  "id": "24b8273d-03a1-40db-9fd9-4c6bdbb0a813",
+                  "createdAt": "2026-07-28T02:32:00.000Z",
+                  "updatedAt": "2026-07-28T02:32:00.000Z",
+                  "uid": "35240-24b8273d-03a1-40db-9fd9-4c6bdbb0a813"
+                },
+                {
+                  "name": "events",
+                  "item": [
+                    {
+                      "name": "List Monitor Events",
+                      "id": "65dcacf3-b1f7-49de-884f-010f26a4322e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/monitors/:monitor_id/events?event_group_id=<string>&cursor=<string>&limit=<integer>&include_completions=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "monitors",
+                            ":monitor_id",
+                            "events"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter to a single execution. Values come from `event_group_id` in webhook events and listed events. Pagination params are ignored when set.",
+                              "key": "event_group_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Pass `next_cursor` from a previous response to retrieve more events.",
+                              "key": "cursor",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of events to return. Defaults to 20. Between 1 and 100.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "When true, include completion events for executions that ran but detected no material changes. Useful for auditing execution history.",
+                              "key": "include_completions",
+                              "value": "false"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "7209d312-7dc4-4cfe-b017-fa01f86be6be",
+                              "key": "monitor_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "List events for a monitor, newest first.\n\nPass `event_group_id` to narrow results to a single execution. Otherwise\nreturns all executions newest-first; use `next_cursor` to paginate.\nSet `include_completions=true` to also include no-change executions."
+                      },
+                      "response": [
+                        {
+                          "id": "cf66ffca-942d-40ae-9285-83cbe254b496",
+                          "name": "Monitor events retrieved successfully.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/monitors/:monitor_id/events?event_group_id=<string>&cursor=<string>&limit=<integer>&include_completions=false",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "monitors",
+                                ":monitor_id",
+                                "events"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filter to a single execution. Values come from `event_group_id` in webhook events and listed events. Pagination params are ignored when set.",
+                                  "key": "event_group_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Pass `next_cursor` from a previous response to retrieve more events.",
+                                  "key": "cursor",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Maximum number of events to return. Defaults to 20. Between 1 and 100.",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "When true, include completion events for executions that ran but detected no material changes. Useful for auditing execution history.",
+                                  "key": "include_completions",
+                                  "value": "false"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "monitor_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"events\": [\n    {\n      \"event_id\": \"<string>\",\n      \"event_group_id\": \"<string>\",\n      \"event_date\": \"<string>\",\n      \"output\": {\n        \"basis\": [\n          {\n            \"field\": \"<string>\",\n            \"reasoning\": \"<string>\",\n            \"confidence\": \"<string>\"\n          },\n          {\n            \"field\": \"<string>\",\n            \"reasoning\": \"<string>\",\n            \"confidence\": \"<string>\"\n          }\n        ],\n        \"type\": \"<string>\",\n        \"content\": \"<string>\",\n        \"mcp_tool_calls\": [\n          {\n            \"tool_call_id\": \"<string>\",\n            \"server_name\": \"<string>\",\n            \"tool_name\": \"<string>\",\n            \"arguments\": \"<string>\",\n            \"content\": \"<string>\",\n            \"error\": \"<string>\"\n          },\n          {\n            \"tool_call_id\": \"<string>\",\n            \"server_name\": \"<string>\",\n            \"tool_name\": \"<string>\",\n            \"arguments\": \"<string>\",\n            \"content\": \"<string>\",\n            \"error\": \"<string>\"\n          }\n        ],\n        \"beta_fields\": {\n          \"Duis1\": true\n        }\n      },\n      \"event_type\": \"event_stream\"\n    },\n    {\n      \"event_id\": \"<string>\",\n      \"event_group_id\": \"<string>\",\n      \"event_date\": \"<string>\",\n      \"output\": {\n        \"basis\": [\n          {\n            \"field\": \"<string>\",\n            \"reasoning\": \"<string>\",\n            \"confidence\": \"<string>\"\n          },\n          {\n            \"field\": \"<string>\",\n            \"reasoning\": \"<string>\",\n            \"confidence\": \"<string>\"\n          }\n        ],\n        \"type\": \"<string>\",\n        \"content\": \"<string>\",\n        \"mcp_tool_calls\": [\n          {\n            \"tool_call_id\": \"<string>\",\n            \"server_name\": \"<string>\",\n            \"tool_name\": \"<string>\",\n            \"arguments\": \"<string>\",\n            \"content\": \"<string>\",\n            \"error\": \"<string>\"\n          },\n          {\n            \"tool_call_id\": \"<string>\",\n            \"server_name\": \"<string>\",\n            \"tool_name\": \"<string>\",\n            \"arguments\": \"<string>\",\n            \"content\": \"<string>\",\n            \"error\": \"<string>\"\n          }\n        ],\n        \"beta_fields\": {\n          \"irure28\": 6551046,\n          \"sit8\": 22418839.214441985\n        }\n      },\n      \"event_type\": \"event_stream\"\n    }\n  ],\n  \"next_cursor\": \"<string>\",\n  \"warnings\": [\n    {\n      \"type\": \"input_validation_warning\",\n      \"message\": \"<string>\",\n      \"detail\": {\n        \"irure_a3\": \"nostrud laboris eiusmod in\"\n      }\n    },\n    {\n      \"type\": \"input_validation_warning\",\n      \"message\": \"<string>\",\n      \"detail\": {\n        \"ad_56\": true\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:32:00.000Z",
+                          "updatedAt": "2026-07-28T02:32:00.000Z",
+                          "uid": "35240-cf66ffca-942d-40ae-9285-83cbe254b496"
+                        },
+                        {
+                          "id": "a684fd2b-4a1c-4bfc-89c0-f2e9c9ea5ad1",
+                          "name": "Unauthorized: invalid or missing credentials",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/monitors/:monitor_id/events?event_group_id=<string>&cursor=<string>&limit=<integer>&include_completions=false",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "monitors",
+                                ":monitor_id",
+                                "events"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filter to a single execution. Values come from `event_group_id` in webhook events and listed events. Pagination params are ignored when set.",
+                                  "key": "event_group_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Pass `next_cursor` from a previous response to retrieve more events.",
+                                  "key": "cursor",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Maximum number of events to return. Defaults to 20. Between 1 and 100.",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "When true, include completion events for executions that ran but detected no material changes. Useful for auditing execution history.",
+                                  "key": "include_completions",
+                                  "value": "false"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "monitor_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"deserunt3\": -41857871.57421306\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T02:32:00.000Z",
+                          "updatedAt": "2026-07-28T02:32:00.000Z",
+                          "uid": "35240-a684fd2b-4a1c-4bfc-89c0-f2e9c9ea5ad1"
+                        },
+                        {
+                          "id": "e979ce38-2691-4c6b-ba88-3312892d9aef",
+                          "name": "Monitor not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/monitors/:monitor_id/events?event_group_id=<string>&cursor=<string>&limit=<integer>&include_completions=false",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "monitors",
+                                ":monitor_id",
+                                "events"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filter to a single execution. Values come from `event_group_id` in webhook events and listed events. Pagination params are ignored when set.",
+                                  "key": "event_group_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Pass `next_cursor` from a previous response to retrieve more events.",
+                                  "key": "cursor",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Maximum number of events to return. Defaults to 20. Between 1 and 100.",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "When true, include completion events for executions that ran but detected no material changes. Useful for auditing execution history.",
+                                  "key": "include_completions",
+                                  "value": "false"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "monitor_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"deserunt3\": -41857871.57421306\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T02:32:00.000Z",
+                          "updatedAt": "2026-07-28T02:32:00.000Z",
+                          "uid": "35240-e979ce38-2691-4c6b-ba88-3312892d9aef"
+                        },
+                        {
+                          "id": "eec6b0a5-db78-4f8c-84e0-b9499ff063dd",
+                          "name": "Unprocessable content: invalid cursor or request validation error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/monitors/:monitor_id/events?event_group_id=<string>&cursor=<string>&limit=<integer>&include_completions=false",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "monitors",
+                                ":monitor_id",
+                                "events"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filter to a single execution. Values come from `event_group_id` in webhook events and listed events. Pagination params are ignored when set.",
+                                  "key": "event_group_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Pass `next_cursor` from a previous response to retrieve more events.",
+                                  "key": "cursor",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Maximum number of events to return. Defaults to 20. Between 1 and 100.",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "When true, include completion events for executions that ran but detected no material changes. Useful for auditing execution history.",
+                                  "key": "include_completions",
+                                  "value": "false"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "monitor_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"deserunt3\": -41857871.57421306\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T02:32:00.000Z",
+                          "updatedAt": "2026-07-28T02:32:00.000Z",
+                          "uid": "35240-eec6b0a5-db78-4f8c-84e0-b9499ff063dd"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:32:00.000Z",
+                      "updatedAt": "2026-07-28T02:32:00.000Z",
+                      "uid": "35240-65dcacf3-b1f7-49de-884f-010f26a4322e"
+                    }
+                  ],
+                  "id": "07d75a80-cb6e-4d5c-81b0-3118ed521fba",
+                  "createdAt": "2026-07-28T02:32:00.000Z",
+                  "updatedAt": "2026-07-28T02:32:00.000Z",
+                  "uid": "35240-07d75a80-cb6e-4d5c-81b0-3118ed521fba"
+                },
+                {
+                  "name": "trigger",
+                  "item": [
+                    {
+                      "name": "Trigger Monitor Run",
+                      "id": "43e43ea3-1b24-45cf-b839-addd4e0888c4",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/monitors/:monitor_id/trigger",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "monitors",
+                            ":monitor_id",
+                            "trigger"
+                          ],
+                          "variable": [
+                            {
+                              "id": "4e98932b-c588-4b9c-a31b-95b4009d8a69",
+                              "key": "monitor_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Trigger an immediate monitor run.\n\nEnqueues a one-off execution of the monitor outside its normal schedule.\nThe monitor's regular schedule is not affected. An event is only emitted\nif the execution detects a material change. Cancelled monitors cannot be\ntriggered."
+                      },
+                      "response": [
+                        {
+                          "id": "8081bc29-edc0-46ea-812d-b70bc9683b72",
+                          "name": "Monitor run enqueued.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/monitors/:monitor_id/trigger",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "monitors",
+                                ":monitor_id",
+                                "trigger"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "monitor_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:32:00.000Z",
+                          "updatedAt": "2026-07-28T02:32:00.000Z",
+                          "uid": "35240-8081bc29-edc0-46ea-812d-b70bc9683b72"
+                        },
+                        {
+                          "id": "9150c54a-08d0-48bb-887f-dccd4a245ce5",
+                          "name": "Unauthorized: invalid or missing credentials",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/monitors/:monitor_id/trigger",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "monitors",
+                                ":monitor_id",
+                                "trigger"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "monitor_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"deserunt3\": -41857871.57421306\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T02:32:00.000Z",
+                          "updatedAt": "2026-07-28T02:32:00.000Z",
+                          "uid": "35240-9150c54a-08d0-48bb-887f-dccd4a245ce5"
+                        },
+                        {
+                          "id": "82caec09-b449-410e-af4c-b5a8453938e2",
+                          "name": "Monitor not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/monitors/:monitor_id/trigger",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "monitors",
+                                ":monitor_id",
+                                "trigger"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "monitor_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"deserunt3\": -41857871.57421306\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T02:32:00.000Z",
+                          "updatedAt": "2026-07-28T02:32:00.000Z",
+                          "uid": "35240-82caec09-b449-410e-af4c-b5a8453938e2"
+                        },
+                        {
+                          "id": "477a1378-b968-4167-9bce-f39777ca6c8d",
+                          "name": "Unprocessable content: request validation error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/monitors/:monitor_id/trigger",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "monitors",
+                                ":monitor_id",
+                                "trigger"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "monitor_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"deserunt3\": -41857871.57421306\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T02:32:00.000Z",
+                          "updatedAt": "2026-07-28T02:32:00.000Z",
+                          "uid": "35240-477a1378-b968-4167-9bce-f39777ca6c8d"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:32:00.000Z",
+                      "updatedAt": "2026-07-28T02:32:00.000Z",
+                      "uid": "35240-43e43ea3-1b24-45cf-b839-addd4e0888c4"
+                    }
+                  ],
+                  "id": "f4adc11e-4d02-4d2f-a460-ca98a6888d27",
+                  "createdAt": "2026-07-28T02:32:00.000Z",
+                  "updatedAt": "2026-07-28T02:32:00.000Z",
+                  "uid": "35240-f4adc11e-4d02-4d2f-a460-ca98a6888d27"
+                },
+                {
+                  "name": "update",
+                  "item": [
+                    {
+                      "name": "Update Monitor",
+                      "id": "2bca2456-7a06-492d-9026-171aec4c788b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"snapshot\",\n  \"frequency\": \"<string>\",\n  \"webhook\": {\n    \"url\": \"<string>\",\n    \"event_types\": [\n      \"monitor.execution.failed\",\n      \"monitor.execution.completed\"\n    ]\n  },\n  \"metadata\": {\n    \"consequat_0\": \"<string>\"\n  },\n  \"settings\": {\n    \"query\": \"<string>\",\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"exclude_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"after_date\": \"<date>\"\n      },\n      \"location\": \"<string>\"\n    }\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/monitors/:monitor_id/update",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "monitors",
+                            ":monitor_id",
+                            "update"
+                          ],
+                          "variable": [
+                            {
+                              "id": "cadbe9ee-4d2d-44b5-a685-cca69528611f",
+                              "key": "monitor_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Update a monitor.\n\nOnly fields explicitly included in the request body are changed. Pass\n`null` for `webhook` or `metadata` to clear those fields. Pass `type` and\n`settings` to update type-specific settings on an `event_stream` monitor.\nAt least one field must be provided. Cancelled monitors cannot be updated."
+                      },
+                      "response": [
+                        {
+                          "id": "25c0fb76-a297-44c6-b571-f668a3ea68dc",
+                          "name": "Monitor updated successfully.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"type\": \"snapshot\",\n  \"frequency\": \"<string>\",\n  \"webhook\": {\n    \"url\": \"<string>\",\n    \"event_types\": [\n      \"monitor.execution.failed\",\n      \"monitor.execution.completed\"\n    ]\n  },\n  \"metadata\": {\n    \"consequat_0\": \"<string>\"\n  },\n  \"settings\": {\n    \"query\": \"<string>\",\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"exclude_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"after_date\": \"<date>\"\n      },\n      \"location\": \"<string>\"\n    }\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/monitors/:monitor_id/update",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "monitors",
+                                ":monitor_id",
+                                "update"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "monitor_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"snapshot\",\n  \"monitor_id\": \"<string>\",\n  \"status\": \"active\",\n  \"frequency\": \"<string>\",\n  \"processor\": \"lite\",\n  \"created_at\": \"<dateTime>\",\n  \"settings\": {\n    \"query\": \"<string>\",\n    \"output_schema\": {\n      \"json_schema\": {\n        \"sed_b_\": \"laboris eu\",\n        \"sit55\": 73504234\n      },\n      \"type\": \"json\"\n    },\n    \"include_backfill\": \"<boolean>\",\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"exclude_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"after_date\": \"<date>\"\n      },\n      \"location\": \"<string>\"\n    }\n  },\n  \"webhook\": {\n    \"url\": \"<string>\",\n    \"event_types\": [\n      \"monitor.execution.failed\",\n      \"monitor.execution.completed\"\n    ]\n  },\n  \"metadata\": {\n    \"anim_2a_\": \"<string>\",\n    \"aliquip_1\": \"<string>\"\n  },\n  \"last_run_at\": \"<string>\",\n  \"output\": {\n    \"latest_snapshot\": {\n      \"basis\": [\n        {\n          \"field\": \"<string>\",\n          \"reasoning\": \"<string>\",\n          \"confidence\": \"<string>\"\n        },\n        {\n          \"field\": \"<string>\",\n          \"reasoning\": \"<string>\",\n          \"confidence\": \"<string>\"\n        }\n      ],\n      \"type\": \"<string>\",\n      \"content\": \"<string>\",\n      \"mcp_tool_calls\": [\n        {\n          \"tool_call_id\": \"<string>\",\n          \"server_name\": \"<string>\",\n          \"tool_name\": \"<string>\",\n          \"arguments\": \"<string>\",\n          \"content\": \"<string>\",\n          \"error\": \"<string>\"\n        },\n        {\n          \"tool_call_id\": \"<string>\",\n          \"server_name\": \"<string>\",\n          \"tool_name\": \"<string>\",\n          \"arguments\": \"<string>\",\n          \"content\": \"<string>\",\n          \"error\": \"<string>\"\n        }\n      ],\n      \"beta_fields\": {\n        \"anim6\": \"et officia\",\n        \"deserunt_44\": 69017456,\n        \"quic\": 59397196\n      }\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T02:32:00.000Z",
+                          "updatedAt": "2026-07-28T02:32:00.000Z",
+                          "uid": "35240-25c0fb76-a297-44c6-b571-f668a3ea68dc"
+                        },
+                        {
+                          "id": "d8c9d339-70c6-49f6-8800-14d0a10affd2",
+                          "name": "Unauthorized: invalid or missing credentials",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"type\": \"snapshot\",\n  \"frequency\": \"<string>\",\n  \"webhook\": {\n    \"url\": \"<string>\",\n    \"event_types\": [\n      \"monitor.execution.failed\",\n      \"monitor.execution.completed\"\n    ]\n  },\n  \"metadata\": {\n    \"consequat_0\": \"<string>\"\n  },\n  \"settings\": {\n    \"query\": \"<string>\",\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"exclude_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"after_date\": \"<date>\"\n      },\n      \"location\": \"<string>\"\n    }\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/monitors/:monitor_id/update",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "monitors",
+                                ":monitor_id",
+                                "update"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "monitor_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"deserunt3\": -41857871.57421306\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T02:32:00.000Z",
+                          "updatedAt": "2026-07-28T02:32:00.000Z",
+                          "uid": "35240-d8c9d339-70c6-49f6-8800-14d0a10affd2"
+                        },
+                        {
+                          "id": "018616ae-ce95-4f7e-9e72-097eafb49d48",
+                          "name": "Monitor not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"type\": \"snapshot\",\n  \"frequency\": \"<string>\",\n  \"webhook\": {\n    \"url\": \"<string>\",\n    \"event_types\": [\n      \"monitor.execution.failed\",\n      \"monitor.execution.completed\"\n    ]\n  },\n  \"metadata\": {\n    \"consequat_0\": \"<string>\"\n  },\n  \"settings\": {\n    \"query\": \"<string>\",\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"exclude_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"after_date\": \"<date>\"\n      },\n      \"location\": \"<string>\"\n    }\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/monitors/:monitor_id/update",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "monitors",
+                                ":monitor_id",
+                                "update"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "monitor_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"deserunt3\": -41857871.57421306\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T02:32:00.000Z",
+                          "updatedAt": "2026-07-28T02:32:00.000Z",
+                          "uid": "35240-018616ae-ce95-4f7e-9e72-097eafb49d48"
+                        },
+                        {
+                          "id": "aa8f44b0-dce5-49b1-80be-21d903704626",
+                          "name": "Unprocessable content: request validation error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"type\": \"snapshot\",\n  \"frequency\": \"<string>\",\n  \"webhook\": {\n    \"url\": \"<string>\",\n    \"event_types\": [\n      \"monitor.execution.failed\",\n      \"monitor.execution.completed\"\n    ]\n  },\n  \"metadata\": {\n    \"consequat_0\": \"<string>\"\n  },\n  \"settings\": {\n    \"query\": \"<string>\",\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"exclude_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"after_date\": \"<date>\"\n      },\n      \"location\": \"<string>\"\n    }\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/monitors/:monitor_id/update",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "monitors",
+                                ":monitor_id",
+                                "update"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "monitor_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"deserunt3\": -41857871.57421306\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T02:32:00.000Z",
+                          "updatedAt": "2026-07-28T02:32:00.000Z",
+                          "uid": "35240-aa8f44b0-dce5-49b1-80be-21d903704626"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:32:00.000Z",
+                      "updatedAt": "2026-07-28T02:32:00.000Z",
+                      "uid": "35240-2bca2456-7a06-492d-9026-171aec4c788b"
+                    }
+                  ],
+                  "id": "2f458e44-2793-464c-a1e4-d866b39ead9f",
+                  "createdAt": "2026-07-28T02:32:00.000Z",
+                  "updatedAt": "2026-07-28T02:32:00.000Z",
+                  "uid": "35240-2f458e44-2793-464c-a1e4-d866b39ead9f"
+                },
+                {
+                  "name": "Retrieve Monitor",
+                  "id": "fd2b4668-78fa-4679-9b74-4ba8160756b0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/monitors/:monitor_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "monitors",
+                        ":monitor_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d83f4784-11a0-4790-a5be-5e64d12a378e",
+                          "key": "monitor_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Retrieve a monitor.\n\nRetrieves a specific monitor by `monitor_id`. Returns the monitor\nconfiguration including status, frequency, query, and webhook settings."
+                  },
+                  "response": [
+                    {
+                      "id": "3fe4821e-b018-4484-9d15-4da3291e8961",
+                      "name": "Monitor retrieved successfully.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/monitors/:monitor_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "monitors",
+                            ":monitor_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "monitor_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"snapshot\",\n  \"monitor_id\": \"<string>\",\n  \"status\": \"active\",\n  \"frequency\": \"<string>\",\n  \"processor\": \"lite\",\n  \"created_at\": \"<dateTime>\",\n  \"settings\": {\n    \"query\": \"<string>\",\n    \"output_schema\": {\n      \"json_schema\": {\n        \"sed_b_\": \"laboris eu\",\n        \"sit55\": 73504234\n      },\n      \"type\": \"json\"\n    },\n    \"include_backfill\": \"<boolean>\",\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"exclude_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"after_date\": \"<date>\"\n      },\n      \"location\": \"<string>\"\n    }\n  },\n  \"webhook\": {\n    \"url\": \"<string>\",\n    \"event_types\": [\n      \"monitor.execution.failed\",\n      \"monitor.execution.completed\"\n    ]\n  },\n  \"metadata\": {\n    \"anim_2a_\": \"<string>\",\n    \"aliquip_1\": \"<string>\"\n  },\n  \"last_run_at\": \"<string>\",\n  \"output\": {\n    \"latest_snapshot\": {\n      \"basis\": [\n        {\n          \"field\": \"<string>\",\n          \"reasoning\": \"<string>\",\n          \"confidence\": \"<string>\"\n        },\n        {\n          \"field\": \"<string>\",\n          \"reasoning\": \"<string>\",\n          \"confidence\": \"<string>\"\n        }\n      ],\n      \"type\": \"<string>\",\n      \"content\": \"<string>\",\n      \"mcp_tool_calls\": [\n        {\n          \"tool_call_id\": \"<string>\",\n          \"server_name\": \"<string>\",\n          \"tool_name\": \"<string>\",\n          \"arguments\": \"<string>\",\n          \"content\": \"<string>\",\n          \"error\": \"<string>\"\n        },\n        {\n          \"tool_call_id\": \"<string>\",\n          \"server_name\": \"<string>\",\n          \"tool_name\": \"<string>\",\n          \"arguments\": \"<string>\",\n          \"content\": \"<string>\",\n          \"error\": \"<string>\"\n        }\n      ],\n      \"beta_fields\": {\n        \"anim6\": \"et officia\",\n        \"deserunt_44\": 69017456,\n        \"quic\": 59397196\n      }\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T02:32:00.000Z",
+                      "updatedAt": "2026-07-28T02:32:00.000Z",
+                      "uid": "35240-3fe4821e-b018-4484-9d15-4da3291e8961"
+                    },
+                    {
+                      "id": "d3073c8b-0f9a-49a2-a5fd-0811521c0be6",
+                      "name": "Unauthorized: invalid or missing credentials",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/monitors/:monitor_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "monitors",
+                            ":monitor_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "monitor_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"deserunt3\": -41857871.57421306\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T02:32:00.000Z",
+                      "updatedAt": "2026-07-28T02:32:00.000Z",
+                      "uid": "35240-d3073c8b-0f9a-49a2-a5fd-0811521c0be6"
+                    },
+                    {
+                      "id": "c35b1446-c2d6-4895-895d-462d7ecd0c6b",
+                      "name": "Monitor not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/monitors/:monitor_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "monitors",
+                            ":monitor_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "monitor_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"deserunt3\": -41857871.57421306\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T02:32:00.000Z",
+                      "updatedAt": "2026-07-28T02:32:00.000Z",
+                      "uid": "35240-c35b1446-c2d6-4895-895d-462d7ecd0c6b"
+                    },
+                    {
+                      "id": "e9fa600d-df03-402b-acb7-d044072a3317",
+                      "name": "Validation Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/monitors/:monitor_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "monitors",
+                            ":monitor_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "monitor_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:32:00.000Z",
+                      "updatedAt": "2026-07-28T02:32:00.000Z",
+                      "uid": "35240-e9fa600d-df03-402b-acb7-d044072a3317"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:32:00.000Z",
+                  "updatedAt": "2026-07-28T02:32:00.000Z",
+                  "uid": "35240-fd2b4668-78fa-4679-9b74-4ba8160756b0"
+                }
+              ],
+              "id": "0917e82d-32e3-46d2-8b37-abdaa1f44ab5",
+              "createdAt": "2026-07-28T02:32:00.000Z",
+              "updatedAt": "2026-07-28T02:32:00.000Z",
+              "uid": "35240-0917e82d-32e3-46d2-8b37-abdaa1f44ab5"
+            },
+            {
+              "name": "Create Monitor",
+              "id": "a3825a32-5468-4251-9132-c2e557da0721",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"snapshot\",\n  \"frequency\": \"<string>\",\n  \"settings\": {\n    \"query\": \"<string>\",\n    \"output_schema\": {\n      \"json_schema\": {\n        \"consequat_b5\": -55565554,\n        \"sunt_7\": \"in sunt enim\"\n      },\n      \"type\": \"json\"\n    },\n    \"include_backfill\": \"<boolean>\",\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"exclude_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"after_date\": \"<date>\"\n      },\n      \"location\": \"<string>\"\n    }\n  },\n  \"processor\": \"lite\",\n  \"webhook\": {\n    \"url\": \"<string>\",\n    \"event_types\": [\n      \"monitor.execution.completed\",\n      \"monitor.execution.completed\"\n    ]\n  },\n  \"metadata\": {\n    \"sint4\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/monitors",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "monitors"
+                  ]
+                },
+                "description": "Create a monitor.\n\nMonitors run on a fixed frequency to detect material changes in web content.\nSet `type=event_stream` to monitor a search query, or `type=snapshot` to\nmonitor a specific task run's output. The monitor runs once immediately at\ncreation, then continues on the configured schedule."
+              },
+              "response": [
+                {
+                  "id": "afee1ea9-cf4f-42ee-9987-188954d380fb",
+                  "name": "Monitor created successfully.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"type\": \"snapshot\",\n  \"frequency\": \"<string>\",\n  \"settings\": {\n    \"query\": \"<string>\",\n    \"output_schema\": {\n      \"json_schema\": {\n        \"consequat_b5\": -55565554,\n        \"sunt_7\": \"in sunt enim\"\n      },\n      \"type\": \"json\"\n    },\n    \"include_backfill\": \"<boolean>\",\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"exclude_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"after_date\": \"<date>\"\n      },\n      \"location\": \"<string>\"\n    }\n  },\n  \"processor\": \"lite\",\n  \"webhook\": {\n    \"url\": \"<string>\",\n    \"event_types\": [\n      \"monitor.execution.completed\",\n      \"monitor.execution.completed\"\n    ]\n  },\n  \"metadata\": {\n    \"sint4\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/monitors",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "monitors"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"snapshot\",\n  \"monitor_id\": \"<string>\",\n  \"status\": \"active\",\n  \"frequency\": \"<string>\",\n  \"processor\": \"lite\",\n  \"created_at\": \"<dateTime>\",\n  \"settings\": {\n    \"query\": \"<string>\",\n    \"output_schema\": {\n      \"json_schema\": {\n        \"sed_b_\": \"laboris eu\",\n        \"sit55\": 73504234\n      },\n      \"type\": \"json\"\n    },\n    \"include_backfill\": \"<boolean>\",\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"exclude_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"after_date\": \"<date>\"\n      },\n      \"location\": \"<string>\"\n    }\n  },\n  \"webhook\": {\n    \"url\": \"<string>\",\n    \"event_types\": [\n      \"monitor.execution.failed\",\n      \"monitor.execution.completed\"\n    ]\n  },\n  \"metadata\": {\n    \"anim_2a_\": \"<string>\",\n    \"aliquip_1\": \"<string>\"\n  },\n  \"last_run_at\": \"<string>\",\n  \"output\": {\n    \"latest_snapshot\": {\n      \"basis\": [\n        {\n          \"field\": \"<string>\",\n          \"reasoning\": \"<string>\",\n          \"confidence\": \"<string>\"\n        },\n        {\n          \"field\": \"<string>\",\n          \"reasoning\": \"<string>\",\n          \"confidence\": \"<string>\"\n        }\n      ],\n      \"type\": \"<string>\",\n      \"content\": \"<string>\",\n      \"mcp_tool_calls\": [\n        {\n          \"tool_call_id\": \"<string>\",\n          \"server_name\": \"<string>\",\n          \"tool_name\": \"<string>\",\n          \"arguments\": \"<string>\",\n          \"content\": \"<string>\",\n          \"error\": \"<string>\"\n        },\n        {\n          \"tool_call_id\": \"<string>\",\n          \"server_name\": \"<string>\",\n          \"tool_name\": \"<string>\",\n          \"arguments\": \"<string>\",\n          \"content\": \"<string>\",\n          \"error\": \"<string>\"\n        }\n      ],\n      \"beta_fields\": {\n        \"anim6\": \"et officia\",\n        \"deserunt_44\": 69017456,\n        \"quic\": 59397196\n      }\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T02:32:00.000Z",
+                  "updatedAt": "2026-07-28T02:32:00.000Z",
+                  "uid": "35240-afee1ea9-cf4f-42ee-9987-188954d380fb"
+                },
+                {
+                  "id": "e7f508e8-f17f-4254-baed-eef8f5bbac0c",
+                  "name": "Unauthorized: invalid or missing credentials",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"type\": \"snapshot\",\n  \"frequency\": \"<string>\",\n  \"settings\": {\n    \"query\": \"<string>\",\n    \"output_schema\": {\n      \"json_schema\": {\n        \"consequat_b5\": -55565554,\n        \"sunt_7\": \"in sunt enim\"\n      },\n      \"type\": \"json\"\n    },\n    \"include_backfill\": \"<boolean>\",\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"exclude_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"after_date\": \"<date>\"\n      },\n      \"location\": \"<string>\"\n    }\n  },\n  \"processor\": \"lite\",\n  \"webhook\": {\n    \"url\": \"<string>\",\n    \"event_types\": [\n      \"monitor.execution.completed\",\n      \"monitor.execution.completed\"\n    ]\n  },\n  \"metadata\": {\n    \"sint4\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/monitors",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "monitors"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"deserunt3\": -41857871.57421306\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T02:32:00.000Z",
+                  "updatedAt": "2026-07-28T02:32:00.000Z",
+                  "uid": "35240-e7f508e8-f17f-4254-baed-eef8f5bbac0c"
+                },
+                {
+                  "id": "ab3a5292-4b36-4fec-8374-ca93274299b5",
+                  "name": "Unprocessable content: request validation error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"type\": \"snapshot\",\n  \"frequency\": \"<string>\",\n  \"settings\": {\n    \"query\": \"<string>\",\n    \"output_schema\": {\n      \"json_schema\": {\n        \"consequat_b5\": -55565554,\n        \"sunt_7\": \"in sunt enim\"\n      },\n      \"type\": \"json\"\n    },\n    \"include_backfill\": \"<boolean>\",\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"exclude_domains\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"after_date\": \"<date>\"\n      },\n      \"location\": \"<string>\"\n    }\n  },\n  \"processor\": \"lite\",\n  \"webhook\": {\n    \"url\": \"<string>\",\n    \"event_types\": [\n      \"monitor.execution.completed\",\n      \"monitor.execution.completed\"\n    ]\n  },\n  \"metadata\": {\n    \"sint4\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/monitors",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "monitors"
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"deserunt3\": -41857871.57421306\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T02:32:00.000Z",
+                  "updatedAt": "2026-07-28T02:32:00.000Z",
+                  "uid": "35240-ab3a5292-4b36-4fec-8374-ca93274299b5"
+                }
+              ],
+              "createdAt": "2026-07-28T02:32:00.000Z",
+              "updatedAt": "2026-07-28T02:32:00.000Z",
+              "uid": "35240-a3825a32-5468-4251-9132-c2e557da0721"
+            },
+            {
+              "name": "List Monitors",
+              "id": "b9f0338a-50c2-4dee-a861-903094a94830",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/monitors?cursor=<string>&limit=<integer>&type=event_stream&type=snapshot&status=cancelled&status=cancelled",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "monitors"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token from `next_cursor` in a previous response. Omit to start from the most recently created monitor.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of monitors to return. Defaults to 100. Between 1 and 10000.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filter by monitor type. Pass multiple times to filter by multiple values. Omit to return all types.",
+                      "key": "type",
+                      "value": "event_stream"
+                    },
+                    {
+                      "description": "Filter by monitor type. Pass multiple times to filter by multiple values. Omit to return all types.",
+                      "key": "type",
+                      "value": "snapshot"
+                    },
+                    {
+                      "description": "Filter by monitor status. Pass multiple times to filter by multiple values. Defaults to `active` only.",
+                      "key": "status",
+                      "value": "cancelled"
+                    },
+                    {
+                      "description": "Filter by monitor status. Pass multiple times to filter by multiple values. Defaults to `active` only.",
+                      "key": "status",
+                      "value": "cancelled"
+                    }
+                  ]
+                },
+                "description": "List monitors ordered by creation time, newest first.\n\nMonitors are sorted by `created_at` descending. `limit` defaults to 100.\nUse `next_cursor` from the response and pass it as `cursor` to fetch the\nnext page. Pagination ends when `next_cursor` is absent.\n\nBy default only `active` monitors are returned. Pass `status=cancelled`\nor both values to include cancelled monitors.\n\nThe legacy Monitor API (`/v1alpha/monitors` endpoints) is documented under\nthe `Monitor (Alpha)` tag."
+              },
+              "response": [
+                {
+                  "id": "ccad3757-a6c7-4c66-aa51-3e9d1dec511c",
+                  "name": "Paginated list of monitors.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/monitors?cursor=<string>&limit=<integer>&type=snapshot&status=cancelled",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "monitors"
+                      ],
+                      "query": [
+                        {
+                          "description": "Pagination token from `next_cursor` in a previous response. Omit to start from the most recently created monitor.",
+                          "key": "cursor",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of monitors to return. Defaults to 100. Between 1 and 10000.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by monitor type. Pass multiple times to filter by multiple values. Omit to return all types.",
+                          "key": "type",
+                          "value": "snapshot"
+                        },
+                        {
+                          "description": "Filter by monitor status. Pass multiple times to filter by multiple values. Defaults to `active` only.",
+                          "key": "status",
+                          "value": "cancelled"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"monitors\": [\n    {\n      \"type\": \"event_stream\",\n      \"monitor_id\": \"<string>\",\n      \"status\": \"active\",\n      \"frequency\": \"<string>\",\n      \"processor\": \"lite\",\n      \"created_at\": \"<dateTime>\",\n      \"settings\": {\n        \"query\": \"<string>\",\n        \"output_schema\": {\n          \"json_schema\": {\n            \"est_\": \"amet anim reprehenderit\",\n            \"labore59\": \"minim mollit in\"\n          },\n          \"type\": \"json\"\n        },\n        \"include_backfill\": \"<boolean>\",\n        \"advanced_settings\": {\n          \"source_policy\": {\n            \"include_domains\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"exclude_domains\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"after_date\": \"<date>\"\n          },\n          \"location\": \"<string>\"\n        }\n      },\n      \"webhook\": {\n        \"url\": \"<string>\",\n        \"event_types\": [\n          \"monitor.execution.failed\",\n          \"monitor.execution.failed\"\n        ]\n      },\n      \"metadata\": {\n        \"incididunt_d8\": \"<string>\"\n      },\n      \"last_run_at\": \"<string>\",\n      \"output\": {\n        \"latest_snapshot\": {\n          \"basis\": [\n            {\n              \"field\": \"<string>\",\n              \"reasoning\": \"<string>\",\n              \"confidence\": \"<string>\"\n            },\n            {\n              \"field\": \"<string>\",\n              \"reasoning\": \"<string>\",\n              \"confidence\": \"<string>\"\n            }\n          ],\n          \"type\": \"<string>\",\n          \"content\": \"<string>\",\n          \"mcp_tool_calls\": [\n            {\n              \"tool_call_id\": \"<string>\",\n              \"server_name\": \"<string>\",\n              \"tool_name\": \"<string>\",\n              \"arguments\": \"<string>\",\n              \"content\": \"<string>\",\n              \"error\": \"<string>\"\n            },\n            {\n              \"tool_call_id\": \"<string>\",\n              \"server_name\": \"<string>\",\n              \"tool_name\": \"<string>\",\n              \"arguments\": \"<string>\",\n              \"content\": \"<string>\",\n              \"error\": \"<string>\"\n            }\n          ],\n          \"beta_fields\": {\n            \"non_c\": \"e\",\n            \"aliqua4\": \"est ut aute\"\n          }\n        }\n      }\n    },\n    {\n      \"type\": \"snapshot\",\n      \"monitor_id\": \"<string>\",\n      \"status\": \"cancelled\",\n      \"frequency\": \"<string>\",\n      \"processor\": \"base\",\n      \"created_at\": \"<dateTime>\",\n      \"settings\": {\n        \"query\": \"<string>\",\n        \"output_schema\": {\n          \"json_schema\": {\n            \"fugiat1\": 18462411\n          },\n          \"type\": \"json\"\n        },\n        \"include_backfill\": \"<boolean>\",\n        \"advanced_settings\": {\n          \"source_policy\": {\n            \"include_domains\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"exclude_domains\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"after_date\": \"<date>\"\n          },\n          \"location\": \"<string>\"\n        }\n      },\n      \"webhook\": {\n        \"url\": \"<string>\",\n        \"event_types\": [\n          \"monitor.event.detected\",\n          \"monitor.event.detected\"\n        ]\n      },\n      \"metadata\": {\n        \"consequat33c\": \"<string>\"\n      },\n      \"last_run_at\": \"<string>\",\n      \"output\": {\n        \"latest_snapshot\": {\n          \"basis\": [\n            {\n              \"field\": \"<string>\",\n              \"reasoning\": \"<string>\",\n              \"confidence\": \"<string>\"\n            },\n            {\n              \"field\": \"<string>\",\n              \"reasoning\": \"<string>\",\n              \"confidence\": \"<string>\"\n            }\n          ],\n          \"type\": \"<string>\",\n          \"content\": \"<string>\",\n          \"mcp_tool_calls\": [\n            {\n              \"tool_call_id\": \"<string>\",\n              \"server_name\": \"<string>\",\n              \"tool_name\": \"<string>\",\n              \"arguments\": \"<string>\",\n              \"content\": \"<string>\",\n              \"error\": \"<string>\"\n            },\n            {\n              \"tool_call_id\": \"<string>\",\n              \"server_name\": \"<string>\",\n              \"tool_name\": \"<string>\",\n              \"arguments\": \"<string>\",\n              \"content\": \"<string>\",\n              \"error\": \"<string>\"\n            }\n          ],\n          \"beta_fields\": {\n            \"mollit4\": -51362874.13031933\n          }\n        }\n      }\n    }\n  ],\n  \"next_cursor\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:32:00.000Z",
+                  "updatedAt": "2026-07-28T02:32:00.000Z",
+                  "uid": "35240-ccad3757-a6c7-4c66-aa51-3e9d1dec511c"
+                },
+                {
+                  "id": "6e946221-e277-445d-8b57-b5fc90a8b9d0",
+                  "name": "Unauthorized: invalid or missing credentials",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/monitors?cursor=<string>&limit=<integer>&type=snapshot&status=cancelled",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "monitors"
+                      ],
+                      "query": [
+                        {
+                          "description": "Pagination token from `next_cursor` in a previous response. Omit to start from the most recently created monitor.",
+                          "key": "cursor",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of monitors to return. Defaults to 100. Between 1 and 10000.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by monitor type. Pass multiple times to filter by multiple values. Omit to return all types.",
+                          "key": "type",
+                          "value": "snapshot"
+                        },
+                        {
+                          "description": "Filter by monitor status. Pass multiple times to filter by multiple values. Defaults to `active` only.",
+                          "key": "status",
+                          "value": "cancelled"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"deserunt3\": -41857871.57421306\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T02:32:00.000Z",
+                  "updatedAt": "2026-07-28T02:32:00.000Z",
+                  "uid": "35240-6e946221-e277-445d-8b57-b5fc90a8b9d0"
+                },
+                {
+                  "id": "a762813a-337b-4ac1-ac94-6f9ca8e3043a",
+                  "name": "Validation Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/monitors?cursor=<string>&limit=<integer>&type=snapshot&status=cancelled",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "monitors"
+                      ],
+                      "query": [
+                        {
+                          "description": "Pagination token from `next_cursor` in a previous response. Omit to start from the most recently created monitor.",
+                          "key": "cursor",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of monitors to return. Defaults to 100. Between 1 and 10000.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by monitor type. Pass multiple times to filter by multiple values. Omit to return all types.",
+                          "key": "type",
+                          "value": "snapshot"
+                        },
+                        {
+                          "description": "Filter by monitor status. Pass multiple times to filter by multiple values. Defaults to `active` only.",
+                          "key": "status",
+                          "value": "cancelled"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:32:00.000Z",
+                  "updatedAt": "2026-07-28T02:32:00.000Z",
+                  "uid": "35240-a762813a-337b-4ac1-ac94-6f9ca8e3043a"
+                }
+              ],
+              "createdAt": "2026-07-28T02:32:00.000Z",
+              "updatedAt": "2026-07-28T02:32:00.000Z",
+              "uid": "35240-b9f0338a-50c2-4dee-a861-903094a94830"
+            }
+          ],
+          "id": "b5fe9715-ef3c-4290-b291-c9b7455b77ae",
+          "createdAt": "2026-07-28T02:32:00.000Z",
+          "updatedAt": "2026-07-28T02:32:00.000Z",
+          "uid": "35240-b5fe9715-ef3c-4290-b291-c9b7455b77ae"
+        }
+      ],
+      "id": "f3589449-9164-4beb-a728-5f7db90c0d8b",
+      "createdAt": "2026-07-28T02:32:00.000Z",
+      "updatedAt": "2026-07-28T02:32:00.000Z",
+      "uid": "35240-f3589449-9164-4beb-a728-5f7db90c0d8b"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.parallel.ai"
+    }
+  ]
+}

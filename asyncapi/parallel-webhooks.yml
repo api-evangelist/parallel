@@ -1,0 +1,28 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.parallel.ai/resources/webhook-setup + product webhook docs
+spec_type: Webhooks
+notes: >-
+  Parallel documents webhooks but does not publish an AsyncAPI document. Webhooks
+  follow the Standard Webhooks specification (HMAC-SHA256). This artifact captures
+  the webhook/event surface across products.
+signature:
+  standard: Standard Webhooks
+  algorithm: HMAC-SHA256
+  signed_content: "<webhook-id>.<webhook-timestamp>.<payload>"
+  headers: [webhook-id, webhook-timestamp, webhook-signature]
+  secret_prefix: whsec_
+  verification: timing-safe comparison; multiple space-delimited signatures supported for secret rotation
+producers:
+- product: Task API
+  emits: Task run completion events.
+  docs: https://docs.parallel.ai/task-api/webhooks
+- product: FindAll
+  emits: Candidate and run events.
+  docs: https://docs.parallel.ai/findall-api/features/findall-webhook
+- product: Monitor API
+  emits: Monitor execution and detected-change events.
+  docs: https://docs.parallel.ai/monitor-api/monitor-webhooks
+streaming_alternative:
+  transport: server-sent-events
+  docs: https://docs.parallel.ai/task-api/task-sse

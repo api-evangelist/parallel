@@ -1,0 +1,218 @@
+{
+  "info": {
+    "_postman_id": "b68614ac-1142-4946-a297-cb94c8cf44ed",
+    "name": "Parallel Chat API (Beta) Chat API (Beta) Extract API",
+    "description": "Parallel API\n\nContact Support:\n Name: Parallel Support\n Email: support@parallel.ai",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:31:53.000Z",
+    "updatedAt": "2026-07-28T02:31:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b68614ac-1142-4946-a297-cb94c8cf44ed"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "extract",
+          "item": [
+            {
+              "name": "Extract",
+              "id": "a2e52b73-f657-42e7-9331-88e288269255",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"objective\": \"<string>\",\n  \"search_queries\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"max_chars_total\": \"<integer>\",\n  \"session_id\": \"<string>\",\n  \"client_model\": \"<string>\",\n  \"advanced_settings\": {\n    \"fetch_policy\": {\n      \"max_age_seconds\": \"<integer>\",\n      \"timeout_seconds\": \"<number>\",\n      \"disable_cache_fallback\": false\n    },\n    \"excerpt_settings\": {\n      \"max_chars_per_result\": \"<integer>\"\n    },\n    \"full_content\": {\n      \"max_chars_per_result\": \"<integer>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/extract",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "extract"
+                  ]
+                },
+                "description": "Extracts relevant content from specific web URLs.\n\nThe legacy Extract API reference (`/v1beta/extract` endpoint) is available\n[here](https://docs.parallel.ai/api-reference/legacy/extract-beta/extract), and\nmigration guide is [here](https://docs.parallel.ai/extract/extract-migration-guide)."
+              },
+              "response": [
+                {
+                  "id": "f442e509-4c6f-4f5c-a2d1-1cf3f11cba1e",
+                  "name": "Successful Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"objective\": \"<string>\",\n  \"search_queries\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"max_chars_total\": \"<integer>\",\n  \"session_id\": \"<string>\",\n  \"client_model\": \"<string>\",\n  \"advanced_settings\": {\n    \"fetch_policy\": {\n      \"max_age_seconds\": \"<integer>\",\n      \"timeout_seconds\": \"<number>\",\n      \"disable_cache_fallback\": false\n    },\n    \"excerpt_settings\": {\n      \"max_chars_per_result\": \"<integer>\"\n    },\n    \"full_content\": {\n      \"max_chars_per_result\": \"<integer>\"\n    }\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/extract",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "extract"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"extract_id\": \"<string>\",\n  \"results\": [\n    {\n      \"url\": \"<string>\",\n      \"excerpts\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"title\": \"<string>\",\n      \"publish_date\": \"<string>\",\n      \"full_content\": \"<string>\"\n    },\n    {\n      \"url\": \"<string>\",\n      \"excerpts\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"title\": \"<string>\",\n      \"publish_date\": \"<string>\",\n      \"full_content\": \"<string>\"\n    }\n  ],\n  \"errors\": [\n    {\n      \"url\": \"<string>\",\n      \"error_type\": \"<string>\",\n      \"http_status_code\": \"<integer>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"url\": \"<string>\",\n      \"error_type\": \"<string>\",\n      \"http_status_code\": \"<integer>\",\n      \"content\": \"<string>\"\n    }\n  ],\n  \"session_id\": \"<string>\",\n  \"warnings\": [\n    {\n      \"type\": \"spec_validation_warning\",\n      \"message\": \"<string>\",\n      \"detail\": {\n        \"sunt_16\": 83217878\n      }\n    },\n    {\n      \"type\": \"input_validation_warning\",\n      \"message\": \"<string>\",\n      \"detail\": {\n        \"in6\": \"dolore in\",\n        \"fugiatcbe\": \"cupidatat dolor nostrud\"\n      }\n    }\n  ],\n  \"usage\": [\n    {\n      \"name\": \"<string>\",\n      \"count\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"count\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:31:54.000Z",
+                  "updatedAt": "2026-07-28T02:31:54.000Z",
+                  "uid": "35240-f442e509-4c6f-4f5c-a2d1-1cf3f11cba1e"
+                },
+                {
+                  "id": "ba1e2cc9-33ed-438d-84f9-f3ce177b1bdf",
+                  "name": "Request validation error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"objective\": \"<string>\",\n  \"search_queries\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"max_chars_total\": \"<integer>\",\n  \"session_id\": \"<string>\",\n  \"client_model\": \"<string>\",\n  \"advanced_settings\": {\n    \"fetch_policy\": {\n      \"max_age_seconds\": \"<integer>\",\n      \"timeout_seconds\": \"<number>\",\n      \"disable_cache_fallback\": false\n    },\n    \"excerpt_settings\": {\n      \"max_chars_per_result\": \"<integer>\"\n    },\n    \"full_content\": {\n      \"max_chars_per_result\": \"<integer>\"\n    }\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/extract",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "extract"
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"aute2\": \"sed\",\n      \"adipisicing11a\": -46770931.40931969\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T02:31:54.000Z",
+                  "updatedAt": "2026-07-28T02:31:54.000Z",
+                  "uid": "35240-ba1e2cc9-33ed-438d-84f9-f3ce177b1bdf"
+                }
+              ],
+              "createdAt": "2026-07-28T02:31:54.000Z",
+              "updatedAt": "2026-07-28T02:31:54.000Z",
+              "uid": "35240-a2e52b73-f657-42e7-9331-88e288269255"
+            }
+          ],
+          "id": "3409593a-4731-4f75-97d9-c0a176d2b7e8",
+          "createdAt": "2026-07-28T02:31:54.000Z",
+          "updatedAt": "2026-07-28T02:31:54.000Z",
+          "uid": "35240-3409593a-4731-4f75-97d9-c0a176d2b7e8"
+        }
+      ],
+      "id": "75c60e08-7f55-4d45-9c9f-8b8af28b4fdb",
+      "createdAt": "2026-07-28T02:31:54.000Z",
+      "updatedAt": "2026-07-28T02:31:54.000Z",
+      "uid": "35240-75c60e08-7f55-4d45-9c9f-8b8af28b4fdb"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.parallel.ai"
+    }
+  ]
+}

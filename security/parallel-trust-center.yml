@@ -1,0 +1,16 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.parallel.ai/resources/faqs
+notes: >-
+  Parallel documents a Trust Center whose full report is available on request via
+  partnerships@parallel.ai (email-gated, no public URL). Compliance posture is
+  stated in the FAQ.
+certifications:
+- SOC 2 Type I (as of April 2025)
+- SOC 2 Type II (as of April 2025)
+data_protection:
+- Encrypted in transit (TLS 1.2+) and at rest, in US-based data centers.
+- Customer data is not used to train any models.
+enterprise:
+- Private cloud and on-premises deployments available for qualified enterprise customers (partnerships@parallel.ai).
+contact: partnerships@parallel.ai

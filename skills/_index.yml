@@ -1,0 +1,16 @@
+generated: '2026-07-20'
+method: generated
+source: >-
+  Grounded in openapi/parallel-openapi-original.json operationIds. Parallel also
+  publishes agent skills at github.com/parallel-web/parallel-agent-skills
+  (parallel-web-search, parallel-web-extract, parallel-deep-research,
+  parallel-data-enrichment), installable via `npx skills add parallel-web/parallel-agent-skills`.
+skills:
+- file: parallel-search-and-extract.md
+  name: Search the web and extract page content
+  api: openapi/parallel-openapi-original.json
+  operations: [v1_search_v1_search_post, extract_v1_extract_post]
+- file: parallel-deep-research.md
+  name: Run a deep-research Task and fetch the result
+  api: openapi/parallel-openapi-original.json
+  operations: [tasks_runs_post_v1_tasks_runs_post, tasks_runs_get_v1_tasks_runs__run_id__get, tasks_runs_result_get_v1_tasks_runs__run_id__result_get]

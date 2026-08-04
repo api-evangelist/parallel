@@ -1,0 +1,2298 @@
+{
+  "info": {
+    "_postman_id": "42c3cae9-aeb3-4f2d-95a0-0102cd76ad8e",
+    "name": "Parallel Chat API (Beta) Chat API (Beta) FindAll API",
+    "description": "Parallel API\n\nContact Support:\n Name: Parallel Support\n Email: support@parallel.ai",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:31:55.000Z",
+    "updatedAt": "2026-07-28T02:31:55.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-42c3cae9-aeb3-4f2d-95a0-0102cd76ad8e"
+  },
+  "item": [
+    {
+      "name": "v1beta",
+      "item": [
+        {
+          "name": "findall",
+          "item": [
+            {
+              "name": "entity-search",
+              "item": [
+                {
+                  "name": "Fast Entity Search",
+                  "id": "bb2cfee5-6863-418f-bdb1-8519f813ffe3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"entity_type\": \"companies\",\n  \"objective\": \"<string>\",\n  \"match_limit\": 100\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1beta/findall/entity-search",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1beta",
+                        "findall",
+                        "entity-search"
+                      ]
+                    },
+                    "description": "Return ranked entities matching a natural language objective.\n\nThis endpoint performs a best-effort search optimized for low latency. To keep\nresponses fast, it returns a fixed set of attributes and supports queries of\nlimited complexity.\n\nFor comprehensive match evaluation and enrichment, use the\n[FindAll API](https://docs.parallel.ai/findall-api/findall-quickstart)."
+                  },
+                  "response": [
+                    {
+                      "id": "bc828f8c-311d-4a87-9c07-bb2619b3505f",
+                      "name": "Successful Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"entity_type\": \"companies\",\n  \"objective\": \"<string>\",\n  \"match_limit\": 100\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1beta/findall/entity-search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1beta",
+                            "findall",
+                            "entity-search"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"entity_set_id\": \"<string>\",\n  \"entities\": [\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:31:55.000Z",
+                      "updatedAt": "2026-07-28T02:31:55.000Z",
+                      "uid": "35240-bc828f8c-311d-4a87-9c07-bb2619b3505f"
+                    },
+                    {
+                      "id": "476cc31a-f21d-4dcd-888c-3111fb5dc212",
+                      "name": "Validation Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"entity_type\": \"companies\",\n  \"objective\": \"<string>\",\n  \"match_limit\": 100\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1beta/findall/entity-search",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1beta",
+                            "findall",
+                            "entity-search"
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:31:55.000Z",
+                      "updatedAt": "2026-07-28T02:31:55.000Z",
+                      "uid": "35240-476cc31a-f21d-4dcd-888c-3111fb5dc212"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:31:55.000Z",
+                  "updatedAt": "2026-07-28T02:31:55.000Z",
+                  "uid": "35240-bb2cfee5-6863-418f-bdb1-8519f813ffe3"
+                }
+              ],
+              "id": "ee5f1a92-2202-4172-93dd-b87c81a1579d",
+              "createdAt": "2026-07-28T02:31:55.000Z",
+              "updatedAt": "2026-07-28T02:31:55.000Z",
+              "uid": "35240-ee5f1a92-2202-4172-93dd-b87c81a1579d"
+            },
+            {
+              "name": "ingest",
+              "item": [
+                {
+                  "name": "Ingest FindAll Run",
+                  "id": "eb4db171-5bde-4257-b90c-8acda75cb6e7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "parallel-beta",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"objective\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1beta/findall/ingest",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1beta",
+                        "findall",
+                        "ingest"
+                      ]
+                    },
+                    "description": "Transforms a natural language search objective into a structured FindAll spec.\n\nThe generated specification serves as a suggested starting point and can be further\ncustomized by the user."
+                  },
+                  "response": [
+                    {
+                      "id": "98b985e7-f90e-42f6-941b-72c2ba0056b7",
+                      "name": "Successful Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "parallel-beta",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"objective\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1beta/findall/ingest",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1beta",
+                            "findall",
+                            "ingest"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"objective\": \"<string>\",\n  \"entity_type\": \"<string>\",\n  \"match_conditions\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"enrichments\": [\n    {\n      \"output_schema\": {\n        \"json_schema\": {\n          \"dolor_ee\": false\n        },\n        \"type\": \"json\"\n      },\n      \"processor\": \"core\",\n      \"mcp_servers\": [\n        {\n          \"url\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"url\",\n          \"headers\": {\n            \"anim58\": \"<string>\",\n            \"ullamco_68f\": \"<string>\"\n          },\n          \"allowed_tools\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"url\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"url\",\n          \"headers\": {\n            \"in_b\": \"<string>\"\n          },\n          \"allowed_tools\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"output_schema\": {\n        \"json_schema\": {\n          \"nostrud_1a\": \"ut nisi culpa\",\n          \"laborum3ca\": false\n        },\n        \"type\": \"json\"\n      },\n      \"processor\": \"core\",\n      \"mcp_servers\": [\n        {\n          \"url\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"url\",\n          \"headers\": {\n            \"aliqua5\": \"<string>\",\n            \"idb\": \"<string>\",\n            \"sunt04\": \"<string>\"\n          },\n          \"allowed_tools\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"url\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"url\",\n          \"headers\": {\n            \"Duis0\": \"<string>\",\n            \"dolored1\": \"<string>\",\n            \"culpad13\": \"<string>\"\n          },\n          \"allowed_tools\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"generator\": \"core\",\n  \"match_limit\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T02:31:55.000Z",
+                      "updatedAt": "2026-07-28T02:31:55.000Z",
+                      "uid": "35240-98b985e7-f90e-42f6-941b-72c2ba0056b7"
+                    },
+                    {
+                      "id": "3bf6b467-3003-4469-9b7e-1a369143cc96",
+                      "name": "Validation Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "parallel-beta",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"objective\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1beta/findall/ingest",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1beta",
+                            "findall",
+                            "ingest"
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:31:55.000Z",
+                      "updatedAt": "2026-07-28T02:31:55.000Z",
+                      "uid": "35240-3bf6b467-3003-4469-9b7e-1a369143cc96"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:31:55.000Z",
+                  "updatedAt": "2026-07-28T02:31:55.000Z",
+                  "uid": "35240-eb4db171-5bde-4257-b90c-8acda75cb6e7"
+                }
+              ],
+              "id": "da6f9237-a44f-4842-8487-f19686a9e964",
+              "createdAt": "2026-07-28T02:31:55.000Z",
+              "updatedAt": "2026-07-28T02:31:55.000Z",
+              "uid": "35240-da6f9237-a44f-4842-8487-f19686a9e964"
+            },
+            {
+              "name": "runs",
+              "item": [
+                {
+                  "name": "{findall_id}",
+                  "item": [
+                    {
+                      "name": "cancel",
+                      "item": [
+                        {
+                          "name": "Cancel FindAll Run",
+                          "id": "be042684-30d2-4ea4-8899-ef59b64964e3",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "parallel-beta",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id/cancel",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1beta",
+                                "findall",
+                                "runs",
+                                ":findall_id",
+                                "cancel"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "ed73c81d-62f9-4f6a-b549-56ce228b9085",
+                                  "key": "findall_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Cancel a FindAll run."
+                          },
+                          "response": [
+                            {
+                              "id": "1bb155ac-6fa6-4bb1-b63f-2d6a4fd205c7",
+                              "name": "FindAll run cancelled successfully.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "parallel-beta",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id/cancel",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1beta",
+                                    "findall",
+                                    "runs",
+                                    ":findall_id",
+                                    "cancel"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "findall_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:31:55.000Z",
+                              "updatedAt": "2026-07-28T02:31:55.000Z",
+                              "uid": "35240-1bb155ac-6fa6-4bb1-b63f-2d6a4fd205c7"
+                            },
+                            {
+                              "id": "f08a2c38-626c-4c63-95c0-2f6b73a39252",
+                              "name": "FindAll run not found",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "parallel-beta",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id/cancel",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1beta",
+                                    "findall",
+                                    "runs",
+                                    ":findall_id",
+                                    "cancel"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "findall_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"laboris_444\": 92674174.01702902,\n      \"veniam2\": 91140170.44857633\n    }\n  }\n}",
+                              "createdAt": "2026-07-28T02:31:55.000Z",
+                              "updatedAt": "2026-07-28T02:31:55.000Z",
+                              "uid": "35240-f08a2c38-626c-4c63-95c0-2f6b73a39252"
+                            },
+                            {
+                              "id": "5e7a579e-4ac8-4267-a21e-944f1f375cf0",
+                              "name": "Cannot cancel a terminated FindAll run",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "parallel-beta",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id/cancel",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1beta",
+                                    "findall",
+                                    "runs",
+                                    ":findall_id",
+                                    "cancel"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "findall_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Conflict",
+                              "code": 409,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"laboris_444\": 92674174.01702902,\n      \"veniam2\": 91140170.44857633\n    }\n  }\n}",
+                              "createdAt": "2026-07-28T02:31:55.000Z",
+                              "updatedAt": "2026-07-28T02:31:55.000Z",
+                              "uid": "35240-5e7a579e-4ac8-4267-a21e-944f1f375cf0"
+                            },
+                            {
+                              "id": "e7f43b82-1d29-46cf-bc5a-a62fddd3b2fc",
+                              "name": "Validation Error",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "parallel-beta",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id/cancel",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1beta",
+                                    "findall",
+                                    "runs",
+                                    ":findall_id",
+                                    "cancel"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "findall_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                              "code": 422,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T02:31:55.000Z",
+                              "updatedAt": "2026-07-28T02:31:55.000Z",
+                              "uid": "35240-e7f43b82-1d29-46cf-bc5a-a62fddd3b2fc"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:31:55.000Z",
+                          "updatedAt": "2026-07-28T02:31:55.000Z",
+                          "uid": "35240-be042684-30d2-4ea4-8899-ef59b64964e3"
+                        }
+                      ],
+                      "id": "f2eb3902-1d6b-4a5f-8f2a-d7a3e875dbee",
+                      "createdAt": "2026-07-28T02:31:55.000Z",
+                      "updatedAt": "2026-07-28T02:31:55.000Z",
+                      "uid": "35240-f2eb3902-1d6b-4a5f-8f2a-d7a3e875dbee"
+                    },
+                    {
+                      "name": "enrich",
+                      "item": [
+                        {
+                          "name": "Add Enrichment to FindAll Run",
+                          "id": "23326acc-04fc-41d8-b2fb-c73c47707baf",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "parallel-beta",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"output_schema\": {\n    \"json_schema\": {\n      \"consequat42c\": false,\n      \"exercitation61\": \"proident adipisicing Duis\"\n    },\n    \"type\": \"json\"\n  },\n  \"processor\": \"core\",\n  \"mcp_servers\": [\n    {\n      \"url\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"url\",\n      \"headers\": {\n        \"et3\": \"<string>\"\n      },\n      \"allowed_tools\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"url\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"url\",\n      \"headers\": {\n        \"nostrud_5\": \"<string>\",\n        \"consectetur_8\": \"<string>\"\n      },\n      \"allowed_tools\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id/enrich",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1beta",
+                                "findall",
+                                "runs",
+                                ":findall_id",
+                                "enrich"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "7036d35a-d2ff-4bcf-913e-82765ef984f9",
+                                  "key": "findall_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Add an enrichment to a FindAll run."
+                          },
+                          "response": [
+                            {
+                              "id": "9de78437-51a1-406d-912b-4b99ccf6d221",
+                              "name": "Successful Response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "parallel-beta",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"output_schema\": {\n    \"json_schema\": {\n      \"consequat42c\": false,\n      \"exercitation61\": \"proident adipisicing Duis\"\n    },\n    \"type\": \"json\"\n  },\n  \"processor\": \"core\",\n  \"mcp_servers\": [\n    {\n      \"url\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"url\",\n      \"headers\": {\n        \"et3\": \"<string>\"\n      },\n      \"allowed_tools\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"url\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"url\",\n      \"headers\": {\n        \"nostrud_5\": \"<string>\",\n        \"consectetur_8\": \"<string>\"\n      },\n      \"allowed_tools\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id/enrich",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1beta",
+                                    "findall",
+                                    "runs",
+                                    ":findall_id",
+                                    "enrich"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "findall_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"objective\": \"<string>\",\n  \"entity_type\": \"<string>\",\n  \"match_conditions\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"enrichments\": [\n    {\n      \"output_schema\": {\n        \"json_schema\": {\n          \"dolor_ee\": false\n        },\n        \"type\": \"json\"\n      },\n      \"processor\": \"core\",\n      \"mcp_servers\": [\n        {\n          \"url\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"url\",\n          \"headers\": {\n            \"anim58\": \"<string>\",\n            \"ullamco_68f\": \"<string>\"\n          },\n          \"allowed_tools\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"url\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"url\",\n          \"headers\": {\n            \"in_b\": \"<string>\"\n          },\n          \"allowed_tools\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"output_schema\": {\n        \"json_schema\": {\n          \"nostrud_1a\": \"ut nisi culpa\",\n          \"laborum3ca\": false\n        },\n        \"type\": \"json\"\n      },\n      \"processor\": \"core\",\n      \"mcp_servers\": [\n        {\n          \"url\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"url\",\n          \"headers\": {\n            \"aliqua5\": \"<string>\",\n            \"idb\": \"<string>\",\n            \"sunt04\": \"<string>\"\n          },\n          \"allowed_tools\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"url\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"url\",\n          \"headers\": {\n            \"Duis0\": \"<string>\",\n            \"dolored1\": \"<string>\",\n            \"culpad13\": \"<string>\"\n          },\n          \"allowed_tools\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"generator\": \"core\",\n  \"match_limit\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T02:31:55.000Z",
+                              "updatedAt": "2026-07-28T02:31:55.000Z",
+                              "uid": "35240-9de78437-51a1-406d-912b-4b99ccf6d221"
+                            },
+                            {
+                              "id": "970126c0-aa83-4473-8f18-0952ad6272a5",
+                              "name": "FindAll run not found",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "parallel-beta",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"output_schema\": {\n    \"json_schema\": {\n      \"consequat42c\": false,\n      \"exercitation61\": \"proident adipisicing Duis\"\n    },\n    \"type\": \"json\"\n  },\n  \"processor\": \"core\",\n  \"mcp_servers\": [\n    {\n      \"url\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"url\",\n      \"headers\": {\n        \"et3\": \"<string>\"\n      },\n      \"allowed_tools\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"url\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"url\",\n      \"headers\": {\n        \"nostrud_5\": \"<string>\",\n        \"consectetur_8\": \"<string>\"\n      },\n      \"allowed_tools\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id/enrich",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1beta",
+                                    "findall",
+                                    "runs",
+                                    ":findall_id",
+                                    "enrich"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "findall_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"laboris_444\": 92674174.01702902,\n      \"veniam2\": 91140170.44857633\n    }\n  }\n}",
+                              "createdAt": "2026-07-28T02:31:55.000Z",
+                              "updatedAt": "2026-07-28T02:31:55.000Z",
+                              "uid": "35240-970126c0-aa83-4473-8f18-0952ad6272a5"
+                            },
+                            {
+                              "id": "15ab552c-d2fb-4575-8949-8127a257dceb",
+                              "name": "Validation error",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "parallel-beta",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"output_schema\": {\n    \"json_schema\": {\n      \"consequat42c\": false,\n      \"exercitation61\": \"proident adipisicing Duis\"\n    },\n    \"type\": \"json\"\n  },\n  \"processor\": \"core\",\n  \"mcp_servers\": [\n    {\n      \"url\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"url\",\n      \"headers\": {\n        \"et3\": \"<string>\"\n      },\n      \"allowed_tools\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"url\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"url\",\n      \"headers\": {\n        \"nostrud_5\": \"<string>\",\n        \"consectetur_8\": \"<string>\"\n      },\n      \"allowed_tools\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id/enrich",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1beta",
+                                    "findall",
+                                    "runs",
+                                    ":findall_id",
+                                    "enrich"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "findall_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                              "code": 422,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"laboris_444\": 92674174.01702902,\n      \"veniam2\": 91140170.44857633\n    }\n  }\n}",
+                              "createdAt": "2026-07-28T02:31:55.000Z",
+                              "updatedAt": "2026-07-28T02:31:55.000Z",
+                              "uid": "35240-15ab552c-d2fb-4575-8949-8127a257dceb"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:31:55.000Z",
+                          "updatedAt": "2026-07-28T02:31:55.000Z",
+                          "uid": "35240-23326acc-04fc-41d8-b2fb-c73c47707baf"
+                        }
+                      ],
+                      "id": "03bfab01-218a-4509-85b4-a63908e9fcbd",
+                      "createdAt": "2026-07-28T02:31:55.000Z",
+                      "updatedAt": "2026-07-28T02:31:55.000Z",
+                      "uid": "35240-03bfab01-218a-4509-85b4-a63908e9fcbd"
+                    },
+                    {
+                      "name": "events",
+                      "item": [
+                        {
+                          "name": "Stream FindAll Events",
+                          "id": "c2a44b9a-0ffc-4a65-b8ff-ca05d9976044",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "parallel-beta",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "text/event-stream"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id/events?last_event_id=<string>&timeout=<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1beta",
+                                "findall",
+                                "runs",
+                                ":findall_id",
+                                "events"
+                              ],
+                              "query": [
+                                {
+                                  "key": "last_event_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "timeout",
+                                  "value": "<number>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "8ec27323-7faa-4729-83d7-f8999636795e",
+                                  "key": "findall_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Stream events from a FindAll run.\n\nArgs:\n    request: The Shapi request\n    findall_id: The FindAll run ID\n    last_event_id: Optional event ID to resume from.\n    timeout: Optional timeout in seconds. If None, keep connection alive\n    as long as the run is going. If set, stop after specified duration."
+                          },
+                          "response": [
+                            {
+                              "id": "c8edec47-4e03-44b1-b612-ef8a89f50d46",
+                              "name": "Successful Response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "parallel-beta",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "text/event-stream"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id/events?last_event_id=<string>&timeout=<number>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1beta",
+                                    "findall",
+                                    "runs",
+                                    ":findall_id",
+                                    "events"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "last_event_id",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "timeout",
+                                      "value": "<number>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "findall_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "text/event-stream"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"type\": \"findall.schema.updated\",\n  \"timestamp\": \"<dateTime>\",\n  \"event_id\": \"<string>\",\n  \"data\": {\n    \"objective\": \"<string>\",\n    \"entity_type\": \"<string>\",\n    \"match_conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\"\n      }\n    ],\n    \"enrichments\": [\n      {\n        \"output_schema\": {\n          \"json_schema\": {\n            \"non_0\": -47494574\n          },\n          \"type\": \"json\"\n        },\n        \"processor\": \"core\",\n        \"mcp_servers\": [\n          {\n            \"url\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"url\",\n            \"headers\": {\n              \"reprehenderit1\": \"<string>\",\n              \"laborisc\": \"<string>\",\n              \"auteb4\": \"<string>\"\n            },\n            \"allowed_tools\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"url\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"url\",\n            \"headers\": {\n              \"in_f7\": \"<string>\",\n              \"ad4e\": \"<string>\",\n              \"cupidatat4a1\": \"<string>\",\n              \"deserunt_7f0\": \"<string>\",\n              \"exercitation_fa\": \"<string>\"\n            },\n            \"allowed_tools\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ]\n      },\n      {\n        \"output_schema\": {\n          \"json_schema\": {\n            \"dolore_362\": \"cillum in\"\n          },\n          \"type\": \"json\"\n        },\n        \"processor\": \"core\",\n        \"mcp_servers\": [\n          {\n            \"url\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"url\",\n            \"headers\": {\n              \"laborum_e9\": \"<string>\",\n              \"aute_c1\": \"<string>\",\n              \"sit_2\": \"<string>\"\n            },\n            \"allowed_tools\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"url\": \"<string>\",\n            \"name\": \"<string>\",\n            \"type\": \"url\",\n            \"headers\": {\n              \"Excepteur_1_\": \"<string>\"\n            },\n            \"allowed_tools\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ]\n      }\n    ],\n    \"generator\": \"core\",\n    \"match_limit\": \"<integer>\"\n  }\n}",
+                              "createdAt": "2026-07-28T02:31:55.000Z",
+                              "updatedAt": "2026-07-28T02:31:55.000Z",
+                              "uid": "35240-c8edec47-4e03-44b1-b612-ef8a89f50d46"
+                            },
+                            {
+                              "id": "6072bb70-fb7e-4932-b69b-7d702a538000",
+                              "name": "FindAll run not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "parallel-beta",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id/events?last_event_id=<string>&timeout=<number>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1beta",
+                                    "findall",
+                                    "runs",
+                                    ":findall_id",
+                                    "events"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "last_event_id",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "timeout",
+                                      "value": "<number>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "findall_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"laboris_444\": 92674174.01702902,\n      \"veniam2\": 91140170.44857633\n    }\n  }\n}",
+                              "createdAt": "2026-07-28T02:31:55.000Z",
+                              "updatedAt": "2026-07-28T02:31:55.000Z",
+                              "uid": "35240-6072bb70-fb7e-4932-b69b-7d702a538000"
+                            },
+                            {
+                              "id": "97cc4b40-014e-434b-89d4-1c4bf5b632ea",
+                              "name": "Validation Error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "parallel-beta",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id/events?last_event_id=<string>&timeout=<number>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1beta",
+                                    "findall",
+                                    "runs",
+                                    ":findall_id",
+                                    "events"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "last_event_id",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "timeout",
+                                      "value": "<number>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "findall_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                              "code": 422,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T02:31:55.000Z",
+                              "updatedAt": "2026-07-28T02:31:55.000Z",
+                              "uid": "35240-97cc4b40-014e-434b-89d4-1c4bf5b632ea"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:31:55.000Z",
+                          "updatedAt": "2026-07-28T02:31:55.000Z",
+                          "uid": "35240-c2a44b9a-0ffc-4a65-b8ff-ca05d9976044"
+                        }
+                      ],
+                      "id": "34c3b411-9665-4551-9076-59a5c95914f3",
+                      "createdAt": "2026-07-28T02:31:55.000Z",
+                      "updatedAt": "2026-07-28T02:31:55.000Z",
+                      "uid": "35240-34c3b411-9665-4551-9076-59a5c95914f3"
+                    },
+                    {
+                      "name": "extend",
+                      "item": [
+                        {
+                          "name": "Extend FindAll Run",
+                          "id": "60eaede9-aa0e-4a56-9f5d-816f195bbfc3",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "parallel-beta",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"additional_match_limit\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id/extend",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1beta",
+                                "findall",
+                                "runs",
+                                ":findall_id",
+                                "extend"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "08cf8c1c-d738-4d82-a922-20c84d033b42",
+                                  "key": "findall_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Extend a FindAll run by adding additional matches to the current match limit."
+                          },
+                          "response": [
+                            {
+                              "id": "249ff751-7fc9-4130-8a8f-d216d2214b68",
+                              "name": "Successful Response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "parallel-beta",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"additional_match_limit\": \"<integer>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id/extend",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1beta",
+                                    "findall",
+                                    "runs",
+                                    ":findall_id",
+                                    "extend"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "findall_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"objective\": \"<string>\",\n  \"entity_type\": \"<string>\",\n  \"match_conditions\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"enrichments\": [\n    {\n      \"output_schema\": {\n        \"json_schema\": {\n          \"dolor_ee\": false\n        },\n        \"type\": \"json\"\n      },\n      \"processor\": \"core\",\n      \"mcp_servers\": [\n        {\n          \"url\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"url\",\n          \"headers\": {\n            \"anim58\": \"<string>\",\n            \"ullamco_68f\": \"<string>\"\n          },\n          \"allowed_tools\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"url\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"url\",\n          \"headers\": {\n            \"in_b\": \"<string>\"\n          },\n          \"allowed_tools\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"output_schema\": {\n        \"json_schema\": {\n          \"nostrud_1a\": \"ut nisi culpa\",\n          \"laborum3ca\": false\n        },\n        \"type\": \"json\"\n      },\n      \"processor\": \"core\",\n      \"mcp_servers\": [\n        {\n          \"url\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"url\",\n          \"headers\": {\n            \"aliqua5\": \"<string>\",\n            \"idb\": \"<string>\",\n            \"sunt04\": \"<string>\"\n          },\n          \"allowed_tools\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"url\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"url\",\n          \"headers\": {\n            \"Duis0\": \"<string>\",\n            \"dolored1\": \"<string>\",\n            \"culpad13\": \"<string>\"\n          },\n          \"allowed_tools\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"generator\": \"core\",\n  \"match_limit\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T02:31:55.000Z",
+                              "updatedAt": "2026-07-28T02:31:55.000Z",
+                              "uid": "35240-249ff751-7fc9-4130-8a8f-d216d2214b68"
+                            },
+                            {
+                              "id": "552919ac-7b2f-4b13-a842-56097d16f0dc",
+                              "name": "FindAll run not found",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "parallel-beta",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"additional_match_limit\": \"<integer>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id/extend",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1beta",
+                                    "findall",
+                                    "runs",
+                                    ":findall_id",
+                                    "extend"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "findall_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"laboris_444\": 92674174.01702902,\n      \"veniam2\": 91140170.44857633\n    }\n  }\n}",
+                              "createdAt": "2026-07-28T02:31:55.000Z",
+                              "updatedAt": "2026-07-28T02:31:55.000Z",
+                              "uid": "35240-552919ac-7b2f-4b13-a842-56097d16f0dc"
+                            },
+                            {
+                              "id": "97b919df-39a0-49de-b9c6-2405957f74c6",
+                              "name": "Additional match limit must be greater than 0",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "parallel-beta",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"additional_match_limit\": \"<integer>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id/extend",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1beta",
+                                    "findall",
+                                    "runs",
+                                    ":findall_id",
+                                    "extend"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "findall_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                              "code": 422,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"laboris_444\": 92674174.01702902,\n      \"veniam2\": 91140170.44857633\n    }\n  }\n}",
+                              "createdAt": "2026-07-28T02:31:55.000Z",
+                              "updatedAt": "2026-07-28T02:31:55.000Z",
+                              "uid": "35240-97b919df-39a0-49de-b9c6-2405957f74c6"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:31:55.000Z",
+                          "updatedAt": "2026-07-28T02:31:55.000Z",
+                          "uid": "35240-60eaede9-aa0e-4a56-9f5d-816f195bbfc3"
+                        }
+                      ],
+                      "id": "d706b84f-6bcf-4227-a1bc-8f576270a352",
+                      "createdAt": "2026-07-28T02:31:55.000Z",
+                      "updatedAt": "2026-07-28T02:31:55.000Z",
+                      "uid": "35240-d706b84f-6bcf-4227-a1bc-8f576270a352"
+                    },
+                    {
+                      "name": "result",
+                      "item": [
+                        {
+                          "name": "FindAll Run Result",
+                          "id": "f75233f3-1e8f-4599-8c89-942ed87d0dce",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "parallel-beta",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id/result",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1beta",
+                                "findall",
+                                "runs",
+                                ":findall_id",
+                                "result"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "87d46b2a-2e24-405b-b184-fbafefc70b1e",
+                                  "key": "findall_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Retrieve the FindAll run result at the time of the request."
+                          },
+                          "response": [
+                            {
+                              "id": "040f023b-956a-41cd-aa70-1030f523105a",
+                              "name": "Successful Response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "parallel-beta",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id/result",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1beta",
+                                    "findall",
+                                    "runs",
+                                    ":findall_id",
+                                    "result"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "findall_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"run\": {\n    \"findall_id\": \"<string>\",\n    \"status\": {\n      \"status\": \"cancelled\",\n      \"is_active\": \"<boolean>\",\n      \"metrics\": {\n        \"generated_candidates_count\": 0,\n        \"matched_candidates_count\": 0\n      },\n      \"termination_reason\": \"insufficient_funds\"\n    },\n    \"generator\": \"preview\",\n    \"metadata\": {\n      \"Utb\": \"<string>\"\n    },\n    \"created_at\": \"<string>\",\n    \"modified_at\": \"<string>\"\n  },\n  \"candidates\": [\n    {\n      \"candidate_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"match_status\": \"matched\",\n      \"description\": \"<string>\",\n      \"output\": {\n        \"dolor53d\": \"amet dolor nisi\",\n        \"in09\": -69404604.87876666\n      },\n      \"basis\": [\n        {\n          \"field\": \"<string>\",\n          \"reasoning\": \"<string>\",\n          \"confidence\": \"<string>\"\n        },\n        {\n          \"field\": \"<string>\",\n          \"reasoning\": \"<string>\",\n          \"confidence\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"candidate_id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"match_status\": \"matched\",\n      \"description\": \"<string>\",\n      \"output\": {\n        \"fugiat_3\": 28903208\n      },\n      \"basis\": [\n        {\n          \"field\": \"<string>\",\n          \"reasoning\": \"<string>\",\n          \"confidence\": \"<string>\"\n        },\n        {\n          \"field\": \"<string>\",\n          \"reasoning\": \"<string>\",\n          \"confidence\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"last_event_id\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:31:55.000Z",
+                              "updatedAt": "2026-07-28T02:31:55.000Z",
+                              "uid": "35240-040f023b-956a-41cd-aa70-1030f523105a"
+                            },
+                            {
+                              "id": "3e02866a-b037-4f5f-aacc-a47312063241",
+                              "name": "Validation Error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "parallel-beta",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id/result",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1beta",
+                                    "findall",
+                                    "runs",
+                                    ":findall_id",
+                                    "result"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "findall_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                              "code": 422,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T02:31:55.000Z",
+                              "updatedAt": "2026-07-28T02:31:55.000Z",
+                              "uid": "35240-3e02866a-b037-4f5f-aacc-a47312063241"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:31:55.000Z",
+                          "updatedAt": "2026-07-28T02:31:55.000Z",
+                          "uid": "35240-f75233f3-1e8f-4599-8c89-942ed87d0dce"
+                        }
+                      ],
+                      "id": "1535e7dc-1ed4-42bf-b972-bb7f7e836437",
+                      "createdAt": "2026-07-28T02:31:55.000Z",
+                      "updatedAt": "2026-07-28T02:31:55.000Z",
+                      "uid": "35240-1535e7dc-1ed4-42bf-b972-bb7f7e836437"
+                    },
+                    {
+                      "name": "schema",
+                      "item": [
+                        {
+                          "name": "Get FindAll Run Schema",
+                          "id": "9fc8e71d-95db-439f-bf90-b62c83e8763c",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "parallel-beta",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id/schema",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1beta",
+                                "findall",
+                                "runs",
+                                ":findall_id",
+                                "schema"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "c6a5c348-b5a3-405c-9676-8431c2a14a14",
+                                  "key": "findall_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "39b016a2-999a-400c-a3a1-2571aeb8bb5e",
+                              "name": "Successful Response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "parallel-beta",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id/schema",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1beta",
+                                    "findall",
+                                    "runs",
+                                    ":findall_id",
+                                    "schema"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "findall_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"objective\": \"<string>\",\n  \"entity_type\": \"<string>\",\n  \"match_conditions\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"enrichments\": [\n    {\n      \"output_schema\": {\n        \"json_schema\": {\n          \"dolor_ee\": false\n        },\n        \"type\": \"json\"\n      },\n      \"processor\": \"core\",\n      \"mcp_servers\": [\n        {\n          \"url\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"url\",\n          \"headers\": {\n            \"anim58\": \"<string>\",\n            \"ullamco_68f\": \"<string>\"\n          },\n          \"allowed_tools\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"url\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"url\",\n          \"headers\": {\n            \"in_b\": \"<string>\"\n          },\n          \"allowed_tools\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"output_schema\": {\n        \"json_schema\": {\n          \"nostrud_1a\": \"ut nisi culpa\",\n          \"laborum3ca\": false\n        },\n        \"type\": \"json\"\n      },\n      \"processor\": \"core\",\n      \"mcp_servers\": [\n        {\n          \"url\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"url\",\n          \"headers\": {\n            \"aliqua5\": \"<string>\",\n            \"idb\": \"<string>\",\n            \"sunt04\": \"<string>\"\n          },\n          \"allowed_tools\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"url\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"url\",\n          \"headers\": {\n            \"Duis0\": \"<string>\",\n            \"dolored1\": \"<string>\",\n            \"culpad13\": \"<string>\"\n          },\n          \"allowed_tools\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"generator\": \"core\",\n  \"match_limit\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T02:31:55.000Z",
+                              "updatedAt": "2026-07-28T02:31:55.000Z",
+                              "uid": "35240-39b016a2-999a-400c-a3a1-2571aeb8bb5e"
+                            },
+                            {
+                              "id": "cb3ef4ee-e6de-4298-a803-96b03668c804",
+                              "name": "Validation Error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "parallel-beta",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id/schema",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1beta",
+                                    "findall",
+                                    "runs",
+                                    ":findall_id",
+                                    "schema"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "findall_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                              "code": 422,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T02:31:55.000Z",
+                              "updatedAt": "2026-07-28T02:31:55.000Z",
+                              "uid": "35240-cb3ef4ee-e6de-4298-a803-96b03668c804"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:31:55.000Z",
+                          "updatedAt": "2026-07-28T02:31:55.000Z",
+                          "uid": "35240-9fc8e71d-95db-439f-bf90-b62c83e8763c"
+                        }
+                      ],
+                      "id": "6950c4cf-a342-46a6-87e4-ffce9472164f",
+                      "createdAt": "2026-07-28T02:31:55.000Z",
+                      "updatedAt": "2026-07-28T02:31:55.000Z",
+                      "uid": "35240-6950c4cf-a342-46a6-87e4-ffce9472164f"
+                    },
+                    {
+                      "name": "Retrieve FindAll Run Status",
+                      "id": "149e0e5e-a040-477b-9be9-be30c064eeac",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "parallel-beta",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1beta",
+                            "findall",
+                            "runs",
+                            ":findall_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9f647a7d-1739-497a-a941-fcd233a1b6f6",
+                              "key": "findall_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Retrieve a FindAll run."
+                      },
+                      "response": [
+                        {
+                          "id": "826155ee-e524-4c86-9f72-1780c96e83f6",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "parallel-beta",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1beta",
+                                "findall",
+                                "runs",
+                                ":findall_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "findall_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"findall_id\": \"<string>\",\n  \"status\": {\n    \"status\": \"action_required\",\n    \"is_active\": \"<boolean>\",\n    \"metrics\": {\n      \"generated_candidates_count\": 0,\n      \"matched_candidates_count\": 0\n    },\n    \"termination_reason\": \"user_cancelled\"\n  },\n  \"generator\": \"core\",\n  \"metadata\": {\n    \"dolor92\": \"<string>\",\n    \"minim_9\": \"<string>\"\n  },\n  \"created_at\": \"<string>\",\n  \"modified_at\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:31:55.000Z",
+                          "updatedAt": "2026-07-28T02:31:55.000Z",
+                          "uid": "35240-826155ee-e524-4c86-9f72-1780c96e83f6"
+                        },
+                        {
+                          "id": "061421cd-b34a-4c43-ad59-6ffab27677a1",
+                          "name": "Validation Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "parallel-beta",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1beta/findall/runs/:findall_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1beta",
+                                "findall",
+                                "runs",
+                                ":findall_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "findall_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:31:55.000Z",
+                          "updatedAt": "2026-07-28T02:31:55.000Z",
+                          "uid": "35240-061421cd-b34a-4c43-ad59-6ffab27677a1"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:31:55.000Z",
+                      "updatedAt": "2026-07-28T02:31:55.000Z",
+                      "uid": "35240-149e0e5e-a040-477b-9be9-be30c064eeac"
+                    }
+                  ],
+                  "id": "4cc18ca2-ea8c-4c9b-9298-4b3a19695e21",
+                  "createdAt": "2026-07-28T02:31:55.000Z",
+                  "updatedAt": "2026-07-28T02:31:55.000Z",
+                  "uid": "35240-4cc18ca2-ea8c-4c9b-9298-4b3a19695e21"
+                },
+                {
+                  "name": "Create FindAll Run",
+                  "id": "b395ad43-e44a-4d3d-9677-d493a022c98e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "parallel-beta",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"objective\": \"<string>\",\n  \"entity_type\": \"<string>\",\n  \"match_conditions\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"generator\": \"preview\",\n  \"match_limit\": \"<integer>\",\n  \"exclude_list\": [\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"incididunt_d4f\": \"<string>\",\n    \"aute_3\": \"<string>\",\n    \"Lorem_e95\": \"<string>\"\n  },\n  \"webhook\": {\n    \"url\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1beta/findall/runs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1beta",
+                        "findall",
+                        "runs"
+                      ]
+                    },
+                    "description": "Starts a FindAll run.\n\nThis endpoint immediately returns a FindAll run object with status set to 'queued'.\nYou can get the run result snapshot using the GET /v1beta/findall/runs/{findall_id}/result endpoint.\nYou can track the progress of the run by:\n- Polling the status using the GET /v1beta/findall/runs/{findall_id} endpoint,\n- Subscribing to real-time updates via the /v1beta/findall/runs/{findall_id}/events\nendpoint,\n- Or specifying a webhook with relevant event types during run creation to receive\nnotifications."
+                  },
+                  "response": [
+                    {
+                      "id": "73894b7f-1617-4573-86fa-27771aeac843",
+                      "name": "Successful Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "parallel-beta",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"objective\": \"<string>\",\n  \"entity_type\": \"<string>\",\n  \"match_conditions\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"generator\": \"preview\",\n  \"match_limit\": \"<integer>\",\n  \"exclude_list\": [\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"incididunt_d4f\": \"<string>\",\n    \"aute_3\": \"<string>\",\n    \"Lorem_e95\": \"<string>\"\n  },\n  \"webhook\": {\n    \"url\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1beta/findall/runs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1beta",
+                            "findall",
+                            "runs"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"findall_id\": \"<string>\",\n  \"status\": {\n    \"status\": \"action_required\",\n    \"is_active\": \"<boolean>\",\n    \"metrics\": {\n      \"generated_candidates_count\": 0,\n      \"matched_candidates_count\": 0\n    },\n    \"termination_reason\": \"user_cancelled\"\n  },\n  \"generator\": \"core\",\n  \"metadata\": {\n    \"dolor92\": \"<string>\",\n    \"minim_9\": \"<string>\"\n  },\n  \"created_at\": \"<string>\",\n  \"modified_at\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:55.000Z",
+                      "updatedAt": "2026-07-28T02:31:55.000Z",
+                      "uid": "35240-73894b7f-1617-4573-86fa-27771aeac843"
+                    },
+                    {
+                      "id": "7af1c29d-d92f-437b-8781-691f7c8aa7b2",
+                      "name": "Payment required: insufficient credit in account",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "parallel-beta",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"objective\": \"<string>\",\n  \"entity_type\": \"<string>\",\n  \"match_conditions\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"generator\": \"preview\",\n  \"match_limit\": \"<integer>\",\n  \"exclude_list\": [\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"incididunt_d4f\": \"<string>\",\n    \"aute_3\": \"<string>\",\n    \"Lorem_e95\": \"<string>\"\n  },\n  \"webhook\": {\n    \"url\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1beta/findall/runs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1beta",
+                            "findall",
+                            "runs"
+                          ]
+                        }
+                      },
+                      "status": "Payment Required",
+                      "code": 402,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"laboris_444\": 92674174.01702902,\n      \"veniam2\": 91140170.44857633\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T02:31:55.000Z",
+                      "updatedAt": "2026-07-28T02:31:55.000Z",
+                      "uid": "35240-7af1c29d-d92f-437b-8781-691f7c8aa7b2"
+                    },
+                    {
+                      "id": "a5eac438-8022-4fbe-9b26-158e5446a9df",
+                      "name": "Unprocessable content: request validation error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "parallel-beta",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"objective\": \"<string>\",\n  \"entity_type\": \"<string>\",\n  \"match_conditions\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"generator\": \"preview\",\n  \"match_limit\": \"<integer>\",\n  \"exclude_list\": [\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"incididunt_d4f\": \"<string>\",\n    \"aute_3\": \"<string>\",\n    \"Lorem_e95\": \"<string>\"\n  },\n  \"webhook\": {\n    \"url\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1beta/findall/runs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1beta",
+                            "findall",
+                            "runs"
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"laboris_444\": 92674174.01702902,\n      \"veniam2\": 91140170.44857633\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T02:31:55.000Z",
+                      "updatedAt": "2026-07-28T02:31:55.000Z",
+                      "uid": "35240-a5eac438-8022-4fbe-9b26-158e5446a9df"
+                    },
+                    {
+                      "id": "04593173-d866-4e4b-8253-cd360cf99c5a",
+                      "name": "Too many requests: quota temporarily exceeded",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "parallel-beta",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"objective\": \"<string>\",\n  \"entity_type\": \"<string>\",\n  \"match_conditions\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"generator\": \"preview\",\n  \"match_limit\": \"<integer>\",\n  \"exclude_list\": [\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"incididunt_d4f\": \"<string>\",\n    \"aute_3\": \"<string>\",\n    \"Lorem_e95\": \"<string>\"\n  },\n  \"webhook\": {\n    \"url\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1beta/findall/runs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1beta",
+                            "findall",
+                            "runs"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"error\": {\n    \"ref_id\": \"<string>\",\n    \"message\": \"<string>\",\n    \"detail\": {\n      \"laboris_444\": 92674174.01702902,\n      \"veniam2\": 91140170.44857633\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T02:31:55.000Z",
+                      "updatedAt": "2026-07-28T02:31:55.000Z",
+                      "uid": "35240-04593173-d866-4e4b-8253-cd360cf99c5a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:31:55.000Z",
+                  "updatedAt": "2026-07-28T02:31:55.000Z",
+                  "uid": "35240-b395ad43-e44a-4d3d-9677-d493a022c98e"
+                }
+              ],
+              "id": "734fda1b-2904-4a68-b787-c36b951845ec",
+              "createdAt": "2026-07-28T02:31:55.000Z",
+              "updatedAt": "2026-07-28T02:31:55.000Z",
+              "uid": "35240-734fda1b-2904-4a68-b787-c36b951845ec"
+            }
+          ],
+          "id": "b5dd80ce-3b05-41bc-9b8e-c99e570e1659",
+          "createdAt": "2026-07-28T02:31:55.000Z",
+          "updatedAt": "2026-07-28T02:31:55.000Z",
+          "uid": "35240-b5dd80ce-3b05-41bc-9b8e-c99e570e1659"
+        }
+      ],
+      "id": "f19b6a4b-729b-4055-9f78-6f3c2ff253da",
+      "createdAt": "2026-07-28T02:31:55.000Z",
+      "updatedAt": "2026-07-28T02:31:55.000Z",
+      "uid": "35240-f19b6a4b-729b-4055-9f78-6f3c2ff253da"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.parallel.ai"
+    }
+  ]
+}

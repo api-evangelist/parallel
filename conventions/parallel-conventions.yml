@@ -1,0 +1,35 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/parallel-openapi-original.json + https://docs.parallel.ai
+authentication:
+  style: api-key
+  header: x-api-key
+  docs: https://docs.parallel.ai/getting-started/overview
+idempotency:
+  supported: false
+  notes: No idempotency-key header/parameter is documented or present in the OpenAPI.
+pagination:
+  style: cursor
+  notes: List/event endpoints (monitors, monitor events, task-group runs, FindAll results) use cursor-based paging.
+streaming:
+  style: server-sent-events
+  content_type: text/event-stream
+  surfaces: [task run events, task group events, FindAll events, monitor events]
+  docs: https://docs.parallel.ai/task-api/task-sse
+webhooks:
+  standard: Standard Webhooks
+  signature: HMAC-SHA256 over "<webhook-id>.<webhook-timestamp>.<payload>"
+  headers: [webhook-id, webhook-timestamp, webhook-signature]
+  secret_prefix: whsec_
+  docs: https://docs.parallel.ai/resources/webhook-setup
+versioning:
+  scheme: uri-path
+  current: v1
+  see: lifecycle/parallel-lifecycle.yml
+error_envelope:
+  format: application/json
+  see: errors/parallel-problem-types.yml
+rate_limiting:
+  scope: per-endpoint, POST-create only (GETs are not counted)
+  docs: https://docs.parallel.ai/getting-started/rate-limits
+  see: rate-limits/parallel-rate-limits.yml

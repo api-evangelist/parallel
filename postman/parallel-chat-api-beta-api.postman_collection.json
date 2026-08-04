@@ -1,0 +1,230 @@
+{
+  "info": {
+    "_postman_id": "ae1bd88b-6549-4997-bf26-2fa77ba5d413",
+    "name": "Parallel Chat API (Beta) Chat API (Beta) Chat API (Beta) API",
+    "description": "Parallel API\n\nContact Support:\n Name: Parallel Support\n Email: support@parallel.ai",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:31:50.000Z",
+    "updatedAt": "2026-07-28T02:31:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ae1bd88b-6549-4997-bf26-2fa77ba5d413"
+  },
+  "item": [
+    {
+      "name": "v1beta",
+      "item": [
+        {
+          "name": "chat",
+          "item": [
+            {
+              "name": "completions",
+              "item": [
+                {
+                  "name": "Chat Completions",
+                  "id": "c3ff72e2-4520-4e9e-b3db-82ba6a63c27b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"assistant\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"stream\": \"<boolean>\",\n  \"response_format\": {\n    \"type\": \"<string>\"\n  },\n  \"max_tokens\": \"<integer>\",\n  \"temperature\": \"<number>\",\n  \"top_p\": \"<number>\",\n  \"n\": \"<integer>\",\n  \"presence_penalty\": \"<number>\",\n  \"frequency_penalty\": \"<number>\",\n  \"previous_interaction_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1beta/chat/completions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1beta",
+                        "chat",
+                        "completions"
+                      ]
+                    },
+                    "description": "Chat completions.\n\nThis endpoint can be used to get realtime chat completions. It can also be used\nwith the Task API processors to get structured, research outputs via a chat\ninterface."
+                  },
+                  "response": [
+                    {
+                      "id": "3831045a-4788-48e5-a035-1054d8f2c074",
+                      "name": "Returns a ChatCompletion object for non-streaming requests (application/json), or a stream of ChatCompletionResponseChunk objects for streaming requests (text/event-stream) when `stream=true` is set in the request.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"assistant\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"stream\": \"<boolean>\",\n  \"response_format\": {\n    \"type\": \"<string>\"\n  },\n  \"max_tokens\": \"<integer>\",\n  \"temperature\": \"<number>\",\n  \"top_p\": \"<number>\",\n  \"n\": \"<integer>\",\n  \"presence_penalty\": \"<number>\",\n  \"frequency_penalty\": \"<number>\",\n  \"previous_interaction_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1beta/chat/completions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1beta",
+                            "chat",
+                            "completions"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"choices\": [\n    {\n      \"delta\": {\n        \"content\": \"<string>\",\n        \"function_call\": {\n          \"arguments\": \"<string>\",\n          \"name\": \"<string>\",\n          \"in6\": 53653465,\n          \"non5bc\": false,\n          \"incididunt_c\": 59445014\n        },\n        \"refusal\": \"<string>\",\n        \"role\": \"user\",\n        \"tool_calls\": [\n          {\n            \"index\": \"<integer>\",\n            \"id\": \"<string>\",\n            \"function\": {\n              \"arguments\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            \"type\": \"<string>\"\n          },\n          {\n            \"index\": \"<integer>\",\n            \"id\": \"<string>\",\n            \"function\": {\n              \"arguments\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            \"type\": \"<string>\"\n          }\n        ],\n        \"esse_5\": -65330859,\n        \"nulla2f3\": -92433482.50981978,\n        \"proident_f\": \"id ex dolor\",\n        \"non_e8\": \"do et enim laborum\"\n      },\n      \"index\": \"<integer>\",\n      \"finish_reason\": \"tool_calls\",\n      \"logprobs\": {\n        \"content\": [\n          {\n            \"token\": \"<string>\",\n            \"logprob\": \"<number>\",\n            \"top_logprobs\": [\n              {\n                \"token\": \"<string>\",\n                \"logprob\": \"<number>\",\n                \"bytes\": [\n                  \"<integer>\",\n                  \"<integer>\"\n                ]\n              },\n              {\n                \"token\": \"<string>\",\n                \"logprob\": \"<number>\",\n                \"bytes\": [\n                  \"<integer>\",\n                  \"<integer>\"\n                ]\n              }\n            ],\n            \"bytes\": [\n              \"<integer>\",\n              \"<integer>\"\n            ]\n          },\n          {\n            \"token\": \"<string>\",\n            \"logprob\": \"<number>\",\n            \"top_logprobs\": [\n              {\n                \"token\": \"<string>\",\n                \"logprob\": \"<number>\",\n                \"bytes\": [\n                  \"<integer>\",\n                  \"<integer>\"\n                ]\n              },\n              {\n                \"token\": \"<string>\",\n                \"logprob\": \"<number>\",\n                \"bytes\": [\n                  \"<integer>\",\n                  \"<integer>\"\n                ]\n              }\n            ],\n            \"bytes\": [\n              \"<integer>\",\n              \"<integer>\"\n            ]\n          }\n        ],\n        \"refusal\": [\n          {\n            \"token\": \"<string>\",\n            \"logprob\": \"<number>\",\n            \"top_logprobs\": [\n              {\n                \"token\": \"<string>\",\n                \"logprob\": \"<number>\",\n                \"bytes\": [\n                  \"<integer>\",\n                  \"<integer>\"\n                ]\n              },\n              {\n                \"token\": \"<string>\",\n                \"logprob\": \"<number>\",\n                \"bytes\": [\n                  \"<integer>\",\n                  \"<integer>\"\n                ]\n              }\n            ],\n            \"bytes\": [\n              \"<integer>\",\n              \"<integer>\"\n            ]\n          },\n          {\n            \"token\": \"<string>\",\n            \"logprob\": \"<number>\",\n            \"top_logprobs\": [\n              {\n                \"token\": \"<string>\",\n                \"logprob\": \"<number>\",\n                \"bytes\": [\n                  \"<integer>\",\n                  \"<integer>\"\n                ]\n              },\n              {\n                \"token\": \"<string>\",\n                \"logprob\": \"<number>\",\n                \"bytes\": [\n                  \"<integer>\",\n                  \"<integer>\"\n                ]\n              }\n            ],\n            \"bytes\": [\n              \"<integer>\",\n              \"<integer>\"\n            ]\n          }\n        ]\n      }\n    },\n    {\n      \"delta\": {\n        \"content\": \"<string>\",\n        \"function_call\": {\n          \"arguments\": \"<string>\",\n          \"name\": \"<string>\",\n          \"in_25\": 74195778,\n          \"ipsum_5c\": -79080592\n        },\n        \"refusal\": \"<string>\",\n        \"role\": \"system\",\n        \"tool_calls\": [\n          {\n            \"index\": \"<integer>\",\n            \"id\": \"<string>\",\n            \"function\": {\n              \"arguments\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            \"type\": \"<string>\"\n          },\n          {\n            \"index\": \"<integer>\",\n            \"id\": \"<string>\",\n            \"function\": {\n              \"arguments\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            \"type\": \"<string>\"\n          }\n        ],\n        \"nullaa\": \"dolor sit ipsu\"\n      },\n      \"index\": \"<integer>\",\n      \"finish_reason\": \"tool_calls\",\n      \"logprobs\": {\n        \"content\": [\n          {\n            \"token\": \"<string>\",\n            \"logprob\": \"<number>\",\n            \"top_logprobs\": [\n              {\n                \"token\": \"<string>\",\n                \"logprob\": \"<number>\",\n                \"bytes\": [\n                  \"<integer>\",\n                  \"<integer>\"\n                ]\n              },\n              {\n                \"token\": \"<string>\",\n                \"logprob\": \"<number>\",\n                \"bytes\": [\n                  \"<integer>\",\n                  \"<integer>\"\n                ]\n              }\n            ],\n            \"bytes\": [\n              \"<integer>\",\n              \"<integer>\"\n            ]\n          },\n          {\n            \"token\": \"<string>\",\n            \"logprob\": \"<number>\",\n            \"top_logprobs\": [\n              {\n                \"token\": \"<string>\",\n                \"logprob\": \"<number>\",\n                \"bytes\": [\n                  \"<integer>\",\n                  \"<integer>\"\n                ]\n              },\n              {\n                \"token\": \"<string>\",\n                \"logprob\": \"<number>\",\n                \"bytes\": [\n                  \"<integer>\",\n                  \"<integer>\"\n                ]\n              }\n            ],\n            \"bytes\": [\n              \"<integer>\",\n              \"<integer>\"\n            ]\n          }\n        ],\n        \"refusal\": [\n          {\n            \"token\": \"<string>\",\n            \"logprob\": \"<number>\",\n            \"top_logprobs\": [\n              {\n                \"token\": \"<string>\",\n                \"logprob\": \"<number>\",\n                \"bytes\": [\n                  \"<integer>\",\n                  \"<integer>\"\n                ]\n              },\n              {\n                \"token\": \"<string>\",\n                \"logprob\": \"<number>\",\n                \"bytes\": [\n                  \"<integer>\",\n                  \"<integer>\"\n                ]\n              }\n            ],\n            \"bytes\": [\n              \"<integer>\",\n              \"<integer>\"\n            ]\n          },\n          {\n            \"token\": \"<string>\",\n            \"logprob\": \"<number>\",\n            \"top_logprobs\": [\n              {\n                \"token\": \"<string>\",\n                \"logprob\": \"<number>\",\n                \"bytes\": [\n                  \"<integer>\",\n                  \"<integer>\"\n                ]\n              },\n              {\n                \"token\": \"<string>\",\n                \"logprob\": \"<number>\",\n                \"bytes\": [\n                  \"<integer>\",\n                  \"<integer>\"\n                ]\n              }\n            ],\n            \"bytes\": [\n              \"<integer>\",\n              \"<integer>\"\n            ]\n          }\n        ]\n      }\n    }\n  ],\n  \"created\": \"<integer>\",\n  \"model\": \"<string>\",\n  \"object\": \"<string>\",\n  \"moderation\": {\n    \"input\": {\n      \"model\": \"<string>\",\n      \"results\": [\n        {\n          \"categories\": {\n            \"Ut4d5\": \"<boolean>\"\n          },\n          \"category_applied_input_types\": {\n            \"minim47f\": [\n              \"image\",\n              \"image\"\n            ]\n          },\n          \"category_scores\": {\n            \"dolor57\": \"<number>\"\n          },\n          \"flagged\": \"<boolean>\",\n          \"model\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"categories\": {\n            \"in_a8\": \"<boolean>\"\n          },\n          \"category_applied_input_types\": {\n            \"pariatur841\": [\n              \"image\",\n              \"text\"\n            ]\n          },\n          \"category_scores\": {\n            \"sit_8c\": \"<number>\",\n            \"irure16\": \"<number>\"\n          },\n          \"flagged\": \"<boolean>\",\n          \"model\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"type\": \"<string>\"\n    },\n    \"output\": {\n      \"model\": \"<string>\",\n      \"results\": [\n        {\n          \"categories\": {\n            \"qui_6c5\": \"<boolean>\",\n            \"consectetur_38\": \"<boolean>\"\n          },\n          \"category_applied_input_types\": {\n            \"mollit3\": [\n              \"image\",\n              \"image\"\n            ]\n          },\n          \"category_scores\": {\n            \"dolor_077\": \"<number>\"\n          },\n          \"flagged\": \"<boolean>\",\n          \"model\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"categories\": {\n            \"eiusmod27b\": \"<boolean>\",\n            \"sint8\": \"<boolean>\"\n          },\n          \"category_applied_input_types\": {\n            \"aliquip3\": [\n              \"image\",\n              \"text\"\n            ],\n            \"proidentbd7\": [\n              \"text\",\n              \"image\"\n            ],\n            \"cupidatatd\": [\n              \"text\",\n              \"image\"\n            ]\n          },\n          \"category_scores\": {\n            \"fugiatc\": \"<number>\"\n          },\n          \"flagged\": \"<boolean>\",\n          \"model\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"type\": \"<string>\"\n    }\n  },\n  \"service_tier\": \"priority\",\n  \"system_fingerprint\": \"<string>\",\n  \"usage\": {\n    \"completion_tokens\": \"<integer>\",\n    \"prompt_tokens\": \"<integer>\",\n    \"total_tokens\": \"<integer>\",\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": \"<integer>\",\n      \"audio_tokens\": \"<integer>\",\n      \"reasoning_tokens\": \"<integer>\",\n      \"rejected_prediction_tokens\": \"<integer>\",\n      \"ut_a\": true,\n      \"qui4\": -49465714,\n      \"Lorem7d\": -37281077,\n      \"exercitation0a\": \"sint ex laboris Duis Excepteur\"\n    },\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": \"<integer>\",\n      \"cached_tokens\": \"<integer>\"\n    }\n  },\n  \"interaction_id\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:31:51.000Z",
+                      "updatedAt": "2026-07-28T02:31:51.000Z",
+                      "uid": "35240-3831045a-4788-48e5-a035-1054d8f2c074"
+                    },
+                    {
+                      "id": "622148ba-8d2e-4293-b3d9-0d14da3be685",
+                      "name": "Validation Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"assistant\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"stream\": \"<boolean>\",\n  \"response_format\": {\n    \"type\": \"<string>\"\n  },\n  \"max_tokens\": \"<integer>\",\n  \"temperature\": \"<number>\",\n  \"top_p\": \"<number>\",\n  \"n\": \"<integer>\",\n  \"presence_penalty\": \"<number>\",\n  \"frequency_penalty\": \"<number>\",\n  \"previous_interaction_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1beta/chat/completions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1beta",
+                            "chat",
+                            "completions"
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:31:51.000Z",
+                      "updatedAt": "2026-07-28T02:31:51.000Z",
+                      "uid": "35240-622148ba-8d2e-4293-b3d9-0d14da3be685"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:31:51.000Z",
+                  "updatedAt": "2026-07-28T02:31:51.000Z",
+                  "uid": "35240-c3ff72e2-4520-4e9e-b3db-82ba6a63c27b"
+                }
+              ],
+              "id": "172e061e-beda-4725-b58c-66fa65cb6d28",
+              "createdAt": "2026-07-28T02:31:51.000Z",
+              "updatedAt": "2026-07-28T02:31:51.000Z",
+              "uid": "35240-172e061e-beda-4725-b58c-66fa65cb6d28"
+            }
+          ],
+          "id": "77ef7b96-b793-4a37-8519-988e8a2038c1",
+          "createdAt": "2026-07-28T02:31:51.000Z",
+          "updatedAt": "2026-07-28T02:31:51.000Z",
+          "uid": "35240-77ef7b96-b793-4a37-8519-988e8a2038c1"
+        }
+      ],
+      "id": "8f5a68fa-ab1a-45f9-b332-39bf8c94193e",
+      "createdAt": "2026-07-28T02:31:51.000Z",
+      "updatedAt": "2026-07-28T02:31:51.000Z",
+      "uid": "35240-8f5a68fa-ab1a-45f9-b332-39bf8c94193e"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.parallel.ai"
+    }
+  ]
+}

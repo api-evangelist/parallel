@@ -1,0 +1,34 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/parallel-openapi-original.json (4xx/5xx responses)
+format: json
+notes: >-
+  Parallel returns errors as application/json (not application/problem+json), so
+  this is not an RFC 9457 catalog. Statuses and descriptions are lifted verbatim
+  from the OpenAPI response objects.
+problems:
+- status: 401
+  title: 'Unauthorized: invalid or missing credentials'
+  remediation: Provide a valid API key in the x-api-key header. Generate keys at https://platform.parallel.ai.
+- status: 402
+  title: 'Payment required: insufficient credit in account'
+  remediation: Add prepaid credit to the organization balance before retrying.
+- status: 403
+  title: 'Forbidden: invalid processor in request'
+  remediation: Use a supported processor identifier for the product (Task, FindAll, Monitor).
+- status: 404
+  title: Resource not found (e.g. TaskGroup / run / monitor not found)
+  remediation: Verify the resource id.
+- status: 408
+  title: Request timed out; run still active
+  remediation: The synchronous wait timed out but the run continues; poll the run/result endpoint or use SSE.
+- status: 409
+  title: Cannot cancel a terminated FindAll run
+  remediation: A run in a terminal state cannot be cancelled.
+- status: 422
+  title: Request validation error
+  remediation: Fix the request body/parameters to match the schema; the response body enumerates field errors.
+- status: 429
+  title: 'Too many requests: quota temporarily exceeded'
+  remediation: Back off and retry; only POST create requests count against rate limits. Contact support@parallel.ai for higher limits.
+docs: https://docs.parallel.ai/resources/warnings-and-errors

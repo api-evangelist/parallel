@@ -1,0 +1,38 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.parallel.ai/llms.txt (Python SDK / TypeScript SDK links) + npm/PyPI registries
+packages:
+- language: python
+  registry: pypi
+  name: parallel-web
+  url: https://pypi.org/project/parallel-web/
+  version: 1.1.0
+  install: pip install parallel-web
+  repo: https://github.com/parallel-web/parallel-sdk-python
+  official: true
+  description: The official Python library for the Parallel API.
+- language: javascript
+  registry: npm
+  name: parallel-web
+  url: https://www.npmjs.com/package/parallel-web
+  version: 1.1.0
+  install: npm install parallel-web
+  repo: https://github.com/parallel-web/parallel-sdk-typescript
+  official: true
+  description: The official TypeScript library for the Parallel API.
+- language: javascript
+  registry: npm
+  name: parallel-web-cli
+  url: https://www.npmjs.com/package/parallel-web-cli
+  version: 0.7.1
+  install: npm install -g parallel-web-cli
+  official: true
+  description: Command-line interface for the Parallel web APIs (see cli/).
+- language: python
+  registry: pypi
+  name: parallel-web-tools
+  url: https://pypi.org/project/parallel-web-tools/
+  version: 0.7.1
+  install: pip install "parallel-web-tools[cli]"
+  official: true
+  description: Parallel CLI + tooling distribution (parallel-cli binary).

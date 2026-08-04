@@ -1,0 +1,24 @@
+{
+  "provider": "parallel",
+  "sources": [
+    "parallel-chat-api-beta-api-openapi.yml",
+    "parallel-extract-api-openapi.yml",
+    "parallel-findall-api-openapi.yml",
+    "parallel-monitor-api-openapi.yml",
+    "parallel-search-api-openapi.yml",
+    "parallel-tasks-api-openapi.yml"
+  ],
+  "outputs": [
+    "parallel-chat-api-beta-api-openapi.yml",
+    "parallel-extract-api-openapi.yml",
+    "parallel-findall-api-openapi.yml",
+    "parallel-monitor-api-openapi.yml",
+    "parallel-search-api-openapi.yml",
+    "parallel-tasks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
