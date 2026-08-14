@@ -5,32 +5,44 @@ description: >-
   high-accuracy Search API, an Extract API that turns URLs into clean
   LLM-ready markdown, a Task/Deep Research API with tiered processors
   (lite through ultra), FindAll for natural-language entity discovery and
-  enrichment, a Monitor API for scheduled web-change tracking, and an
-  OpenAI-compatible Chat Completions endpoint. The platform is API-key
-  authenticated over https://api.parallel.ai, ships official Python and
-  TypeScript SDKs and a CLI, exposes free and authenticated MCP servers,
-  emits Standard Webhooks and SSE event streams, and is SOC 2 Type I/II
-  certified. Originally surfaced as a Kleiner Perkins portfolio company and
-  enriched from Parallel's public developer surface.
+  enrichment, a Monitor API for scheduled web-change tracking, an
+  OpenAI-compatible Responses and Chat Completions pair, and a Memory API that
+  lets agents reuse past research. The platform is API-key authenticated over
+  https://api.parallel.ai, ships official Python and TypeScript SDKs and a
+  CLI, emits Standard Webhooks and SSE event streams, and is SOC 2 Type I/II
+  certified. Its agent surface is unusually complete: an anonymous hosted MCP
+  server whose tools are publicly introspectable, an OAuth-gated Task MCP
+  server, a conformant A2A agent card backed by a live /a2a endpoint,
+  provider-published Agent Skills with a discovery document, an llms.txt, and
+  markdown twins of every documentation page. Pricing is pay-as-you-go per
+  request per product. Originally surfaced as a Kleiner Perkins portfolio
+  company and enriched from Parallel's public developer surface.
 url: https://raw.githubusercontent.com/api-evangelist/parallel/refs/heads/main/apis.yml
 accessModel:
-  pricing: unknown
+  pricing: pay-as-you-go
   onboarding: self-serve
-  trial: false
-  try_now: false
-  public: false
-  label: Self-serve signup
-  confidence: medium
+  trial: true
+  try_now: true
+  public: true
+  label: Self-serve signup, pay-as-you-go, free tier
+  confidence: high
+  notes: >-
+    Published per-request rate card (plans/parallel-plans-pricing.yml); up to $80
+    signup credit and $5/month free credits; hosted playgrounds per product; and
+    an MCP endpoint at https://search.parallel.ai/mcp callable with no account and
+    no API key at all.
   source:
-  - authentication
-  generated: '2026-07-22'
-  method: derived
+  - https://docs.parallel.ai/getting-started/pricing
+  - https://parallel.ai/pricing
+  - https://docs.parallel.ai/integrations/mcp/search-mcp
+  generated: '2026-08-14'
+  method: searched
 image: https://cdn.sanity.io/images/5hzduz3y/production/3e8afb3fd62096a800a8135910fdc375971e17ba-3600x1890.jpg?w=1200&h=630&fit=crop
 x-type: company
 x-source: kleiner-perkins-portfolio
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-20'
+modified: '2026-08-14'
 tags:
 - Company
 - Ai
@@ -199,6 +211,50 @@ apis:
     url: https://docs.parallel.ai/getting-started/overview
   - type: Authentication
     url: authentication/parallel-authentication.yml
+- aid: parallel:parallel-responses-api
+  name: Parallel Responses API
+  description: >-
+    The Responses API returns grounded, cited answers from the live web in a single synchronous call, and
+    is OpenAI Responses-compatible so it can be dropped into existing clients. Pricing and latency are
+    selected with `reasoning.effort` (low, medium, high), making it the latency-sensitive counterpart to
+    the asynchronous Task API — suitable for research subagents and in-product answers.
+  humanURL: https://docs.parallel.ai/responses-api/responses-quickstart
+  baseURL: https://api.parallel.ai
+  tags:
+  - Responses API
+  properties:
+  - type: OpenAPI
+    url: openapi/parallel-responses-api-openapi.yml
+  - type: Documentation
+    url: https://docs.parallel.ai/responses-api/responses-quickstart
+  - type: APIReference
+    url: https://docs.parallel.ai/api-reference
+  - type: GettingStarted
+    url: https://docs.parallel.ai/getting-started/overview
+  - type: Authentication
+    url: authentication/parallel-authentication.yml
+- aid: parallel:parallel-memory-api
+  name: Parallel Memory API
+  description: >-
+    The Memory API lets agents search and reuse the results of past Task, Monitor and FindAll runs so new
+    research builds on work already done. It exposes retrieve, evict and clear operations over the stored
+    research corpus, turning repeated web research into a reusable, source-addressable memory rather than
+    a fresh crawl every time.
+  humanURL: https://docs.parallel.ai/resources/memory
+  baseURL: https://api.parallel.ai
+  tags:
+  - Memory
+  properties:
+  - type: OpenAPI
+    url: openapi/parallel-memory-api-openapi.yml
+  - type: Documentation
+    url: https://docs.parallel.ai/resources/memory
+  - type: APIReference
+    url: https://docs.parallel.ai/api-reference
+  - type: GettingStarted
+    url: https://docs.parallel.ai/getting-started/overview
+  - type: Authentication
+    url: authentication/parallel-authentication.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -277,8 +333,20 @@ common:
   url: security/parallel-domain-security.yml
 - type: AgenticAccess
   url: agentic-access/parallel-agentic-access.yml
+- type: AgentCard
+  url: a2a/parallel-a2a.yml
+- type: ToolCrosswalk
+  url: mcp/parallel-tool-crosswalk.yml
+- type: Plans
+  url: plans/parallel-plans-pricing.yml
+- type: OAuthScopes
+  url: scopes/parallel-scopes.yml
+- type: Sandbox
+  url: sandbox/parallel-sandbox.yml
+- type: Postman
+  url: https://www.postman.com/kinlaneapi/parallel/overview
 x-enrichment:
-  date: '2026-07-20'
+  date: '2026-08-14'
   status: enriched
-  artifacts_added: 20
+  artifacts_added: 12
   pass: local-v1
