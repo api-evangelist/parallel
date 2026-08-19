@@ -1,12 +1,19 @@
-generated: '2026-07-20'
+generated: '2026-08-14'
 method: searched
-source: https://docs.parallel.ai/llms.txt (Python SDK / TypeScript SDK links) + npm/PyPI registries
+source: >-
+  https://docs.parallel.ai/integrations/developer-quickstart + registry metadata
+  (registry.npmjs.org, pypi.org/pypi/<pkg>/json), read 2026-08-14
+notes: >-
+  All four packages are first-party (published from the parallel-web GitHub org)
+  and all four are current — every one released within the last three days of the
+  read date, so there is no SDK-decay signal here.
 packages:
 - language: python
   registry: pypi
   name: parallel-web
   url: https://pypi.org/project/parallel-web/
-  version: 1.1.0
+  version: 1.3.0
+  published: '2026-08-12'
   install: pip install parallel-web
   repo: https://github.com/parallel-web/parallel-sdk-python
   official: true
@@ -15,7 +22,8 @@ packages:
   registry: npm
   name: parallel-web
   url: https://www.npmjs.com/package/parallel-web
-  version: 1.1.0
+  version: 1.3.0
+  published: '2026-08-12'
   install: npm install parallel-web
   repo: https://github.com/parallel-web/parallel-sdk-typescript
   official: true
@@ -24,15 +32,44 @@ packages:
   registry: npm
   name: parallel-web-cli
   url: https://www.npmjs.com/package/parallel-web-cli
-  version: 0.7.1
+  version: 0.8.2
+  published: '2026-08-11'
   install: npm install -g parallel-web-cli
   official: true
-  description: Command-line interface for the Parallel web APIs (see cli/).
+  description: Command-line interface for the Parallel web APIs (see cli/parallel-cli.yml).
 - language: python
   registry: pypi
   name: parallel-web-tools
   url: https://pypi.org/project/parallel-web-tools/
-  version: 0.7.1
+  version: 0.8.2
+  published: '2026-08-11'
   install: pip install "parallel-web-tools[cli]"
   official: true
   description: Parallel CLI + tooling distribution (parallel-cli binary).
+other_distributions:
+- kind: homebrew
+  install: brew install parallel-web/tap/parallel-cli
+  registry: homebrew-tap
+  version: null
+  published: null
+  note: >-
+    First-party Homebrew tap named in the CLI docs. Taps expose no versioned
+    metadata endpoint comparable to npm/PyPI; the shipped version tracks
+    parallel-web-tools.
+- kind: install-script
+  install: curl -fsSL https://parallel.ai/install.sh | bash
+  registry: null
+  version: null
+  published: null
+  note: >-
+    Unpinned installer — it always fetches the current release, so a consumer
+    cannot tell from the command which version they will get.
+- kind: agent-skills
+  install: npx skills add parallel-web/parallel-agent-skills --all --global
+  registry: github
+  repo: https://github.com/parallel-web/parallel-agent-skills
+  version: null
+  published: null
+  note: >-
+    Four published Agent Skills installed from the repo via the Agent Skills CLI;
+    no package-registry release metadata. See skills/_index.yml.

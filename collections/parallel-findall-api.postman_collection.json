@@ -1,0 +1,2303 @@
+{
+  "item": [
+    {
+      "id": "fde83290-ae09-49e6-b72f-8d4844428f2c",
+      "name": "FindAll",
+      "description": {
+        "content": "The FindAll API discovers and evaluates entities that match complex criteria from natural language objectives. Submit a high-level goal and the service automatically generates structured match conditions, discovers relevant candidates, and evaluates each against the criteria. Returns comprehensive results with detailed reasoning, citations, and confidence scores for each match decision. Streaming events and webhooks are supported.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0b83be4f-e42b-4916-b2d7-679e27463129",
+          "name": "Fast Entity Search",
+          "request": {
+            "name": "Fast Entity Search",
+            "description": {
+              "content": "Return ranked entities matching a natural language objective.\n\nThis endpoint performs a best-effort search optimized for low latency. To keep\nresponses fast, it returns a fixed set of attributes and supports queries of\nlimited complexity.\n\nFor comprehensive match evaluation and enrichment, use the\n[FindAll API](https://docs.parallel.ai/findall-api/findall-quickstart).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1beta",
+                "findall",
+                "entity-search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"entity_type\": \"<string>\",\n  \"objective\": \"<string>\",\n  \"match_limit\": 100\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b7a3290c-a9c9-44fa-8eb1-9ff15861b707",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "entity-search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entity_type\": \"<string>\",\n  \"objective\": \"<string>\",\n  \"match_limit\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entity_set_id\": \"string\",\n  \"entities\": [\n    {\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5836d09b-b143-47c4-aeee-112422b5b568",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "entity-search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entity_type\": \"<string>\",\n  \"objective\": \"<string>\",\n  \"match_limit\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05a6126f-eed8-4238-9f5e-3f86beba5607",
+          "name": "Ingest FindAll Run",
+          "request": {
+            "name": "Ingest FindAll Run",
+            "description": {
+              "content": "Transforms a natural language search objective into a structured FindAll spec.\n\nThe generated specification serves as a suggested starting point and can be further\ncustomized by the user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1beta",
+                "findall",
+                "ingest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "parallel-beta",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"objective\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6b706d44-ac23-4e03-895c-56a30ef41464",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "ingest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"objective\": \"Find all AI companies that raised Series A funding in 2024\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"objective\": \"Find all AI companies that raised Series A funding in 2024\",\n  \"entity_type\": \"companies\",\n  \"match_conditions\": [\n    {\n      \"name\": \"developing_ai_products_check\",\n      \"description\": \"Company must be developing artificial intelligence (AI) products\"\n    },\n    {\n      \"name\": \"raised_series_a_2024_check\",\n      \"description\": \"Company must have raised Series A funding in 2024\"\n    }\n  ],\n  \"generator\": \"core\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1676eee-85d8-4698-bf04-19c51981d4d9",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "ingest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"objective\": \"Find all AI companies that raised Series A funding in 2024\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "60ae08a9-0e8a-43ef-9dd6-5f5a16b41381",
+          "name": "Create FindAll Run",
+          "request": {
+            "name": "Create FindAll Run",
+            "description": {
+              "content": "Starts a FindAll run.\n\nThis endpoint immediately returns a FindAll run object with status set to 'queued'.\nYou can get the run result snapshot using the GET /v1beta/findall/runs/{findall_id}/result endpoint.\nYou can track the progress of the run by:\n- Polling the status using the GET /v1beta/findall/runs/{findall_id} endpoint,\n- Subscribing to real-time updates via the /v1beta/findall/runs/{findall_id}/events\nendpoint,\n- Or specifying a webhook with relevant event types during run creation to receive\nnotifications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1beta",
+                "findall",
+                "runs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "parallel-beta",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"objective\": \"<string>\",\n  \"entity_type\": \"<string>\",\n  \"match_conditions\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"generator\": \"<string>\",\n  \"match_limit\": \"<integer>\",\n  \"exclude_list\": [\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"metadata\": {\n    \"key_0\": \"<string>\"\n  },\n  \"webhook\": {\n    \"url\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3794ac3b-e025-4946-85d1-113f621df06d",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"objective\": \"<string>\",\n  \"entity_type\": \"<string>\",\n  \"match_conditions\": [\n    {\n      \"name\": \"string\",\n      \"description\": \"Company must have SOC2 Type II certification (not Type I). Look for evidence in: trust centers, security/compliance pages, audit reports, or press releases specifically mentioning 'SOC2 Type II'. If no explicit SOC2 Type II mention is found, consider requirement not satisfied.\"\n    },\n    {\n      \"name\": \"string\",\n      \"description\": \"Company must have SOC2 Type II certification (not Type I). Look for evidence in: trust centers, security/compliance pages, audit reports, or press releases specifically mentioning 'SOC2 Type II'. If no explicit SOC2 Type II mention is found, consider requirement not satisfied.\"\n    }\n  ],\n  \"generator\": \"<string>\",\n  \"match_limit\": \"<integer>\",\n  \"exclude_list\": [\n    {\n      \"name\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"metadata\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"webhook\": {\n    \"url\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"findall_id\": \"findall_56ccc4d188fb41a0803a935cf485c774\",\n  \"status\": {\n    \"status\": \"queued\",\n    \"is_active\": true,\n    \"metrics\": {\n      \"generated_candidates_count\": 0,\n      \"matched_candidates_count\": 0\n    }\n  },\n  \"generator\": \"base\",\n  \"metadata\": {},\n  \"created_at\": \"2025-09-10T21:02:08.626446Z\",\n  \"modified_at\": \"2025-09-10T21:02:08.627376Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6c70c4e-a89e-45e1-a5e9-0edbed05270b",
+              "name": "Payment required: insufficient credit in account",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"objective\": \"<string>\",\n  \"entity_type\": \"<string>\",\n  \"match_conditions\": [\n    {\n      \"name\": \"string\",\n      \"description\": \"Company must have SOC2 Type II certification (not Type I). Look for evidence in: trust centers, security/compliance pages, audit reports, or press releases specifically mentioning 'SOC2 Type II'. If no explicit SOC2 Type II mention is found, consider requirement not satisfied.\"\n    },\n    {\n      \"name\": \"string\",\n      \"description\": \"Company must have SOC2 Type II certification (not Type I). Look for evidence in: trust centers, security/compliance pages, audit reports, or press releases specifically mentioning 'SOC2 Type II'. If no explicit SOC2 Type II mention is found, consider requirement not satisfied.\"\n    }\n  ],\n  \"generator\": \"<string>\",\n  \"match_limit\": \"<integer>\",\n  \"exclude_list\": [\n    {\n      \"name\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"metadata\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"webhook\": {\n    \"url\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"Payment required: insufficient credit in account\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbccc502-564b-4c35-a6eb-aa2c251b9db0",
+              "name": "Unprocessable content: request validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"objective\": \"<string>\",\n  \"entity_type\": \"<string>\",\n  \"match_conditions\": [\n    {\n      \"name\": \"string\",\n      \"description\": \"Company must have SOC2 Type II certification (not Type I). Look for evidence in: trust centers, security/compliance pages, audit reports, or press releases specifically mentioning 'SOC2 Type II'. If no explicit SOC2 Type II mention is found, consider requirement not satisfied.\"\n    },\n    {\n      \"name\": \"string\",\n      \"description\": \"Company must have SOC2 Type II certification (not Type I). Look for evidence in: trust centers, security/compliance pages, audit reports, or press releases specifically mentioning 'SOC2 Type II'. If no explicit SOC2 Type II mention is found, consider requirement not satisfied.\"\n    }\n  ],\n  \"generator\": \"<string>\",\n  \"match_limit\": \"<integer>\",\n  \"exclude_list\": [\n    {\n      \"name\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"metadata\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"webhook\": {\n    \"url\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"Unprocessable content: request validation error\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21c82c08-840f-47ed-ab57-eabbe5eb5529",
+              "name": "Too many requests: quota temporarily exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"objective\": \"<string>\",\n  \"entity_type\": \"<string>\",\n  \"match_conditions\": [\n    {\n      \"name\": \"string\",\n      \"description\": \"Company must have SOC2 Type II certification (not Type I). Look for evidence in: trust centers, security/compliance pages, audit reports, or press releases specifically mentioning 'SOC2 Type II'. If no explicit SOC2 Type II mention is found, consider requirement not satisfied.\"\n    },\n    {\n      \"name\": \"string\",\n      \"description\": \"Company must have SOC2 Type II certification (not Type I). Look for evidence in: trust centers, security/compliance pages, audit reports, or press releases specifically mentioning 'SOC2 Type II'. If no explicit SOC2 Type II mention is found, consider requirement not satisfied.\"\n    }\n  ],\n  \"generator\": \"<string>\",\n  \"match_limit\": \"<integer>\",\n  \"exclude_list\": [\n    {\n      \"name\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"metadata\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"webhook\": {\n    \"url\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"Too many requests: quota temporarily exceeded\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "47abb5ed-9cec-4247-8a26-183d93dd5275",
+          "name": "Retrieve FindAll Run Status",
+          "request": {
+            "name": "Retrieve FindAll Run Status",
+            "description": {
+              "content": "Retrieve a FindAll run.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1beta",
+                "findall",
+                "runs",
+                ":findall_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "findall_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "parallel-beta",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "217bd737-e0ee-4def-8929-1a59d09df124",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "runs",
+                    ":findall_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "findall_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"findall_id\": \"string\",\n  \"status\": {\n    \"status\": \"cancelled\",\n    \"is_active\": true,\n    \"metrics\": {\n      \"generated_candidates_count\": 0,\n      \"matched_candidates_count\": 0\n    },\n    \"termination_reason\": \"insufficient_funds\"\n  },\n  \"generator\": \"preview\",\n  \"metadata\": {\n    \"key_0\": \"string\"\n  },\n  \"created_at\": \"string\",\n  \"modified_at\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12df7c6e-9b93-428c-a595-cc4b523c6c83",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "runs",
+                    ":findall_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "findall_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f33de6a-3aba-4a37-a7ca-b60fe7e190e1",
+          "name": "Cancel FindAll Run",
+          "request": {
+            "name": "Cancel FindAll Run",
+            "description": {
+              "content": "Cancel a FindAll run.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1beta",
+                "findall",
+                "runs",
+                ":findall_id",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "findall_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "parallel-beta",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "35d576b5-9733-4fda-b28a-a5f7b017261f",
+              "name": "FindAll run cancelled successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "runs",
+                    ":findall_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "findall_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cb71f220-40fa-48c3-8c22-dd7a9c292864",
+              "name": "FindAll run not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "runs",
+                    ":findall_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "findall_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"FindAll run not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9925dcc-5c86-4919-95b0-21c604fbe67c",
+              "name": "Cannot cancel a terminated FindAll run",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "runs",
+                    ":findall_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "findall_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"Cannot cancel a terminated FindAll run\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ee90b8a-d528-45b3-9763-fe80012e154b",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "runs",
+                    ":findall_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "findall_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71d8bdd7-8e33-4fad-b68f-9abdf26ae648",
+          "name": "Add Enrichment to FindAll Run",
+          "request": {
+            "name": "Add Enrichment to FindAll Run",
+            "description": {
+              "content": "Add an enrichment to a FindAll run.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1beta",
+                "findall",
+                "runs",
+                ":findall_id",
+                "enrich"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "findall_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "parallel-beta",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"output_schema\": {\n    \"json_schema\": {\n      \"key_0\": true,\n      \"key_1\": 411\n    },\n    \"type\": \"json\"\n  },\n  \"processor\": \"core\",\n  \"mcp_servers\": [\n    {\n      \"url\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"url\",\n      \"headers\": {\n        \"key_0\": \"<password>\",\n        \"key_1\": \"<password>\"\n      },\n      \"allowed_tools\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"url\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"url\",\n      \"headers\": {\n        \"key_0\": \"<password>\",\n        \"key_1\": \"<password>\"\n      },\n      \"allowed_tools\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4abf8c61-10ee-46aa-a5a1-ff27c4d40ba1",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "runs",
+                    ":findall_id",
+                    "enrich"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "findall_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"output_schema\": {\n    \"json_schema\": {\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"gdp\": {\n          \"description\": \"GDP in USD for the year, formatted like '$3.1 trillion (2023)'\",\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\n        \"gdp\"\n      ],\n      \"type\": \"object\"\n    },\n    \"type\": \"json\"\n  },\n  \"processor\": \"core\",\n  \"mcp_servers\": [\n    {\n      \"url\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"url\",\n      \"headers\": {\n        \"key_0\": \"string\"\n      },\n      \"allowed_tools\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"url\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"url\",\n      \"headers\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"allowed_tools\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"objective\": \"Find all AI companies that raised Series A funding in 2024\",\n  \"entity_type\": \"companies\",\n  \"match_conditions\": [\n    {\n      \"name\": \"developing_ai_products_check\",\n      \"description\": \"Company must be developing artificial intelligence (AI) products\"\n    }\n  ],\n  \"enrichments\": [\n    {\n      \"processor\": \"core\",\n      \"output_schema\": {\n        \"json_schema\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"ceo_name\": {\n              \"type\": \"string\",\n              \"description\": \"Name of the current CEO of the company. If the CEO is not publicly known, provide the name of the highest-ranking executive or founder. If no information is available, return null.\"\n            }\n          }\n        },\n        \"type\": \"json\"\n      }\n    }\n  ],\n  \"generator\": \"core\",\n  \"match_limit\": 50\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9a9b42f-4844-442c-8e69-92df8250cb14",
+              "name": "FindAll run not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "runs",
+                    ":findall_id",
+                    "enrich"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "findall_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"output_schema\": {\n    \"json_schema\": {\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"gdp\": {\n          \"description\": \"GDP in USD for the year, formatted like '$3.1 trillion (2023)'\",\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\n        \"gdp\"\n      ],\n      \"type\": \"object\"\n    },\n    \"type\": \"json\"\n  },\n  \"processor\": \"core\",\n  \"mcp_servers\": [\n    {\n      \"url\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"url\",\n      \"headers\": {\n        \"key_0\": \"string\"\n      },\n      \"allowed_tools\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"url\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"url\",\n      \"headers\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"allowed_tools\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"FindAll run not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "210ac6d3-455f-4151-8eca-51a7b266d5eb",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "runs",
+                    ":findall_id",
+                    "enrich"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "findall_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"output_schema\": {\n    \"json_schema\": {\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"gdp\": {\n          \"description\": \"GDP in USD for the year, formatted like '$3.1 trillion (2023)'\",\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\n        \"gdp\"\n      ],\n      \"type\": \"object\"\n    },\n    \"type\": \"json\"\n  },\n  \"processor\": \"core\",\n  \"mcp_servers\": [\n    {\n      \"url\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"url\",\n      \"headers\": {\n        \"key_0\": \"string\"\n      },\n      \"allowed_tools\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"url\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"url\",\n      \"headers\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"allowed_tools\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"Validation error\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9984b443-7dfc-41dc-98dc-8ddf47a92f02",
+          "name": "Stream FindAll Events",
+          "request": {
+            "name": "Stream FindAll Events",
+            "description": {
+              "content": "Stream events from a FindAll run.\n\nArgs:\n    request: The Shapi request\n    findall_id: The FindAll run ID\n    last_event_id: Optional event ID to resume from.\n    timeout: Optional timeout in seconds. If None, keep connection alive\n    as long as the run is going. If set, stop after specified duration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1beta",
+                "findall",
+                "runs",
+                ":findall_id",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "last_event_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "timeout",
+                  "value": "<number>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "findall_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "parallel-beta",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "text/event-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7b33019e-7bc3-4076-a072-304b30f9a8f7",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "runs",
+                    ":findall_id",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "last_event_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "findall_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/event-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/event-stream"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8833f0a1-caaf-42ab-941d-a30935740daa",
+              "name": "FindAll run not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "runs",
+                    ":findall_id",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "last_event_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "findall_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"FindAll run not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "669e97d9-6bda-414e-853c-b00342bbac17",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "runs",
+                    ":findall_id",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "last_event_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "findall_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77ef644a-7484-44e1-897b-5431bf9ddff7",
+          "name": "Extend FindAll Run",
+          "request": {
+            "name": "Extend FindAll Run",
+            "description": {
+              "content": "Extend a FindAll run by adding additional matches to the current match limit.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1beta",
+                "findall",
+                "runs",
+                ":findall_id",
+                "extend"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "findall_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "parallel-beta",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"additional_match_limit\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2686de73-3d89-4aae-b7c3-5de4df12711d",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "runs",
+                    ":findall_id",
+                    "extend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "findall_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"additional_match_limit\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"objective\": \"Find all AI companies that raised Series A funding in 2024\",\n  \"entity_type\": \"companies\",\n  \"match_conditions\": [\n    {\n      \"name\": \"developing_ai_products_check\",\n      \"description\": \"Company must be developing artificial intelligence (AI) products\"\n    }\n  ],\n  \"enrichments\": [\n    {\n      \"processor\": \"core\",\n      \"output_schema\": {\n        \"json_schema\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"ceo_name\": {\n              \"type\": \"string\",\n              \"description\": \"Name of the current CEO of the company. If the CEO is not publicly known, provide the name of the highest-ranking executive or founder. If no information is available, return null.\"\n            }\n          }\n        },\n        \"type\": \"json\"\n      }\n    }\n  ],\n  \"generator\": \"core\",\n  \"match_limit\": 50\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a64040a4-a7f1-43d0-be77-113e0bb8e6f6",
+              "name": "FindAll run not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "runs",
+                    ":findall_id",
+                    "extend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "findall_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"additional_match_limit\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"FindAll run not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3eb37ee7-d197-45ea-9a44-ea0bf1b8c652",
+              "name": "Additional match limit must be greater than 0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "runs",
+                    ":findall_id",
+                    "extend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "findall_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"additional_match_limit\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"Additional match limit must be greater than 0\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19d4db83-1295-4743-8928-bb501b85e14e",
+          "name": "FindAll Run Result",
+          "request": {
+            "name": "FindAll Run Result",
+            "description": {
+              "content": "Retrieve the FindAll run result at the time of the request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1beta",
+                "findall",
+                "runs",
+                ":findall_id",
+                "result"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "findall_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "parallel-beta",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6504279b-0494-4df0-81d7-80b64c13664f",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "runs",
+                    ":findall_id",
+                    "result"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "findall_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"run\": {\n    \"findall_id\": \"findall_56ccc4d188fb41a0803a935cf485c774\",\n    \"status\": {\n      \"status\": \"running\",\n      \"is_active\": true,\n      \"metrics\": {\n        \"generated_candidates_count\": 1,\n        \"matched_candidates_count\": 1\n      }\n    },\n    \"generator\": \"base\",\n    \"metadata\": {},\n    \"created_at\": \"2025-09-10T21:02:08.626446Z\",\n    \"modified_at\": \"2025-09-10T21:02:08.627376Z\"\n  },\n  \"candidates\": [\n    {\n      \"candidate_id\": \"candidate_7594eb7c-4f4a-487f-9d0c-9d1e63ec240c\",\n      \"name\": \"Cognition AI\",\n      \"url\": \"cognition.ai\",\n      \"match_status\": \"matched\",\n      \"output\": {\n        \"developing_ai_products_check\": \"yes\",\n        \"raised_series_a_2024_check\": \"yes\"\n      },\n      \"basis\": [\n        {\n          \"field\": \"developing_ai_products_check\",\n          \"citations\": [\n            {\n              \"title\": \"Cognition - Devin and Cognition AI\",\n              \"url\": \"https://cognition.ai/\",\n              \"excerpts\": [\n                \"We're the makers of Devin, a collaborative AI teammate that helps ambitious engineering teams achieve more.\",\n                \"An applied AI lab building the future of software engineering\",\n                \"Cognition\"\n              ]\n            }\n          ],\n          \"reasoning\": \"The search results repeatedly state that Cognition AI is an 'applied AI lab building the future of software engineering' and that they developed 'Devin AI', described as the 'world's first AI software engineer'. This directly confirms they are developing AI products.\",\n          \"confidence\": \"high\"\n        },\n        {\n          \"field\": \"raised_series_a_2024_check\",\n          \"citations\": [\n            {\n              \"title\": \"Cognition Labs Raises $21 Million Series A to Support AI Coding Products\",\n              \"url\": \"https://voicebot.ai/2024/04/25/cognition-labs-raises-21-million-series-a-to-support-ai-coding-products/\",\n              \"excerpts\": [\n                \"Cognition Labs Raises $21 Million Series A to Support AI Coding Products\"\n              ]\n            }\n          ],\n          \"reasoning\": \"The article from voicebot.ai, dated April 25, 2024, states that Founders Fund led a \\\"$21 million Series A investment\\\" for Cognition Labs. This confirms that Series A funding was raised in 2024.\",\n          \"confidence\": \"low\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2d2f879-bc4b-4aa4-961f-1fb84ef97323",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "runs",
+                    ":findall_id",
+                    "result"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "findall_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "912cb206-4b79-49c0-8807-ee85d09a069d",
+          "name": "Get FindAll Run Schema",
+          "request": {
+            "name": "Get FindAll Run Schema",
+            "description": {},
+            "url": {
+              "path": [
+                "v1beta",
+                "findall",
+                "runs",
+                ":findall_id",
+                "schema"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "findall_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "parallel-beta",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9b5b2a6f-750d-42ef-87e7-cf1d4e7219da",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "runs",
+                    ":findall_id",
+                    "schema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "findall_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"objective\": \"Find all AI companies that raised Series A funding in 2024\",\n  \"entity_type\": \"companies\",\n  \"match_conditions\": [\n    {\n      \"name\": \"developing_ai_products_check\",\n      \"description\": \"Company must be developing artificial intelligence (AI) products\"\n    }\n  ],\n  \"enrichments\": [\n    {\n      \"processor\": \"core\",\n      \"output_schema\": {\n        \"json_schema\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"ceo_name\": {\n              \"type\": \"string\",\n              \"description\": \"Name of the current CEO of the company. If the CEO is not publicly known, provide the name of the highest-ranking executive or founder. If no information is available, return null.\"\n            }\n          }\n        },\n        \"type\": \"json\"\n      }\n    }\n  ],\n  \"generator\": \"core\",\n  \"match_limit\": 50\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf3187e9-fcd8-44e8-a4ff-9fb65e829e07",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1beta",
+                    "findall",
+                    "runs",
+                    ":findall_id",
+                    "schema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "findall_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "parallel-beta",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.parallel.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "193ca232-ef0a-4f8e-950c-e22d60e8a206",
+    "name": "Parallel Chat API (Beta) Chat API (Beta) FindAll API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Parallel API\n\nContact Support:\n Name: Parallel Support\n Email: support@parallel.ai",
+      "type": "text/plain"
+    }
+  }
+}

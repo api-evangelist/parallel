@@ -1,13 +1,28 @@
-generated: '2026-07-20'
+generated: '2026-08-14'
 method: searched
-source: openapi/parallel-openapi-original.json + https://docs.parallel.ai
+source: >-
+  openapi/_original/parallel-openapi-original.json + https://docs.parallel.ai
+  (rate-limits, warnings-and-errors, webhook-setup, MCP) + live /.well-known
+  probes 2026-08-14
 authentication:
   style: api-key
   header: x-api-key
+  env_var: PARALLEL_API_KEY
+  oauth:
+    surfaces: [Task MCP, A2A agent, CLI login]
+    issuer: https://platform.parallel.ai
+    scopes: [key:read]
+    pkce: S256
+    dynamic_client_registration: true
   docs: https://docs.parallel.ai/getting-started/overview
+  see: authentication/parallel-authentication.yml
 idempotency:
   supported: false
-  notes: No idempotency-key header/parameter is documented or present in the OpenAPI.
+  notes: >-
+    No Idempotency-Key header or parameter is documented or present in the
+    OpenAPI. Re-POSTing a Task run creates a new billable run. The closest safety
+    property Parallel offers is billing-side, not request-side: failed Task runs
+    and unsuccessful Responses calls are not charged.
 pagination:
   style: cursor
   notes: List/event endpoints (monitors, monitor events, task-group runs, FindAll results) use cursor-based paging.
@@ -22,14 +37,46 @@ webhooks:
   headers: [webhook-id, webhook-timestamp, webhook-signature]
   secret_prefix: whsec_
   docs: https://docs.parallel.ai/resources/webhook-setup
+  see: asyncapi/parallel-webhooks.yml
 versioning:
   scheme: uri-path
   current: v1
+  stages: [v1 (GA), v1beta (beta), v1alpha (legacy)]
   see: lifecycle/parallel-lifecycle.yml
 error_envelope:
   format: application/json
+  shape: '{"error":{"message":"...","detail":{}}}'
+  problem_json: false
+  retryability_published: true
   see: errors/parallel-problem-types.yml
 rate_limiting:
   scope: per-endpoint, POST-create only (GETs are not counted)
+  response_headers: none published
+  exhaustion_status: 429
   docs: https://docs.parallel.ai/getting-started/rate-limits
   see: rate-limits/parallel-rate-limits.yml
+request_tracing:
+  request_id_header: null
+  notes: >-
+    No request-id/correlation header is documented. On the MCP surface an
+    agent-supplied `session_id` argument correlates tool calls in Parallel's logs
+    and drives free-tier rate limiting, which is the nearest equivalent.
+agent_conventions:
+  markdown_docs: >-
+    Every docs page is retrievable as markdown by appending `.md` to the URL or
+    sending `Accept: text/markdown`; the index is at
+    https://docs.parallel.ai/llms.txt and the full text at
+    https://docs.parallel.ai/llms-full.txt.
+  agent_card: a2a/parallel-agent-card.json
+  agent_skills: skills/_index.yml
+  mcp: mcp/parallel-mcp.yml
+  crosswalk: mcp/parallel-tool-crosswalk.yml
+  payments:
+    protocols: [Machine Payments Protocol, x402]
+    docs: https://docs.parallel.ai/integrations/agentic-payments
+output_conventions:
+  basis: >-
+    Every Task Run result carries a `basis` array with citations, reasoning and
+    per-field confidence. Requesting those as output-schema fields raises a
+    warning — read output.basis instead.
+  docs: https://docs.parallel.ai/task-api/guides/access-research-basis

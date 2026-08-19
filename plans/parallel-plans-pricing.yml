@@ -1,0 +1,97 @@
+generated: '2026-08-14'
+method: searched
+source: https://docs.parallel.ai/getting-started/pricing
+also:
+- https://parallel.ai/pricing
+notes: >-
+  Parallel does not sell named subscription tiers. It sells one self-serve
+  pay-as-you-go account with per-request usage pricing per product, plus signup
+  credits and a monthly free allowance. There is therefore ONE plan; the
+  commercial surface that matters is the per-product usage rate card below,
+  captured verbatim from the published pricing page.
+model: pay-as-you-go
+currency: USD
+plan_count: 1
+plans:
+- name: Pay as you go
+  price: 0
+  currency: USD
+  billing_period: usage
+  self_serve: true
+  signup: https://platform.parallel.ai
+  included:
+    free_requests: Up to 5,000 requests per month for free (per parallel.ai/pricing)
+    signup_credit: Up to $80 at signup
+    monthly_credit: $5 in free credits per month
+  overage: Metered per request at the per-product rates below.
+  limits_ref: rate-limits/parallel-rate-limits.yml
+enterprise:
+  available: true
+  note: >-
+    Private cloud and on-premises deployments for qualified enterprise customers,
+    and higher rate limits on request.
+  contact: partnerships@parallel.ai
+  support_contact: support@parallel.ai
+usage_pricing:
+- product: Search API
+  unit: per 1,000 requests (default 10 results)
+  rates:
+  - {tier: turbo, price: 1.00, unit: per 1,000 requests}
+  - {tier: basic, price: 5.00, unit: per 1,000 requests}
+  - {tier: advanced, price: 5.00, unit: per 1,000 requests}
+  - {tier: additional results & excerpts, price: 1.00, unit: per 1,000}
+- product: Extract API
+  rates:
+  - {tier: default, price: 1.00, unit: per 1,000 URLs}
+- product: Task API
+  unit: per 1,000 Task Runs
+  note: >-
+    Priced per Task Run (row), not per output field. Failed runs are not billed.
+    "-fast" processors carry the same price as their standard counterparts.
+  rates:
+  - {tier: lite, price: 5.00, unit: per 1,000 runs}
+  - {tier: base, price: 10.00, unit: per 1,000 runs}
+  - {tier: core, price: 25.00, unit: per 1,000 runs}
+  - {tier: core2x, price: 50.00, unit: per 1,000 runs}
+  - {tier: pro, price: 100.00, unit: per 1,000 runs}
+  - {tier: ultra, price: 300.00, unit: per 1,000 runs}
+  - {tier: ultra2x, price: 600.00, unit: per 1,000 runs}
+  - {tier: ultra4x, price: 1200.00, unit: per 1,000 runs}
+  - {tier: ultra8x, price: 2400.00, unit: per 1,000 runs}
+- product: Responses API
+  unit: per 1,000 requests
+  note: Priced by reasoning.effort. Only successful responses are charged.
+  rates:
+  - {tier: low, price: 10.00, unit: per 1,000 requests}
+  - {tier: medium (default), price: 50.00, unit: per 1,000 requests}
+  - {tier: high, price: 250.00, unit: per 1,000 requests}
+- product: Monitor API
+  unit: per 1,000 executions
+  rates:
+  - {tier: lite, price: 3.00, unit: per 1,000 executions}
+  - {tier: base, price: 10.00, unit: per 1,000 executions}
+- product: FindAll API
+  unit: fixed cost + per match
+  rates:
+  - {tier: preview, fixed: 0.10, per_match: 0.00}
+  - {tier: base, fixed: 0.25, per_match: 0.03}
+  - {tier: core, fixed: 2.00, per_match: 0.15}
+  - {tier: pro, fixed: 10.00, per_match: 1.00}
+  note: Enrichments add their own per-match cost based on the Task API processor chosen.
+- product: Entity Search
+  unit: per 1,000 requests (default 100 results)
+  rates:
+  - {tier: default, price: 5.00, unit: per 1,000 requests}
+  - {tier: additional results, price: 0.05, unit: per 1,000}
+- product: Chat API
+  unit: per 1,000 requests
+  rates:
+  - {tier: speed, price: 5.00, unit: per 1,000 requests}
+  - {tier: lite, price: 5.00, unit: per 1,000 requests}
+  - {tier: base, price: 10.00, unit: per 1,000 requests}
+  - {tier: core, price: 25.00, unit: per 1,000 requests}
+agentic_payments:
+  supported: true
+  protocols: [Machine Payments Protocol (MPP), x402]
+  rails: [Stripe, Tempo stablecoins]
+  docs: https://docs.parallel.ai/integrations/agentic-payments

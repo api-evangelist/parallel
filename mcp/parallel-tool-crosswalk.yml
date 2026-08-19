@@ -1,0 +1,131 @@
+generated: '2026-08-14'
+method: derived
+source: >-
+  mcp/parallel-mcp.yml (live tools/list on search.parallel.ai + Task MCP docs)
+  bound to openapi/_original/parallel-openapi-original.json operationIds
+notes: >-
+  Binds every published Parallel MCP tool to the REST operation(s) it fronts. The
+  two Search MCP tools were introspected live, so their real inputSchema is known
+  and the binding is high confidence. The four Task MCP tools are auth-gated;
+  they are mapped from the provider's own tool descriptions, which name the
+  backing product surface explicitly, so confidence is high on the create/status
+  pair and medium where a tool spans a family of operations.
+surfaces:
+  openapi: openapi/_original/parallel-openapi-original.json
+  openapi_public: https://docs.parallel.ai/docs-latest-openapi.json
+  graphql: null
+  mcp:
+  - {url: 'https://search.parallel.ai/mcp', gated: false, introspected: true}
+  - {url: 'https://task-mcp.parallel.ai/mcp', gated: true, introspected: false}
+  a2a: {url: 'https://api.parallel.ai/a2a', gated: true}
+crosswalk:
+- tool: web_search
+  server: parallel-search
+  category: search
+  rest: [v1_search_v1_search_post]
+  binding: one-to-one
+  confidence: high
+  note: >-
+    Live inputSchema (objective, search_queries) mirrors the V1SearchRequest body
+    of POST /v1/search. The MCP tool pins `basic` mode and caps excerpt volume.
+- tool: web_fetch
+  server: parallel-search
+  category: extraction
+  rest: [extract_v1_extract_post]
+  binding: one-to-one
+  confidence: high
+  note: >-
+    Live inputSchema (urls, objective, search_queries, full_content) mirrors the
+    V1ExtractRequest body of POST /v1/extract.
+- tool: createDeepResearch
+  server: parallel-task
+  category: research
+  rest: [tasks_runs_post_v1_tasks_runs_post]
+  binding: one-to-one
+  confidence: high
+  note: Provider docs bind this tool to the Task API run-creation surface.
+- tool: createTaskGroup
+  server: parallel-task
+  category: research-batch
+  rest:
+  - tasks_taskgroups_post_v1_tasks_groups_post
+  - tasks_taskgroups_runs_post_v1_tasks_groups__taskgroup_id__runs_post
+  binding: composite
+  confidence: high
+  note: >-
+    Creating a group and adding runs to it are two REST operations; the tool
+    presents them as one enrichment action.
+- tool: getStatus
+  server: parallel-task
+  category: status
+  rest:
+  - tasks_runs_get_v1_tasks_runs__run_id__get
+  - tasks_taskgroups_get_v1_tasks_groups__taskgroup_id__get
+  binding: one-to-many
+  confidence: medium
+  note: >-
+    Docs describe a lightweight (~50 token) status check; it resolves to the run
+    or the group status endpoint depending on the id supplied.
+- tool: getResultMarkdown
+  server: parallel-task
+  category: results
+  rest:
+  - tasks_runs_result_get_v1_tasks_runs__run_id__result_get
+  - tasks_taskgroups_runs_get_v1_tasks_groups__taskgroup_id__runs_get
+  binding: one-to-many
+  confidence: medium
+  note: >-
+    REST returns structured JSON output; the tool returns an LLM-friendly markdown
+    rendering, so this is a transform over the result operations rather than a
+    pass-through.
+mcp_only: []
+a2a_skills:
+- skill: research
+  agent: https://api.parallel.ai/a2a
+  rest: [tasks_runs_post_v1_tasks_runs_post, tasks_runs_result_get_v1_tasks_runs__run_id__result_get]
+  binding: composite
+  confidence: medium
+  note: >-
+    The A2A "Deep Research" skill returns a cited markdown report and supports
+    follow-ups in the same context; the card's documentationUrl points at the Task
+    API quickstart.
+rest_only:
+- tasks_sessions_events_get_v1_tasks_groups__taskgroup_id__events_get
+- tasks_taskgroups_runs_id_get_v1_tasks_groups__taskgroup_id__runs__run_id__get
+- tasks_runs_events_get_v1_tasks_runs__run_id__events_get
+- tasks_runs_input_get_v1_tasks_runs__run_id__input_get
+- tasks_runs_events_get_v1beta_tasks_runs__run_id__events_get
+- findall_entity_search_v1beta_findall_entity_search_post
+- ingest_findall_run_v1beta_findall_ingest_post
+- findall_runs_v1_v1beta_findall_runs_post
+- findall_runs_v1_get_v1beta_findall_runs__findall_id__get
+- cancel_findall_run_v1beta_findall_runs__findall_id__cancel_post
+- enrich_findall_run_v1beta_findall_runs__findall_id__enrich_post
+- get_findall_events_v1beta_findall_runs__findall_id__events_get
+- extend_findall_run_v1beta_findall_runs__findall_id__extend_post
+- get_findall_result_v1beta_findall_runs__findall_id__result_get
+- get_findall_schema_v1beta_findall_runs__findall_id__schema_get
+- create_monitor_v1_monitors_post
+- list_monitors_v1_monitors_get
+- retrieve_monitor_v1_monitors__monitor_id__get
+- cancel_monitor_v1_monitors__monitor_id__cancel_post
+- list_monitor_events_v1_monitors__monitor_id__events_get
+- trigger_monitor_run_v1_monitors__monitor_id__trigger_post
+- update_monitor_v1_monitors__monitor_id__update_post
+- clear_memory_v1beta_memory_clear_post
+- evict_memory_source_v1beta_memory_evict_post
+- retrieve_memory_v1beta_memory_retrieve_post
+- chat_completions_v1beta_chat_completions_post
+- create_response_v1_responses_post
+coverage:
+  rest_operations_total: 34
+  rest_operations_mapped: 8
+  rest_operations_unmapped: 27
+  mcp_tools_total: 6
+  mcp_tools_mapped: 6
+  mcp_tools_introspected: 2
+  a2a_skills_total: 1
+  note: >-
+    Counts overlap by one: tasks_runs_result_get is reachable from both a Task MCP
+    tool and the A2A research skill. FindAll, Monitor, Memory, Chat and Responses
+    have no MCP tool at all — they are REST/CLI/SDK-only surfaces today.

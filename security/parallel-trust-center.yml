@@ -1,16 +1,38 @@
-generated: '2026-07-20'
+generated: '2026-08-14'
 method: searched
-source: https://docs.parallel.ai/resources/faqs
+source: https://trust.parallel.ai
+also:
+- https://docs.parallel.ai/resources/faqs
 notes: >-
-  Parallel documents a Trust Center whose full report is available on request via
-  partnerships@parallel.ai (email-gated, no public URL). Compliance posture is
-  stated in the FAQ.
+  UPGRADE vs the 2026-07-20 round, which recorded the Trust Center as
+  email-gated with no public URL. A public Trust Center IS served at
+  https://trust.parallel.ai (HTTP 200, title "Parallel Trust Center"). It is a
+  JS-rendered single-page app, so the certification list is not machine-readable
+  from the HTML; the named certifications below are therefore carried from
+  Parallel's own published FAQ, not scraped from the SPA.
+trust_center:
+  url: https://trust.parallel.ai
+  http_status: 200
+  machine_readable: false
+  note: JS-rendered SPA; server HTML contains only the page title.
 certifications:
-- SOC 2 Type I (as of April 2025)
-- SOC 2 Type II (as of April 2025)
+- name: SOC 2 Type I
+  since: '2025-04'
+  report_access: on request
+- name: SOC 2 Type II
+  since: '2025-04'
+  report_access: on request
 data_protection:
 - Encrypted in transit (TLS 1.2+) and at rest, in US-based data centers.
 - Customer data is not used to train any models.
+- Retrieval is limited to the public web; Parallel does not fetch data behind a login.
 enterprise:
-- Private cloud and on-premises deployments available for qualified enterprise customers (partnerships@parallel.ai).
+- Private cloud and on-premises deployments available for qualified enterprise customers.
 contact: partnerships@parallel.ai
+vulnerability_disclosure:
+  published: false
+  note: >-
+    No security.txt, no bug bounty program and no coordinated-disclosure page was
+    found on any Parallel host on 2026-08-14, so no VulnerabilityDisclosure
+    artifact and no Security pointer are emitted. Probed:
+    /.well-known/security.txt on api/docs/www/platform/parallel.ai (all 404).

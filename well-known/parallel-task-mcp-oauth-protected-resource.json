@@ -1,0 +1,14 @@
+{
+  "resource": "https://task-mcp.parallel.ai",
+  "authorization_servers": [
+    "https://platform.parallel.ai"
+  ],
+  "scopes_supported": [
+    "key:read"
+  ],
+  "bearer_methods_supported": [
+    "header",
+    "body"
+  ],
+  "resource_documentation": "https://task-mcp.parallel.ai"
+}

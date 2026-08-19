@@ -1,0 +1,60 @@
+generated: '2026-08-14'
+method: probed
+source: https://platform.parallel.ai/.well-known/oauth-authorization-server
+also:
+- https://task-mcp.parallel.ai/.well-known/oauth-protected-resource
+- https://task-mcp.parallel.ai/.well-known/oauth-authorization-server
+- https://api.parallel.ai/.well-known/agent-card.json
+notes: >-
+  The Parallel REST API itself is API-key only (x-api-key) and declares no oauth2
+  securityScheme in the OpenAPI, so derive-oauth-scopes.py finds nothing there.
+  OAuth 2.0 exists on the AGENT surfaces: the Task MCP server and the A2A Deep
+  Research agent both delegate to an authorization server at
+  platform.parallel.ai, whose published metadata declares a single scope. The
+  OAuth exchange yields a Parallel API key used as a bearer token.
+authorization_server:
+  issuer: https://platform.parallel.ai
+  metadata_url: https://platform.parallel.ai/.well-known/oauth-authorization-server
+  http_status: 200
+  authorization_endpoint: https://platform.parallel.ai/getKeys/authorize
+  token_endpoint: https://platform.parallel.ai/getKeys/token
+  registration_endpoint: https://platform.parallel.ai/getKeys/register
+  device_authorization_endpoint: https://platform.parallel.ai/getKeys/device/code
+  grant_types_supported:
+  - authorization_code
+  - urn:ietf:params:oauth:grant-type:device_code
+  response_types_supported: [code]
+  token_endpoint_auth_methods_supported: [none]
+  code_challenge_methods_supported: [S256]
+  dynamic_client_registration: true
+  pkce_required: true
+protected_resources:
+- resource: https://task-mcp.parallel.ai
+  metadata_url: https://task-mcp.parallel.ai/.well-known/oauth-protected-resource
+  http_status: 200
+  authorization_servers: [https://platform.parallel.ai]
+  bearer_methods_supported: [header, body]
+  resource_documentation: https://task-mcp.parallel.ai
+- resource: https://api.parallel.ai/a2a
+  declared_in: a2a/parallel-agent-card.json (securitySchemes.parallel_oauth)
+  http_status: 401
+  note: A2A Deep Research agent; same authorize/token endpoints.
+scopes:
+- name: key:read
+  description: >-
+    Use a Parallel API key to access the agent. Declared in the authorization
+    server metadata, the Task MCP protected-resource metadata, and the A2A agent
+    card's oauth2 authorizationCode flow.
+  surfaces:
+  - https://task-mcp.parallel.ai/mcp
+  - https://api.parallel.ai/a2a
+scope_count: 1
+not_applicable:
+  rest_api: >-
+    https://api.parallel.ai REST endpoints use apiKey (header x-api-key) with no
+    scoping; there is no per-scope authorization on the REST surface.
+  probe_misses:
+  - {url: 'https://api.parallel.ai/.well-known/oauth-authorization-server', status: 404}
+  - {url: 'https://search.parallel.ai/.well-known/oauth-authorization-server', status: 404}
+  - {url: 'https://search.parallel.ai/.well-known/oauth-protected-resource', status: 404}
+docs: https://docs.parallel.ai/integrations/mcp/task-mcp

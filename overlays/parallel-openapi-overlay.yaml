@@ -1,20 +1,64 @@
 overlay: 1.0.0
 info:
   title: API Evangelist enhancements for Parallel API
-  version: 1.0.0
-extends: openapi/parallel-openapi-original.json
+  version: 1.1.0
+extends: openapi/_original/parallel-openapi-original.json
+x-generated: '2026-08-14'
+x-method: generated
+x-source: >-
+  Derived from artifacts in this repo (a2a/, mcp/, scopes/, plans/, rate-limits/,
+  errors/, conventions/) against the OpenAPI republished 2026-08-14.
 actions:
 - target: $.info
   update:
     x-apievangelist-provider: parallel
-    x-apievangelist-products: [Search, Extract, Tasks, FindAll, Monitor, Chat]
-    x-apievangelist-auth: api-key (x-api-key header)
+    x-apievangelist-products: [Search, Extract, Tasks, FindAll, Monitor, Chat, Responses, Memory]
+    x-apievangelist-auth: api-key (x-api-key header); OAuth 2.0 (key:read) on agent surfaces
     x-apievangelist-mcp: https://search.parallel.ai/mcp
+    x-apievangelist-mcp-gated: https://task-mcp.parallel.ai/mcp
+    x-apievangelist-a2a: https://api.parallel.ai/a2a
+    x-apievangelist-agent-card: https://api.parallel.ai/.well-known/agent-card.json
+    x-apievangelist-agent-skills: https://docs.parallel.ai/.well-known/agent-skills/index.json
     x-apievangelist-status-page: https://status.parallel.ai/
     x-apievangelist-webhooks: Standard Webhooks (HMAC-SHA256)
+    x-apievangelist-llms-txt: https://docs.parallel.ai/llms.txt
 - target: $.info
   update:
     x-apievangelist-rating-notes: >-
-      OpenAPI 3.1 with 32 operations across 6 products; API-key auth; SSE event
-      streams; Standard Webhooks; SOC 2 Type I/II. No RFC 9457 errors and no
-      idempotency contract.
+      OpenAPI 3.1 with 34 operations across 8 products (Memory and Responses added
+      since the July round); API-key auth on REST plus a published OAuth 2.0
+      authorization server (PKCE S256, dynamic client registration, scope
+      key:read) fronting the Task MCP and the A2A agent; a conformant A2A agent
+      card on api.parallel.ai; an anonymous hosted MCP server whose tools/list is
+      publicly introspectable; provider-published Agent Skills with a 0.2.0
+      discovery document. Gaps: no RFC 9457 problem+json, no idempotency
+      contract, no rate-limit response headers, no security.txt or vulnerability
+      disclosure program, and no DNSSEC.
+- target: $.info
+  update:
+    x-apievangelist-pricing: https://docs.parallel.ai/getting-started/pricing
+    x-apievangelist-pricing-model: pay-as-you-go, per-request, per product tier
+    x-apievangelist-agentic-payments: [Machine Payments Protocol, x402]
+- target: $.components.securitySchemes
+  update:
+    x-apievangelist-oauth-note: >-
+      The REST API declares only ApiKeyAuth. OAuth 2.0 (issuer
+      https://platform.parallel.ai, scope key:read) is published out-of-band via
+      RFC 8414/9728 metadata and governs the MCP and A2A surfaces, not these paths.
+- target: $.paths['/v1/tasks/runs'].post
+  update:
+    x-apievangelist-idempotency: >-
+      No idempotency key is accepted. A repeated POST creates an additional
+      billable Task Run. Failed runs are not billed.
+    x-apievangelist-mcp-tool: createDeepResearch (https://task-mcp.parallel.ai/mcp)
+    x-apievangelist-a2a-skill: research (https://api.parallel.ai/a2a)
+- target: $.paths['/v1/search'].post
+  update:
+    x-apievangelist-mcp-tool: web_search (https://search.parallel.ai/mcp, anonymous)
+    x-apievangelist-rate-limit: 600 per minute
+    x-apievangelist-price: $1/1k turbo, $5/1k basic|advanced
+- target: $.paths['/v1/extract'].post
+  update:
+    x-apievangelist-mcp-tool: web_fetch (https://search.parallel.ai/mcp, anonymous)
+    x-apievangelist-rate-limit: 600 per minute
+    x-apievangelist-price: $1 per 1,000 URLs

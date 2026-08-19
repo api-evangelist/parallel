@@ -1,34 +1,96 @@
-generated: '2026-07-20'
-method: derived
-source: openapi/parallel-openapi-original.json (4xx/5xx responses)
+generated: '2026-08-14'
+method: searched
+source: https://docs.parallel.ai/resources/warnings-and-errors
+also:
+- openapi/_original/parallel-openapi-original.json (4xx/5xx responses)
 format: json
 notes: >-
-  Parallel returns errors as application/json (not application/problem+json), so
-  this is not an RFC 9457 catalog. Statuses and descriptions are lifted verbatim
-  from the OpenAPI response objects.
+  UPGRADED from derived to searched against Parallel's published error reference.
+  Errors are returned as application/json (not application/problem+json), so this
+  is not an RFC 9457 catalog. The docs publish a retryability column, which is the
+  runtime signal an agent actually needs, so it is carried on every entry.
+envelope:
+  content_type: application/json
+  shape: |-
+    {
+      "error": {
+        "message": "Human-readable error description",
+        "detail": { }
+      }
+    }
+  fields:
+  - {name: error.message, description: Human-readable error description}
+  - {name: error.detail, description: Additional error-specific information}
 problems:
 - status: 401
   title: 'Unauthorized: invalid or missing credentials'
+  retryable: false
   remediation: Provide a valid API key in the x-api-key header. Generate keys at https://platform.parallel.ai.
 - status: 402
   title: 'Payment required: insufficient credit in account'
-  remediation: Add prepaid credit to the organization balance before retrying.
+  retryable: false
+  remediation: Add prepaid credit to the organization balance before retrying. See the 402 troubleshooting section of the error reference.
 - status: 403
   title: 'Forbidden: invalid processor in request'
-  remediation: Use a supported processor identifier for the product (Task, FindAll, Monitor).
+  retryable: false
+  remediation: Check processor availability and permissions for the product (Task, FindAll, Monitor).
 - status: 404
-  title: Resource not found (e.g. TaskGroup / run / monitor not found)
-  remediation: Verify the resource id.
+  title: Resource not found (run id, TaskGroup, monitor)
+  retryable: false
+  remediation: Verify the run id and resource existence.
 - status: 408
   title: Request timed out; run still active
+  retryable: true
   remediation: The synchronous wait timed out but the run continues; poll the run/result endpoint or use SSE.
 - status: 409
   title: Cannot cancel a terminated FindAll run
+  retryable: false
   remediation: A run in a terminal state cannot be cancelled.
+  source: openapi
 - status: 422
-  title: Request validation error
-  remediation: Fix the request body/parameters to match the schema; the response body enumerates field errors.
+  title: 'Unprocessable content: request validation failed'
+  retryable: false
+  remediation: Review error details and validate the schema; the response body enumerates field errors.
 - status: 429
-  title: 'Too many requests: quota temporarily exceeded'
-  remediation: Back off and retry; only POST create requests count against rate limits. Contact support@parallel.ai for higher limits.
+  title: 'Too many requests: rate limited or quota exceeded'
+  retryable: true
+  remediation: Implement exponential backoff. Only POST create requests count against rate limits. Contact support@parallel.ai for higher limits.
+- status: 500
+  title: Internal server error
+  retryable: true
+  remediation: Retry with backoff; contact support if persistent.
+- status: 502
+  title: Bad gateway (upstream service error)
+  retryable: true
+  remediation: Retry; usually temporary.
+- status: 503
+  title: Service unavailable
+  retryable: true
+  remediation: Retry with backoff.
+task_api_errors:
+- name: Invalid JSON Schema
+  description: The JSON schema provided in the task spec for input or output is invalid.
+  remediation: Review the schema against the JSON Schema specification.
+- name: Task Spec + Input Too Long
+  description: The combined task specification and input exceeds 25,000 characters.
+  remediation: Reduce the spec or input size; split into multiple tasks.
+- name: Too-Complex Output Schema
+  description: The output schema exceeds allowed nesting depth or field count.
+  remediation: Reduce nesting to 3 levels or fewer.
+warnings:
+- name: Input Fails Validation
+  description: The provided input does not conform to the input schema.
+  blocking: false
+- name: Task Spec + Input Over Size Limit
+  description: The combined task specification and input exceeds the character limit.
+  blocking: false
+- name: Too Many Output Fields
+  description: The number of requested output fields exceeds the recommended limit.
+  blocking: false
+- name: Basis Properties requested in output schema
+  description: >-
+    Requesting citations/confidence/evidence/reasoning/source/sources/source_urls
+    as output fields duplicates the automatic `basis` array on every Task Run
+    result.
+  blocking: false
 docs: https://docs.parallel.ai/resources/warnings-and-errors

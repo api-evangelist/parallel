@@ -1,10 +1,21 @@
-generated: '2026-07-20'
-method: searched
-source: live probes of /.well-known/ on Parallel hosts
-notes: No .well-known discovery documents are published on any Parallel host as of the probe date.
+generated: '2026-08-14'
+method: probed
+source: live probes of /.well-known/ on every Parallel host
+notes: >-
+  UPGRADE vs the 2026-07-20 round, which probed only api/docs/www and concluded
+  "no .well-known documents". Widening the probe to the agent hosts found four
+  real 200 documents: A2A agent cards on api.parallel.ai and docs.parallel.ai,
+  OAuth authorization-server metadata on platform.parallel.ai and
+  task-mcp.parallel.ai, OAuth protected-resource metadata on
+  task-mcp.parallel.ai, and an Agent Skills discovery document on
+  docs.parallel.ai. security.txt is still served nowhere. The 404 bodies on
+  www/parallel.ai and platform.parallel.ai are Next.js error shells, correctly
+  carrying a 404 status.
 hosts:
 - host: https://api.parallel.ai
   documents:
+  - {path: /.well-known/agent-card.json, status: 200, file: ../a2a/parallel-agent-card.json, type: A2A AgentCard}
+  - {path: /.well-known/agent.json, status: 404}
   - {path: /.well-known/security.txt, status: 404}
   - {path: /.well-known/openid-configuration, status: 404}
   - {path: /.well-known/oauth-authorization-server, status: 404}
@@ -12,15 +23,39 @@ hosts:
   - {path: /.well-known/ai-plugin.json, status: 404}
 - host: https://docs.parallel.ai
   documents:
+  - {path: /.well-known/agent-card.json, status: 200, file: ../a2a/parallel-docs-agent-card.json, type: A2A AgentCard}
+  - {path: '/.well-known/agent-skills/index.json', status: 200, file: ../skills/parallel-agent-skills-index.json, type: Agent Skills discovery 0.2.0}
+  - {path: '/.well-known/agent-skills/parallel/skill.md', status: 200, file: ../skills/parallel-published-skill.md, type: Agent Skill}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /.well-known/skills.json, status: 404}
   - {path: /.well-known/security.txt, status: 404}
   - {path: /.well-known/openid-configuration, status: 404}
   - {path: /.well-known/oauth-authorization-server, status: 404}
   - {path: /.well-known/api-catalog, status: 404}
   - {path: /.well-known/ai-plugin.json, status: 404}
+- host: https://platform.parallel.ai
+  documents:
+  - {path: /.well-known/oauth-authorization-server, status: 200, file: parallel-oauth-authorization-server.json, type: RFC 8414 Authorization Server Metadata}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/security.txt, status: 404}
+- host: https://task-mcp.parallel.ai
+  documents:
+  - {path: /.well-known/oauth-authorization-server, status: 200, file: parallel-task-mcp-oauth-authorization-server.json, type: RFC 8414 Authorization Server Metadata}
+  - {path: /.well-known/oauth-protected-resource, status: 200, file: parallel-task-mcp-oauth-protected-resource.json, type: RFC 9728 Protected Resource Metadata}
+  - {path: /.well-known/agent-card.json, status: 404}
+- host: https://search.parallel.ai
+  documents:
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
 - host: https://www.parallel.ai
   documents:
-  - {path: /.well-known/security.txt, status: 301}
-  - {path: /.well-known/openid-configuration, status: 301}
-  - {path: /.well-known/oauth-authorization-server, status: 301}
-  - {path: /.well-known/api-catalog, status: 301}
-  - {path: /.well-known/ai-plugin.json, status: 301}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+security_txt:
+  served: false
+  note: No host serves /.well-known/security.txt; no SecurityTxt pointer is emitted.

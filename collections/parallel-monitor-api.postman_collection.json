@@ -1,0 +1,1973 @@
+{
+  "item": [
+    {
+      "id": "42bce12d-eb9f-4811-9746-19ea89a61cac",
+      "name": "Monitor",
+      "description": {
+        "content": "The Monitor API watches the web for material changes on a fixed frequency. Each monitor runs once on creation and then on its configured schedule, emitting events when meaningful changes are detected.\n- `event_stream` monitors track a search query and emit an event for each new material change.\n- `snapshot` monitors track a specific task run's output and emit an event when the output changes.\n\nResults can be polled via the events endpoint or delivered via webhooks.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0e893c5a-9fc4-4fbf-ab2f-cffa9860b0c0",
+          "name": "Create Monitor",
+          "request": {
+            "name": "Create Monitor",
+            "description": {
+              "content": "Create a monitor.\n\nMonitors run on a fixed frequency to detect material changes in web content.\nSet `type=event_stream` to monitor a search query, or `type=snapshot` to\nmonitor a specific task run's output. The monitor runs once immediately at\ncreation, then continues on the configured schedule.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "monitors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"frequency\": \"<string>\",\n  \"settings\": {\n    \"query\": \"<string>\",\n    \"output_schema\": {\n      \"json_schema\": {\n        \"key_0\": \"string\"\n      },\n      \"type\": \"json\"\n    },\n    \"include_backfill\": \"<boolean>\",\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"exclude_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"after_date\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"location\": \"<string>\"\n    }\n  },\n  \"processor\": \"lite\",\n  \"webhook\": {\n    \"url\": \"<string>\",\n    \"event_types\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"metadata\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "21ffbe4c-a0f6-4182-bd6a-e432c51a4b4a",
+              "name": "Monitor created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"event_stream\",\n  \"frequency\": \"1h\",\n  \"settings\": {\n    \"query\": \"Extract recent news about AI\",\n    \"output_schema\": {\n      \"json_schema\": {\n        \"additionalProperties\": false,\n        \"properties\": {\n          \"gdp\": {\n            \"description\": \"GDP in USD for the year, formatted like '$3.1 trillion (2023)'\",\n            \"type\": \"string\"\n          }\n        },\n        \"required\": [\n          \"gdp\"\n        ],\n        \"type\": \"object\"\n      },\n      \"type\": \"json\"\n    },\n    \"include_backfill\": false,\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"exclude_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"after_date\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"location\": \"string\"\n    }\n  },\n  \"processor\": \"lite\",\n  \"webhook\": {\n    \"url\": \"https://example.com/webhook\",\n    \"event_types\": [\n      \"monitor.execution.failed\",\n      \"monitor.event.detected\"\n    ]\n  },\n  \"metadata\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"event_stream\",\n  \"monitor_id\": \"string\",\n  \"status\": \"active\",\n  \"frequency\": \"1h\",\n  \"processor\": \"lite\",\n  \"created_at\": \"2025-01-15T10:30:00Z\",\n  \"settings\": {\n    \"query\": \"Extract recent news about AI\",\n    \"output_schema\": {\n      \"json_schema\": {\n        \"additionalProperties\": false,\n        \"properties\": {\n          \"gdp\": {\n            \"description\": \"GDP in USD for the year, formatted like '$3.1 trillion (2023)'\",\n            \"type\": \"string\"\n          }\n        },\n        \"required\": [\n          \"gdp\"\n        ],\n        \"type\": \"object\"\n      },\n      \"type\": \"json\"\n    },\n    \"include_backfill\": false,\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"exclude_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"after_date\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"location\": \"string\"\n    }\n  },\n  \"webhook\": {\n    \"url\": \"https://example.com/webhook\",\n    \"event_types\": [\n      \"monitor.execution.completed\",\n      \"monitor.execution.completed\"\n    ]\n  },\n  \"metadata\": {\n    \"key_0\": \"string\"\n  },\n  \"last_run_at\": \"string\",\n  \"output\": {\n    \"latest_snapshot\": {\n      \"basis\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"type\": \"string\",\n      \"content\": \"string\",\n      \"mcp_tool_calls\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"beta_fields\": {\n        \"key_0\": 7065,\n        \"key_1\": 7251.299327236424,\n        \"key_2\": true\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ca40153-f147-4089-a61f-62ac2de12c4c",
+              "name": "Unauthorized: invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"event_stream\",\n  \"frequency\": \"1h\",\n  \"settings\": {\n    \"query\": \"Extract recent news about AI\",\n    \"output_schema\": {\n      \"json_schema\": {\n        \"additionalProperties\": false,\n        \"properties\": {\n          \"gdp\": {\n            \"description\": \"GDP in USD for the year, formatted like '$3.1 trillion (2023)'\",\n            \"type\": \"string\"\n          }\n        },\n        \"required\": [\n          \"gdp\"\n        ],\n        \"type\": \"object\"\n      },\n      \"type\": \"json\"\n    },\n    \"include_backfill\": false,\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"exclude_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"after_date\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"location\": \"string\"\n    }\n  },\n  \"processor\": \"lite\",\n  \"webhook\": {\n    \"url\": \"https://example.com/webhook\",\n    \"event_types\": [\n      \"monitor.execution.failed\",\n      \"monitor.event.detected\"\n    ]\n  },\n  \"metadata\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"Unauthorized: invalid or missing credentials\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e60f93c7-1616-4d17-8d5b-806dd4c0d937",
+              "name": "Unprocessable content: request validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"event_stream\",\n  \"frequency\": \"1h\",\n  \"settings\": {\n    \"query\": \"Extract recent news about AI\",\n    \"output_schema\": {\n      \"json_schema\": {\n        \"additionalProperties\": false,\n        \"properties\": {\n          \"gdp\": {\n            \"description\": \"GDP in USD for the year, formatted like '$3.1 trillion (2023)'\",\n            \"type\": \"string\"\n          }\n        },\n        \"required\": [\n          \"gdp\"\n        ],\n        \"type\": \"object\"\n      },\n      \"type\": \"json\"\n    },\n    \"include_backfill\": false,\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"exclude_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"after_date\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"location\": \"string\"\n    }\n  },\n  \"processor\": \"lite\",\n  \"webhook\": {\n    \"url\": \"https://example.com/webhook\",\n    \"event_types\": [\n      \"monitor.execution.failed\",\n      \"monitor.event.detected\"\n    ]\n  },\n  \"metadata\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"Unprocessable content: request validation error\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce459ffd-0b07-4e68-b302-c917790f6d44",
+          "name": "List Monitors",
+          "request": {
+            "name": "List Monitors",
+            "description": {
+              "content": "List monitors ordered by creation time, newest first.\n\nMonitors are sorted by `created_at` descending. `limit` defaults to 100.\nUse `next_cursor` from the response and pass it as `cursor` to fetch the\nnext page. Pagination ends when `next_cursor` is absent.\n\nBy default only `active` monitors are returned. Pass `status=cancelled`\nor both values to include cancelled monitors.\n\nThe legacy Monitor API (`/v1alpha/monitors` endpoints) is documented under\nthe `Monitor (Alpha)` tag.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "monitors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Pagination token from `next_cursor` in a previous response. Omit to start from the most recently created monitor."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of monitors to return. Defaults to 100. Between 1 and 10000."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by monitor type. Pass multiple times to filter by multiple values. Omit to return all types."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by monitor type. Pass multiple times to filter by multiple values. Omit to return all types."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by monitor status. Pass multiple times to filter by multiple values. Defaults to `active` only."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by monitor status. Pass multiple times to filter by multiple values. Defaults to `active` only."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f288b1d6-55f0-42a4-b39a-878751edfde4",
+              "name": "Paginated list of monitors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"monitors\": [\n    {\n      \"type\": \"event_stream\",\n      \"monitor_id\": \"string\",\n      \"status\": \"active\",\n      \"frequency\": \"1h\",\n      \"processor\": \"lite\",\n      \"created_at\": \"2025-01-15T10:30:00Z\",\n      \"settings\": {\n        \"query\": \"Extract recent news about AI\",\n        \"output_schema\": {\n          \"json_schema\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"include_backfill\": false,\n        \"advanced_settings\": {\n          \"source_policy\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"location\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"webhook\": {\n        \"url\": \"https://example.com/webhook\",\n        \"event_types\": [\n          \"monitor.execution.failed\",\n          \"monitor.event.detected\"\n        ]\n      },\n      \"metadata\": {\n        \"key_0\": \"string\"\n      },\n      \"last_run_at\": \"string\",\n      \"output\": {\n        \"latest_snapshot\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    {\n      \"type\": \"event_stream\",\n      \"monitor_id\": \"string\",\n      \"status\": \"active\",\n      \"frequency\": \"1h\",\n      \"processor\": \"lite\",\n      \"created_at\": \"2025-01-15T10:30:00Z\",\n      \"settings\": {\n        \"query\": \"Extract recent news about AI\",\n        \"output_schema\": {\n          \"json_schema\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"include_backfill\": false,\n        \"advanced_settings\": {\n          \"source_policy\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"location\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"webhook\": {\n        \"url\": \"https://example.com/webhook\",\n        \"event_types\": [\n          \"monitor.execution.completed\",\n          \"monitor.execution.failed\"\n        ]\n      },\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"last_run_at\": \"string\",\n      \"output\": {\n        \"latest_snapshot\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    }\n  ],\n  \"next_cursor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "398399a6-4635-47a1-963d-b26403f754f9",
+              "name": "Unauthorized: invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"Unauthorized: invalid or missing credentials\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e87c3715-f59f-4598-80f5-386e4840e2fc",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b0aa0024-e2b7-40b4-b7af-539fce00570b",
+          "name": "Retrieve Monitor",
+          "request": {
+            "name": "Retrieve Monitor",
+            "description": {
+              "content": "Retrieve a monitor.\n\nRetrieves a specific monitor by `monitor_id`. Returns the monitor\nconfiguration including status, frequency, query, and webhook settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "monitors",
+                ":monitor_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "monitor_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "473872b7-c198-4c99-8888-6af9d4bc2fd5",
+              "name": "Monitor retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors",
+                    ":monitor_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"event_stream\",\n  \"monitor_id\": \"string\",\n  \"status\": \"active\",\n  \"frequency\": \"1h\",\n  \"processor\": \"lite\",\n  \"created_at\": \"2025-01-15T10:30:00Z\",\n  \"settings\": {\n    \"query\": \"Extract recent news about AI\",\n    \"output_schema\": {\n      \"json_schema\": {\n        \"additionalProperties\": false,\n        \"properties\": {\n          \"gdp\": {\n            \"description\": \"GDP in USD for the year, formatted like '$3.1 trillion (2023)'\",\n            \"type\": \"string\"\n          }\n        },\n        \"required\": [\n          \"gdp\"\n        ],\n        \"type\": \"object\"\n      },\n      \"type\": \"json\"\n    },\n    \"include_backfill\": false,\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"exclude_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"after_date\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"location\": \"string\"\n    }\n  },\n  \"webhook\": {\n    \"url\": \"https://example.com/webhook\",\n    \"event_types\": [\n      \"monitor.execution.completed\",\n      \"monitor.execution.completed\"\n    ]\n  },\n  \"metadata\": {\n    \"key_0\": \"string\"\n  },\n  \"last_run_at\": \"string\",\n  \"output\": {\n    \"latest_snapshot\": {\n      \"basis\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"type\": \"string\",\n      \"content\": \"string\",\n      \"mcp_tool_calls\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"beta_fields\": {\n        \"key_0\": 7065,\n        \"key_1\": 7251.299327236424,\n        \"key_2\": true\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34c9cb22-50fa-426e-a001-344c94b239fe",
+              "name": "Unauthorized: invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors",
+                    ":monitor_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"Unauthorized: invalid or missing credentials\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d54ebfc-4851-43e6-97ba-c880004a1b70",
+              "name": "Monitor not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors",
+                    ":monitor_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"Monitor not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a912a647-79de-42e2-bf17-376b28b858c0",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors",
+                    ":monitor_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53c23d33-feb5-469b-8610-dc098991ee63",
+          "name": "Cancel Monitor",
+          "request": {
+            "name": "Cancel Monitor",
+            "description": {
+              "content": "Cancel a monitor.\n\nPermanently stops the monitor from running. Cancellation is irreversible —\ncreate a new monitor to resume monitoring. Cancelling an already-cancelled\nmonitor is a no-op.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "monitors",
+                ":monitor_id",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "monitor_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "483acd33-2042-4f6a-ba97-a0e426d1c52b",
+              "name": "Monitor cancelled successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors",
+                    ":monitor_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"event_stream\",\n  \"monitor_id\": \"string\",\n  \"status\": \"active\",\n  \"frequency\": \"1h\",\n  \"processor\": \"lite\",\n  \"created_at\": \"2025-01-15T10:30:00Z\",\n  \"settings\": {\n    \"query\": \"Extract recent news about AI\",\n    \"output_schema\": {\n      \"json_schema\": {\n        \"additionalProperties\": false,\n        \"properties\": {\n          \"gdp\": {\n            \"description\": \"GDP in USD for the year, formatted like '$3.1 trillion (2023)'\",\n            \"type\": \"string\"\n          }\n        },\n        \"required\": [\n          \"gdp\"\n        ],\n        \"type\": \"object\"\n      },\n      \"type\": \"json\"\n    },\n    \"include_backfill\": false,\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"exclude_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"after_date\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"location\": \"string\"\n    }\n  },\n  \"webhook\": {\n    \"url\": \"https://example.com/webhook\",\n    \"event_types\": [\n      \"monitor.execution.completed\",\n      \"monitor.execution.completed\"\n    ]\n  },\n  \"metadata\": {\n    \"key_0\": \"string\"\n  },\n  \"last_run_at\": \"string\",\n  \"output\": {\n    \"latest_snapshot\": {\n      \"basis\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"type\": \"string\",\n      \"content\": \"string\",\n      \"mcp_tool_calls\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"beta_fields\": {\n        \"key_0\": 7065,\n        \"key_1\": 7251.299327236424,\n        \"key_2\": true\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83b55b66-4844-455c-a6ed-6e29df6c19ae",
+              "name": "Unauthorized: invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors",
+                    ":monitor_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"Unauthorized: invalid or missing credentials\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c7b7998b-1177-419f-ad21-2b883a1eb4cc",
+              "name": "Monitor not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors",
+                    ":monitor_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"Monitor not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3a03e13f-08b4-485c-9c68-dfd525378e81",
+              "name": "Unprocessable content: request validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors",
+                    ":monitor_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"Unprocessable content: request validation error\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "baffe1bf-599b-4106-9b39-fde320dd34ee",
+          "name": "List Monitor Events",
+          "request": {
+            "name": "List Monitor Events",
+            "description": {
+              "content": "List events for a monitor, newest first.\n\nPass `event_group_id` to narrow results to a single execution. Otherwise\nreturns all executions newest-first; use `next_cursor` to paginate.\nSet `include_completions=true` to also include no-change executions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "monitors",
+                ":monitor_id",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "event_group_id",
+                  "value": "<string>",
+                  "description": "Filter to a single execution. Values come from `event_group_id` in webhook events and listed events. Pagination params are ignored when set."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Pass `next_cursor` from a previous response to retrieve more events."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of events to return. Defaults to 20. Between 1 and 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_completions",
+                  "value": "false",
+                  "description": "When true, include completion events for executions that ran but detected no material changes. Useful for auditing execution history."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "monitor_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f45cf0e8-08f0-4c6f-9d6e-7f4e227a0fb3",
+              "name": "Monitor events retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors",
+                    ":monitor_id",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "event_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "include_completions",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"events\": [\n    {\n      \"event_id\": \"string\",\n      \"event_group_id\": \"string\",\n      \"event_date\": \"string\",\n      \"output\": {\n        \"basis\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"type\": \"string\",\n        \"content\": \"string\",\n        \"mcp_tool_calls\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"beta_fields\": {\n          \"key_0\": 4039.839597217699,\n          \"key_1\": 9763\n        }\n      },\n      \"event_type\": \"event_stream\"\n    },\n    {\n      \"event_id\": \"string\",\n      \"event_group_id\": \"string\",\n      \"event_date\": \"string\",\n      \"output\": {\n        \"basis\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"type\": \"string\",\n        \"content\": \"string\",\n        \"mcp_tool_calls\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"beta_fields\": {\n          \"key_0\": 5812.626516273529,\n          \"key_1\": true,\n          \"key_2\": 4607.206117307302,\n          \"key_3\": \"string\"\n        }\n      },\n      \"event_type\": \"event_stream\"\n    }\n  ],\n  \"next_cursor\": \"string\",\n  \"warnings\": [\n    {\n      \"type\": \"spec_validation_warning\",\n      \"message\": \"string\",\n      \"detail\": {\n        \"key_0\": 9241.589232944209,\n        \"key_1\": 2761,\n        \"key_2\": \"string\"\n      }\n    },\n    {\n      \"type\": \"spec_validation_warning\",\n      \"message\": \"string\",\n      \"detail\": {\n        \"key_0\": 9656.061112179485,\n        \"key_1\": 5667.537007531234\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9758e0c-b765-49f2-9e30-6a885b4e744e",
+              "name": "Unauthorized: invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors",
+                    ":monitor_id",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "event_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "include_completions",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"Unauthorized: invalid or missing credentials\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c646c4e-34f8-4509-a29b-ce90352c57fe",
+              "name": "Monitor not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors",
+                    ":monitor_id",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "event_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "include_completions",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"Monitor not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "870519a8-5c3d-4260-92cf-b58ebd9d9070",
+              "name": "Unprocessable content: invalid cursor or request validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors",
+                    ":monitor_id",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "event_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "include_completions",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"Unprocessable content: invalid cursor or request validation error\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05ad458e-91cd-46e0-90bd-df1ffa3999a7",
+          "name": "Trigger Monitor Run",
+          "request": {
+            "name": "Trigger Monitor Run",
+            "description": {
+              "content": "Trigger an immediate monitor run.\n\nEnqueues a one-off execution of the monitor outside its normal schedule.\nThe monitor's regular schedule is not affected. An event is only emitted\nif the execution detects a material change. Cancelled monitors cannot be\ntriggered.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "monitors",
+                ":monitor_id",
+                "trigger"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "monitor_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1341feb5-b5d6-4def-9491-84fedd7fa542",
+              "name": "Monitor run enqueued.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors",
+                    ":monitor_id",
+                    "trigger"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "14f436d1-bbcc-43eb-a831-e127b799d118",
+              "name": "Unauthorized: invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors",
+                    ":monitor_id",
+                    "trigger"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"Unauthorized: invalid or missing credentials\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "016d2cbd-a170-4a39-ac13-64b73943cfd5",
+              "name": "Monitor not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors",
+                    ":monitor_id",
+                    "trigger"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"Monitor not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "41f267d3-f9df-4d22-8c3f-d7edde38a940",
+              "name": "Unprocessable content: request validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors",
+                    ":monitor_id",
+                    "trigger"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"Unprocessable content: request validation error\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70b1078d-ad6c-40c5-a2c0-33921cbe4a57",
+          "name": "Update Monitor",
+          "request": {
+            "name": "Update Monitor",
+            "description": {
+              "content": "Update a monitor.\n\nOnly fields explicitly included in the request body are changed. Pass\n`null` for `webhook` or `metadata` to clear those fields. Pass `type` and\n`settings` to update type-specific settings on an `event_stream` monitor.\nAt least one field must be provided. Cancelled monitors cannot be updated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "monitors",
+                ":monitor_id",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "monitor_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"frequency\": \"<string>\",\n  \"webhook\": {\n    \"url\": \"<string>\",\n    \"event_types\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"metadata\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"settings\": {\n    \"query\": \"<string>\",\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"exclude_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"after_date\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"location\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "65ab9b50-8568-4863-bd71-575b8a889ad8",
+              "name": "Monitor updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors",
+                    ":monitor_id",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"frequency\": \"<string>\",\n  \"webhook\": {\n    \"url\": \"https://example.com/webhook\",\n    \"event_types\": [\n      \"monitor.execution.failed\",\n      \"monitor.execution.completed\"\n    ]\n  },\n  \"metadata\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"settings\": {\n    \"query\": \"string\",\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"exclude_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"after_date\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"location\": \"string\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"event_stream\",\n  \"monitor_id\": \"string\",\n  \"status\": \"active\",\n  \"frequency\": \"1h\",\n  \"processor\": \"lite\",\n  \"created_at\": \"2025-01-15T10:30:00Z\",\n  \"settings\": {\n    \"query\": \"Extract recent news about AI\",\n    \"output_schema\": {\n      \"json_schema\": {\n        \"additionalProperties\": false,\n        \"properties\": {\n          \"gdp\": {\n            \"description\": \"GDP in USD for the year, formatted like '$3.1 trillion (2023)'\",\n            \"type\": \"string\"\n          }\n        },\n        \"required\": [\n          \"gdp\"\n        ],\n        \"type\": \"object\"\n      },\n      \"type\": \"json\"\n    },\n    \"include_backfill\": false,\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"exclude_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"after_date\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"location\": \"string\"\n    }\n  },\n  \"webhook\": {\n    \"url\": \"https://example.com/webhook\",\n    \"event_types\": [\n      \"monitor.execution.completed\",\n      \"monitor.execution.completed\"\n    ]\n  },\n  \"metadata\": {\n    \"key_0\": \"string\"\n  },\n  \"last_run_at\": \"string\",\n  \"output\": {\n    \"latest_snapshot\": {\n      \"basis\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"type\": \"string\",\n      \"content\": \"string\",\n      \"mcp_tool_calls\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"beta_fields\": {\n        \"key_0\": 7065,\n        \"key_1\": 7251.299327236424,\n        \"key_2\": true\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "634e42bd-4e55-458a-bf19-fb47d75dc959",
+              "name": "Unauthorized: invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors",
+                    ":monitor_id",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"frequency\": \"<string>\",\n  \"webhook\": {\n    \"url\": \"https://example.com/webhook\",\n    \"event_types\": [\n      \"monitor.execution.failed\",\n      \"monitor.execution.completed\"\n    ]\n  },\n  \"metadata\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"settings\": {\n    \"query\": \"string\",\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"exclude_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"after_date\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"location\": \"string\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"Unauthorized: invalid or missing credentials\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2087e91c-1607-4ae0-bf93-23d700269c62",
+              "name": "Monitor not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors",
+                    ":monitor_id",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"frequency\": \"<string>\",\n  \"webhook\": {\n    \"url\": \"https://example.com/webhook\",\n    \"event_types\": [\n      \"monitor.execution.failed\",\n      \"monitor.execution.completed\"\n    ]\n  },\n  \"metadata\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"settings\": {\n    \"query\": \"string\",\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"exclude_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"after_date\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"location\": \"string\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"Monitor not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f01895cc-ed67-436f-8f75-324439a2a7df",
+              "name": "Unprocessable content: request validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "monitors",
+                    ":monitor_id",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitor_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"frequency\": \"<string>\",\n  \"webhook\": {\n    \"url\": \"https://example.com/webhook\",\n    \"event_types\": [\n      \"monitor.execution.failed\",\n      \"monitor.execution.completed\"\n    ]\n  },\n  \"metadata\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"settings\": {\n    \"query\": \"string\",\n    \"advanced_settings\": {\n      \"source_policy\": {\n        \"include_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"exclude_domains\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"after_date\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"location\": \"string\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"error\",\n  \"error\": {\n    \"ref_id\": \"fcb2b4f3-c75e-4186-87bc-caa1a8381331\",\n    \"message\": \"Unprocessable content: request validation error\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.parallel.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "31532de7-2949-46f6-8f27-728de8622f03",
+    "name": "Parallel Chat API (Beta) Chat API (Beta) Monitor API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Parallel API\n\nContact Support:\n Name: Parallel Support\n Email: support@parallel.ai",
+      "type": "text/plain"
+    }
+  }
+}

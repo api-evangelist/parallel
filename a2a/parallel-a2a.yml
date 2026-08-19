@@ -1,0 +1,103 @@
+generated: '2026-08-14'
+method: probed
+source: https://api.parallel.ai/.well-known/agent-card.json
+notes: >-
+  Parallel serves TWO A2A Agent Cards from its own hosts. The primary card
+  (api.parallel.ai) describes a real, callable A2A agent — "Parallel Deep
+  Research" — whose endpoint https://api.parallel.ai/a2a answers a JSON-RPC POST
+  with HTTP 401 (Apigee OAuth key challenge), confirming a live auth-gated A2A
+  surface rather than a static document. A second, lighter card on the docs host
+  points at the documentation site and links a published Agent Skill.
+discovery:
+  path: /.well-known/agent-card.json
+  canonical: true
+  host: api.parallel.ai
+x-evidence:
+  fetched: '2026-08-14'
+  url: https://api.parallel.ai/.well-known/agent-card.json
+  http_status: 200
+  content_type: application/json
+  endpoint_probe:
+    url: https://api.parallel.ai/a2a
+    method: POST
+    http_status: 401
+    body: '{"fault":{"faultstring":"Failed to resolve API Key variable extracted.apikey",...}}'
+    interpretation: Live A2A endpoint, auth-gated. Not a 404 and not an SPA catch-all.
+cards:
+- file: parallel-agent-card.json
+  primary: true
+  host: api.parallel.ai
+  url: https://api.parallel.ai/.well-known/agent-card.json
+  http_status: 200
+  name: Parallel Deep Research
+  agent_url: https://api.parallel.ai/a2a
+  protocol_version: 0.3.0
+  preferred_transport: HTTP+JSON
+  version: 1.0.0
+  grade: conformant
+  checks:
+    capabilities_is_object: true
+    protocol_version_present: true
+    skills_is_array: true
+    preferred_transport_present: true
+    default_input_modes_present: true
+    default_output_modes_present: true
+  deviations:
+  - >-
+    protocolVersion is 0.3.0, the pre-1.0 A2A revision. The card carries no hard
+    failure against A2A 1.0.0 shape checks, but it is not declared against 1.0.0.
+  capabilities:
+    streaming: true
+    pushNotifications: false
+  security:
+    scheme: parallel_oauth
+    type: oauth2
+    flow: authorizationCode
+    authorization_url: https://platform.parallel.ai/getKeys/authorize
+    token_url: https://platform.parallel.ai/getKeys/token
+    scopes:
+    - key:read
+    see: scopes/parallel-scopes.yml
+  skills:
+  - id: research
+    name: Deep Research
+    input_modes: [text/plain]
+    output_modes: [text/markdown]
+    tags: [research, web, citations, report]
+- file: parallel-docs-agent-card.json
+  primary: false
+  host: docs.parallel.ai
+  url: https://docs.parallel.ai/.well-known/agent-card.json
+  http_status: 200
+  name: Parallel
+  agent_url: https://docs.parallel.ai/
+  protocol_version: '0.3'
+  preferred_transport: HTTP+JSON
+  version: 1.0.0
+  grade: conformant
+  checks:
+    capabilities_is_object: true
+    protocol_version_present: true
+    skills_is_array: true
+    preferred_transport_present: true
+    default_input_modes_present: true
+    default_output_modes_present: true
+  deviations:
+  - >-
+    The card's `url` and `provider.url` both point at the documentation site
+    (https://docs.parallel.ai/) rather than an A2A message endpoint, so the card
+    advertises discovery/skill metadata more than a callable A2A agent.
+  - protocolVersion is '0.3' (pre-1.0), and the single skill declares an empty tags[].
+  skills:
+  - id: parallel
+    name: Parallel
+    skill_document: https://docs.parallel.ai/.well-known/agent-skills/parallel/skill.md
+    see: skills/parallel-published-skill.md
+misses:
+- {url: 'https://api.parallel.ai/.well-known/agent.json', status: 404}
+- {url: 'https://www.parallel.ai/.well-known/agent-card.json', status: 404}
+- {url: 'https://parallel.ai/.well-known/agent-card.json', status: 404}
+- {url: 'https://platform.parallel.ai/.well-known/agent-card.json', status: 404}
+- {url: 'https://search.parallel.ai/.well-known/agent-card.json', status: 404}
+- {url: 'https://task-mcp.parallel.ai/.well-known/agent-card.json', status: 404}
+- {url: 'https://docs.parallel.ai/.well-known/agent.json', status: 404}

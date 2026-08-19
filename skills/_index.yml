@@ -1,16 +1,49 @@
-generated: '2026-07-20'
-method: generated
-source: >-
-  Grounded in openapi/parallel-openapi-original.json operationIds. Parallel also
-  publishes agent skills at github.com/parallel-web/parallel-agent-skills
-  (parallel-web-search, parallel-web-extract, parallel-deep-research,
-  parallel-data-enrichment), installable via `npx skills add parallel-web/parallel-agent-skills`.
+generated: '2026-08-14'
+method: searched
+source: https://docs.parallel.ai/.well-known/agent-skills/index.json
+notes: >-
+  Parallel PUBLISHES Agent Skills itself. A discovery document conforming to
+  schemas.agentskills.io/discovery/0.2.0 is served at
+  https://docs.parallel.ai/.well-known/agent-skills/index.json (HTTP 200), and it
+  points at a skill.md we have saved verbatim. Parallel additionally ships four
+  installable skills in a public repo, installed via `npx skills add`. The two
+  API-Evangelist-generated skills below remain as narrow, operationId-grounded
+  flows and are marked as such.
+published:
+  discovery_url: https://docs.parallel.ai/.well-known/agent-skills/index.json
+  http_status: 200
+  schema: https://schemas.agentskills.io/discovery/0.2.0/schema.json
+  skills:
+  - name: parallel
+    type: skill-md
+    url: https://docs.parallel.ai/.well-known/agent-skills/parallel/skill.md
+    digest: sha256:d1551cc96049b506ce42e32d571972fdfec9cc2605b042e28a39489f6bcc9701
+    file: parallel-published-skill.md
+  repo:
+    url: https://github.com/parallel-web/parallel-agent-skills
+    install: npx skills add parallel-web/parallel-agent-skills --all --global
+    docs: https://docs.parallel.ai/integrations/agent-skills
+    skills:
+    - {name: parallel-web-search, description: 'Fast web search for current events, fact-checking, and lookups'}
+    - {name: parallel-web-extract, description: 'Extract clean content from URLs, including JavaScript-heavy sites and PDFs'}
+    - {name: parallel-deep-research, description: 'Exhaustive, multi-source research reports with configurable depth'}
+    - {name: parallel-data-enrichment, description: 'Bulk enrichment of companies, people, or products with web-sourced data'}
+    prerequisites:
+    - pipx install "parallel-web-tools[cli]"
+    - parallel-cli login   # or export PARALLEL_API_KEY
 skills:
+- file: parallel-published-skill.md
+  name: Parallel
+  method: searched
+  source: https://docs.parallel.ai/.well-known/agent-skills/parallel/skill.md
+  official: true
 - file: parallel-search-and-extract.md
   name: Search the web and extract page content
+  method: generated
   api: openapi/parallel-openapi-original.json
   operations: [v1_search_v1_search_post, extract_v1_extract_post]
 - file: parallel-deep-research.md
   name: Run a deep-research Task and fetch the result
+  method: generated
   api: openapi/parallel-openapi-original.json
   operations: [tasks_runs_post_v1_tasks_runs_post, tasks_runs_get_v1_tasks_runs__run_id__get, tasks_runs_result_get_v1_tasks_runs__run_id__result_get]

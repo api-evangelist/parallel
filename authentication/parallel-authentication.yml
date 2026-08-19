@@ -1,9 +1,20 @@
-generated: '2026-07-20'
-method: derived
-source: openapi/parallel-openapi-original.json
+generated: '2026-08-14'
+method: searched
+source: >-
+  openapi/_original/parallel-openapi-original.json +
+  https://docs.parallel.ai/resources/faqs +
+  https://platform.parallel.ai/.well-known/oauth-authorization-server (probed 200)
+notes: >-
+  Two distinct authentication regimes. The REST API is API-key only. The AGENT
+  surfaces (Task MCP, A2A Deep Research agent, CLI login) additionally accept
+  OAuth 2.0 against an authorization server at platform.parallel.ai whose
+  metadata is publicly published — it supports dynamic client registration, PKCE
+  (S256), authorization_code and device_code, and a single scope `key:read`. The
+  OAuth exchange returns a Parallel API key used as a bearer token.
 summary:
   types:
   - apiKey
+  - oauth2
   api_key_in:
   - header
 schemes:
@@ -11,5 +22,48 @@ schemes:
   type: apiKey
   in: header
   parameter: x-api-key
+  applies_to: https://api.parallel.ai REST API (all operations)
+  key_management: https://platform.parallel.ai (default key generated at signup; manage under Settings)
+  env_var: PARALLEL_API_KEY
   sources:
-  - openapi/parallel-openapi-original.json
+  - openapi/_original/parallel-openapi-original.json
+- name: parallel_oauth
+  type: oauth2
+  flows:
+  - type: authorizationCode
+    authorization_url: https://platform.parallel.ai/getKeys/authorize
+    token_url: https://platform.parallel.ai/getKeys/token
+    pkce: S256
+    scopes: [key:read]
+  - type: deviceCode
+    device_authorization_endpoint: https://platform.parallel.ai/getKeys/device/code
+    scopes: [key:read]
+  registration_endpoint: https://platform.parallel.ai/getKeys/register
+  dynamic_client_registration: true
+  token_endpoint_auth_methods_supported: [none]
+  applies_to:
+  - https://task-mcp.parallel.ai/mcp
+  - https://search.parallel.ai/mcp-oauth
+  - https://api.parallel.ai/a2a
+  - parallel-cli login
+  sources:
+  - well-known/parallel-oauth-authorization-server.json
+  - well-known/parallel-task-mcp-oauth-protected-resource.json
+  - a2a/parallel-agent-card.json
+bearer:
+  supported: true
+  note: >-
+    A Parallel API key may also be presented as `Authorization: Bearer <key>` on
+    the MCP endpoints (documented for raising Search MCP rate limits).
+anonymous:
+  supported: true
+  surfaces:
+  - https://search.parallel.ai/mcp
+  note: The free Search MCP requires no account and no key; session_id is used for free-tier rate limiting.
+webhook_auth:
+  standard: Standard Webhooks
+  algorithm: HMAC-SHA256
+  secret_prefix: whsec_
+  see: asyncapi/parallel-webhooks.yml
+scopes: scopes/parallel-scopes.yml
+docs: https://docs.parallel.ai/getting-started/overview

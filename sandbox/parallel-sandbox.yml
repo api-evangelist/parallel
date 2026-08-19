@@ -1,0 +1,71 @@
+generated: '2026-08-14'
+method: searched
+source: >-
+  https://docs.parallel.ai/findall-api/features/findall-preview +
+  https://parallel.ai/pricing + https://docs.parallel.ai/integrations/mcp/search-mcp
+notes: >-
+  Parallel publishes NO separate sandbox environment. There is no test host, no
+  test-mode key prefix, no test/live key split, no fixtures and no time
+  simulation — every call goes to production api.parallel.ai against the live
+  web, which is inherent to a web-research API. What Parallel does publish
+  instead is a set of low-cost and no-cost ways to try a call before committing:
+  hosted playgrounds, a FindAll `preview` generator, an anonymous free MCP
+  endpoint, and monthly free credits. Those are captured below verbatim. Nothing
+  here is invented; absent fields are recorded as absent.
+separate_sandbox_environment: false
+test_mode: false
+key_prefixes:
+  test: null
+  live: null
+  note: Single key type, sent as x-api-key. No test/live distinction is documented.
+test_clocks: false
+fixtures: false
+test_data: null
+trial_surfaces:
+- kind: playground
+  name: Task playground
+  url: https://platform.parallel.ai/play/task
+  http_status: 200
+  auth: platform account
+- kind: playground
+  name: Search playground
+  url: https://platform.parallel.ai/play/search
+  http_status: 200
+  auth: platform account
+- kind: playground
+  name: Extract playground
+  url: https://platform.parallel.ai/play/extract
+  auth: platform account
+- kind: playground
+  name: Monitor playground
+  url: https://platform.parallel.ai/play/monitor
+  auth: platform account
+- kind: playground
+  name: Find All playground
+  url: https://platform.parallel.ai/play/find-all
+  auth: platform account
+- kind: anonymous-endpoint
+  name: Search MCP (free tier)
+  url: https://search.parallel.ai/mcp
+  auth: none
+  note: >-
+    Callable with no account and no API key — the closest thing Parallel has to a
+    zero-friction try-before-you-buy surface. Verified live 2026-08-14.
+  docs: https://docs.parallel.ai/integrations/mcp/search-mcp
+cheap_preview_modes:
+- product: FindAll
+  parameter: 'generator: "preview"'
+  match_limit: 5-10
+  cost: $0.10 fixed, $0.00 per match
+  purpose: >-
+    Validate query structure, match conditions and enrichment schema on a small
+    candidate sample before committing to a full run. Same endpoint as a real run.
+  docs: https://docs.parallel.ai/findall-api/features/findall-preview
+free_allowance:
+  signup_credit: Up to $80 at signup
+  monthly_credit: $5 in free credits per month
+  free_requests: Up to 5,000 requests per month
+  source: https://parallel.ai/pricing
+billing_safety:
+  failed_runs_billed: false
+  note: Task API charges only successfully completed runs; Responses API charges only successful responses.

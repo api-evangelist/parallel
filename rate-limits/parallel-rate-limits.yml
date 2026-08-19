@@ -1,29 +1,69 @@
-generated: '2026-07-20'
+generated: '2026-08-14'
 method: searched
 source: https://docs.parallel.ai/getting-started/rate-limits
+also:
+- https://parallel.ai/pricing
 notes: >-
   Only POST requests that create new resources are rate-limited; GET requests
   (retrieving results, checking status) do not count. Contact support@parallel.ai
-  for higher limits.
+  for higher limits. Each limit below names the exact operation it counts, taken
+  verbatim from the published table.
+limit_count: 7
+response_headers:
+  documented: false
+  note: >-
+    Parallel documents the numeric quotas but publishes NO rate-limit response
+    headers — no X-RateLimit-*, no RateLimit-*, no Retry-After is described in the
+    rate-limit page or the error reference. An agent therefore has no runtime
+    signal of remaining budget and can only detect exhaustion by receiving the
+    error status. This is the single largest DX gap in Parallel's runtime
+    semantics.
+exhaustion:
+  status: 429
+  meaning: Too Many Requests — rate limited or quota exceeded
+  retryable: true
+  guidance: Implement exponential backoff.
+  see: errors/parallel-problem-types.yml
+scope: per-account API key, counted per product endpoint; POST-create only
 limits:
 - endpoint: Search
-  limit_count: 600
+  operation: POST /v1/search
+  limit: 600
   window: minute
 - endpoint: Extract
-  limit_count: 600
+  operation: POST /v1/extract
+  limit: 600
   window: minute
 - endpoint: Tasks / TaskGroups
-  limit_count: 2000
+  operation: POST /v1/tasks/runs or POST /v1/tasks/groups/{taskgroup_id}/runs
+  limit: 2000
   window: minute
 - endpoint: Chat
-  limit_count: 300
+  operation: POST /v1beta/chat/completions
+  limit: 300
   window: minute
 - endpoint: FindAll
-  limit_count: 300
+  operation: POST /v1beta/findall/runs
+  limit: 300
   window: hour
+  discrepancy: >-
+    The pricing page (https://parallel.ai/pricing) states a FindAll limit of
+    "25 / hr", against "300 per hour" on the rate-limits page. Both are published
+    by Parallel and they disagree; the rate-limits page is treated as canonical
+    here and the conflict is recorded rather than resolved.
 - endpoint: Entity Search
-  limit_count: 600
+  operation: POST /v1beta/findall/entity-search
+  limit: 600
   window: minute
 - endpoint: Monitor
-  limit_count: 300
+  operation: POST /v1alpha/monitors
+  limit: 300
   window: minute
+  note: >-
+    The rate-limit page still names the v1alpha monitor path; the current OpenAPI
+    publishes POST /v1/monitors.
+free_tier:
+  surface: https://search.parallel.ai/mcp
+  mechanism: session_id-based free-tier rate limiting; an API key as a Bearer token raises limits.
+  docs: https://docs.parallel.ai/integrations/mcp/search-mcp
+higher_limits_contact: support@parallel.ai

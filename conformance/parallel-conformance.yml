@@ -1,19 +1,62 @@
-generated: '2026-07-20'
+generated: '2026-08-14'
 method: searched
-source: openapi/parallel-openapi-original.json + https://docs.parallel.ai (FAQs, webhook-setup)
+source: >-
+  openapi/_original/parallel-openapi-original.json + https://docs.parallel.ai
+  (FAQs, webhook-setup, MCP, agent-skills) + live /.well-known probes 2026-08-14
 standards:
 - id: openapi-3.1
   conforms: true
-  evidence: Publishes an OpenAPI 3.1.0 document at https://docs.parallel.ai/public-openapi.json
+  evidence: Publishes an OpenAPI 3.1.0 document at https://docs.parallel.ai/docs-latest-openapi.json (34 operations, info.title "Parallel API", servers https://api.parallel.ai).
 - id: api-key-auth
   conforms: true
   evidence: securityScheme ApiKeyAuth (apiKey in header x-api-key)
 - id: oauth2
-  conforms: false
-  evidence: Public API is API-key only; OAuth 2.0 device flow exists only on the separate Account/Service API.
+  conforms: true
+  evidence: >-
+    UPGRADED 2026-08-14. Authorization server metadata is published at
+    https://platform.parallel.ai/.well-known/oauth-authorization-server (HTTP 200)
+    with authorization_code + device_code grants, PKCE S256, and scope key:read.
+    Used by the Task MCP server, the A2A agent and the CLI. The REST API itself
+    remains API-key only.
+- id: rfc8414-oauth-authorization-server-metadata
+  conforms: true
+  evidence: /.well-known/oauth-authorization-server served 200 on platform.parallel.ai and task-mcp.parallel.ai.
+- id: rfc9728-oauth-protected-resource-metadata
+  conforms: true
+  evidence: /.well-known/oauth-protected-resource served 200 on task-mcp.parallel.ai, naming platform.parallel.ai as the authorization server.
+- id: rfc7636-pkce
+  conforms: true
+  evidence: code_challenge_methods_supported ["S256"] in the published authorization server metadata.
+- id: rfc7591-dynamic-client-registration
+  conforms: true
+  evidence: registration_endpoint https://platform.parallel.ai/getKeys/register in the published metadata.
+- id: a2a-agent-card
+  conforms: true
+  evidence: >-
+    /.well-known/agent-card.json served 200 on api.parallel.ai (protocolVersion
+    0.3.0, capabilities object, skills array, preferredTransport HTTP+JSON) and on
+    docs.parallel.ai. The declared endpoint https://api.parallel.ai/a2a answers a
+    JSON-RPC POST with 401. Graded conformant against A2A 1.0.0 shape checks; see
+    a2a/parallel-a2a.yml.
+- id: mcp
+  conforms: true
+  evidence: >-
+    Hosted MCP servers at search.parallel.ai/mcp (anonymous tools/list returns 200
+    with 2 tools and full inputSchema) and task-mcp.parallel.ai/mcp (OAuth-gated).
+- id: agent-skills-discovery-0.2.0
+  conforms: true
+  evidence: >-
+    https://docs.parallel.ai/.well-known/agent-skills/index.json served 200 against
+    schemas.agentskills.io/discovery/0.2.0/schema.json, pointing at a skill.md with
+    a sha256 digest.
+- id: llms-txt
+  conforms: true
+  evidence: >-
+    https://docs.parallel.ai/llms.txt served 200; every docs page is also
+    retrievable as markdown via a .md suffix or an Accept header of text/markdown.
 - id: rfc9457-problem-details
   conforms: false
-  evidence: Errors are returned as application/json, not application/problem+json.
+  evidence: Errors are returned as application/json with an {"error":{"message","detail"}} envelope, not application/problem+json.
 - id: standard-webhooks
   conforms: true
   evidence: Webhooks follow the Standard Webhooks spec (webhook-id/webhook-timestamp/webhook-signature, HMAC-SHA256, whsec_ secret).
@@ -22,10 +65,19 @@ standards:
   evidence: Task/TaskGroup/FindAll/Monitor expose SSE event streams (text/event-stream endpoints).
 - id: openai-chat-completions-compat
   conforms: true
-  evidence: /v1beta/chat/completions is OpenAI ChatCompletions-compatible.
+  evidence: /v1beta/chat/completions is OpenAI ChatCompletions-compatible; /v1/responses is an OpenAI-compatible Responses API.
+- id: x402
+  conforms: true
+  evidence: Agentic payments documented via the Machine Payments Protocol and x402 over Stripe and Tempo (https://docs.parallel.ai/integrations/agentic-payments).
 - id: soc2
   conforms: true
-  evidence: SOC 2 Type I and Type II (as of April 2025); full report available via Trust Center on request.
+  evidence: SOC 2 Type I and Type II (as of April 2025); Trust Center at https://trust.parallel.ai (HTTP 200) and full report on request.
 - id: tls-1.2-plus
   conforms: true
-  evidence: All data encrypted in transit (TLS 1.2+) and at rest in US-based data centers.
+  evidence: All data encrypted in transit (TLS 1.2+) and at rest in US-based data centers; live probe observed TLSv1.3 on api.parallel.ai.
+- id: security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on every Parallel host probed 2026-08-14.
+- id: dnssec
+  conforms: false
+  evidence: parallel.ai is not DNSSEC-signed (see security/parallel-domain-security.yml).

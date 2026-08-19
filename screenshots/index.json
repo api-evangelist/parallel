@@ -1,0 +1,19 @@
+[
+  {
+    "repo": "parallel",
+    "captured_at": "2026-08-07T191420",
+    "source_url": "https://platform.parallel.ai",
+    "source_type": "DeveloperPortal",
+    "file": "parallel-2026-08-07T191420.png",
+    "bytes": 115770
+  },
+  {
+    "repo": "parallel",
+    "captured_at": "2026-08-17T124455",
+    "source_url": "https://parallel.ai",
+    "source_type": "root-domain",
+    "file": "parallel-2026-08-17T124455.png",
+    "bytes": 270224,
+    "capture": "playwright-local"
+  }
+]
