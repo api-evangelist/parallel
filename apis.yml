@@ -40,7 +40,7 @@ accessModel:
 image: https://cdn.sanity.io/images/5hzduz3y/production/3e8afb3fd62096a800a8135910fdc375971e17ba-3600x1890.jpg?w=1200&h=630&fit=crop
 x-type: company
 x-source: kleiner-perkins-portfolio
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-08-14'
 tags:
