@@ -45,6 +45,16 @@ created: '2026-07-17'
 modified: '2026-08-14'
 tags:
 - Company
+- Artificial Intelligence
+- Web Search
+- Agents
+- Deep Research
+- Web Extraction
+- Data Enrichment
+- Web Monitoring
+- LLM Tools
+tags_raw:
+- Company
 - Ai
 - Web Search
 - Agents
@@ -136,6 +146,8 @@ apis:
   humanURL: https://docs.parallel.ai/getting-started/overview
   baseURL: https://api.parallel.ai
   tags:
+  - Monitors
+  tags_raw:
   - Monitor
   properties:
   - type: OpenAPI
@@ -199,6 +211,8 @@ apis:
   humanURL: https://docs.parallel.ai/getting-started/overview
   baseURL: https://api.parallel.ai
   tags:
+  - Task
+  tags_raw:
   - Tasks
   properties:
   - type: OpenAPI
