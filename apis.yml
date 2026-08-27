@@ -225,35 +225,13 @@ apis:
     url: https://docs.parallel.ai/getting-started/overview
   - type: Authentication
     url: authentication/parallel-authentication.yml
-- aid: parallel:parallel-responses-api
-  name: Parallel Responses API
-  description: >-
-    The Responses API returns grounded, cited answers from the live web in a single synchronous call, and
-    is OpenAI Responses-compatible so it can be dropped into existing clients. Pricing and latency are
-    selected with `reasoning.effort` (low, medium, high), making it the latency-sensitive counterpart to
-    the asynchronous Task API — suitable for research subagents and in-product answers.
-  humanURL: https://docs.parallel.ai/responses-api/responses-quickstart
-  baseURL: https://api.parallel.ai
-  tags:
-  - Responses API
-  properties:
-  - type: OpenAPI
-    url: openapi/parallel-responses-api-openapi.yml
-  - type: Documentation
-    url: https://docs.parallel.ai/responses-api/responses-quickstart
-  - type: APIReference
-    url: https://docs.parallel.ai/api-reference
-  - type: GettingStarted
-    url: https://docs.parallel.ai/getting-started/overview
-  - type: Authentication
-    url: authentication/parallel-authentication.yml
 - aid: parallel:parallel-memory-api
   name: Parallel Memory API
   description: >-
-    The Memory API lets agents search and reuse the results of past Task, Monitor and FindAll runs so new
-    research builds on work already done. It exposes retrieve, evict and clear operations over the stored
-    research corpus, turning repeated web research into a reusable, source-addressable memory rather than
-    a fresh crawl every time.
+    The Memory API lets agents search and reuse the results of past Task, Monitor and FindAll runs so
+    new research builds on work already done. It exposes retrieve, evict and clear operations over the
+    stored research corpus, turning repeated web research into a reusable, source-addressable memory rather
+    than a fresh crawl every time.
   humanURL: https://docs.parallel.ai/resources/memory
   baseURL: https://api.parallel.ai
   tags:
@@ -263,6 +241,43 @@ apis:
     url: openapi/parallel-memory-api-openapi.yml
   - type: Documentation
     url: https://docs.parallel.ai/resources/memory
+  - type: APIReference
+    url: https://docs.parallel.ai/api-reference
+  - type: GettingStarted
+    url: https://docs.parallel.ai/getting-started/overview
+  - type: Authentication
+    url: authentication/parallel-authentication.yml
+- aid: parallel:parallel-responses-api-api
+  name: Parallel Responses API
+  description: >-
+    An OpenAI-Responses-compatible interface for answers grounded in live web research, with URL citations.
+    Point any Responses-API client — the OpenAI Python SDK, OpenAI TypeScript SDK, the Agents SDK, or
+    raw HTTP — at `https://api.parallel.ai` with your Parallel API key, set `model` to `parallel`, and
+    call `/v1/responses`.
+
+    - `input` accepts a plain string or an array of role/content messages (canonical OpenAI shape; text
+    content only).
+
+    - `reasoning.effort` (`low`/`medium`/`high`) controls how much research is performed, trading response
+    time for answer quality.
+
+    - Multi-turn via `previous_response_id`.
+
+    - Structured outputs via `text.format = {"type": "json_schema", "name": ..., "schema": {...}}`.
+
+    - Streaming (`stream=true`) emits the standard OpenAI Responses SSE lifecycle: `response.created`
+    and `response.in_progress`, then output item / content part / text delta events with URL-citation
+    annotations, the matching `*.done` events, and a terminal `response.completed` — or `response.failed`
+    if the request fails mid-stream.
+  humanURL: https://docs.parallel.ai/getting-started/overview
+  baseURL: https://api.parallel.ai
+  tags:
+  - Responses API
+  properties:
+  - type: OpenAPI
+    url: openapi/parallel-responses-api-api-openapi.yml
+  - type: Documentation
+    url: https://docs.parallel.ai/responses-api/responses-quickstart
   - type: APIReference
     url: https://docs.parallel.ai/api-reference
   - type: GettingStarted
