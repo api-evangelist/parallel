@@ -386,6 +386,8 @@ common:
   url: sandbox/parallel-sandbox.yml
 - type: Postman
   url: https://www.postman.com/kinlaneapi/parallel/overview
+- type: Contact
+  url: mailto:partnerships@parallel.ai
 x-enrichment:
   date: '2026-08-14'
   status: enriched
