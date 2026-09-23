@@ -1,24 +1,36 @@
 {
   "provider": "parallel",
   "sources": [
-    "parallel-chat-api-beta-api-openapi.yml",
-    "parallel-extract-api-openapi.yml",
-    "parallel-findall-api-openapi.yml",
-    "parallel-monitor-api-openapi.yml",
-    "parallel-search-api-openapi.yml",
-    "parallel-tasks-api-openapi.yml"
+    "_original/parallel-openapi-original.json"
   ],
   "outputs": [
     "parallel-chat-api-beta-api-openapi.yml",
     "parallel-extract-api-openapi.yml",
     "parallel-findall-api-openapi.yml",
+    "parallel-memory-api-openapi.yml",
     "parallel-monitor-api-openapi.yml",
+    "parallel-responses-api-api-openapi.yml",
     "parallel-search-api-openapi.yml",
     "parallel-tasks-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "1 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "parallel-openapi-original.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "_original/parallel-responses-api-openapi.yml: archived document superseded by a larger archived document",
+    "parallel-chat-api-beta-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "parallel-extract-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "parallel-findall-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "parallel-memory-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "parallel-monitor-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "parallel-responses-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "parallel-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "parallel-tasks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

@@ -1,16 +1,13 @@
 generated: '2026-08-14'
 method: probed
 status: published
-source: >-
-  Live MCP tools/list against https://search.parallel.ai/mcp (HTTP 200, real
-  inputSchema returned) plus https://docs.parallel.ai/integrations/mcp/quickstart
-notes: >-
-  CORRECTION vs the 2026-07-20 round: the Search MCP tools are named `web_search`
-  and `web_fetch`, not `search`/`extract`. Names and input schemas below are taken
-  verbatim from a live anonymous tools/list call. The Task MCP is auth-gated —
-  tools/list returns {"error":"Authentication required"} — so its four tools are
-  recorded from the provider's own docs (names + descriptions only); their input
-  schemas need authenticated introspection.
+source: Live MCP tools/list against https://search.parallel.ai/mcp (HTTP 200, real inputSchema returned)
+  plus https://docs.parallel.ai/integrations/mcp/quickstart
+notes: 'CORRECTION vs the 2026-07-20 round: the Search MCP tools are named `web_search` and `web_fetch`,
+  not `search`/`extract`. Names and input schemas below are taken verbatim from a live anonymous tools/list
+  call. The Task MCP is auth-gated — tools/list returns {"error":"Authentication required"} — so its four
+  tools are recorded from the provider''s own docs (names + descriptions only); their input schemas need
+  authenticated introspection.'
 servers:
 - name: parallel-search
   transport: streamable-http
@@ -21,38 +18,53 @@ servers:
     http_status: 200
     tools_returned: 2
     checked: '2026-08-14'
-  notes: >-
-    Free with no account or API key required. Search runs in `basic` mode and
-    excerpts per call are capped near 25,000 characters. An optional Bearer API
-    key raises rate limits. An OAuth-capable variant is documented at
-    https://search.parallel.ai/mcp-oauth.
+  notes: Free with no account or API key required. Search runs in `basic` mode and excerpts per call are
+    capped near 25,000 characters. An optional Bearer API key raises rate limits. An OAuth-capable variant
+    is documented at https://search.parallel.ai/mcp-oauth.
   tools:
   - name: web_search
-    description: >-
-      Perform web searches and return LLM-friendly results, including excerpts
-      that are usually sufficient to answer directly without a follow-up fetch.
+    description: Perform web searches and return LLM-friendly results, including excerpts that are usually
+      sufficient to answer directly without a follow-up fetch.
     input_schema:
-      required: [objective, search_queries]
+      required:
+      - objective
+      - search_queries
       properties:
-      - {name: objective, type: string, description: 'Natural-language description of what the web search is trying to find.'}
-      - {name: search_queries, type: array, description: 'Concise keyword search queries, 3-6 words each; at least one required, 2-3 recommended.'}
-      - {name: session_id, type: string, description: 'Stable conversation identifier; used for free-tier rate limiting.'}
-      - {name: model_name, type: string, description: 'Identifier of the calling LLM model; product analytics only.'}
-    rest: [v1_search_v1_search_post]
+      - name: objective
+        type: string
+        description: Natural-language description of what the web search is trying to find.
+      - name: search_queries
+        type: array
+        description: Concise keyword search queries, 3-6 words each; at least one required, 2-3 recommended.
+      - name: session_id
+        type: string
+        description: Stable conversation identifier; used for free-tier rate limiting.
+      - name: model_name
+        type: string
+        description: Identifier of the calling LLM model; product analytics only.
+    rest:
+    - v1_search_v1_search_post
   - name: web_fetch
-    description: >-
-      Fetch and extract relevant content from specific web URLs. Use only when
-      web_search excerpts are insufficient.
+    description: Fetch and extract relevant content from specific web URLs. Use only when web_search excerpts
+      are insufficient.
     input_schema:
-      required: [urls]
+      required:
+      - urls
       properties:
-      - {name: urls, type: array}
-      - {name: objective, type: string}
-      - {name: search_queries, type: array}
-      - {name: full_content, type: boolean}
-      - {name: session_id, type: string}
-      - {name: model_name, type: string}
-    rest: [extract_v1_extract_post]
+      - name: urls
+        type: array
+      - name: objective
+        type: string
+      - name: search_queries
+        type: array
+      - name: full_content
+        type: boolean
+      - name: session_id
+        type: string
+      - name: model_name
+        type: string
+    rest:
+    - extract_v1_extract_post
 - name: parallel-task
   transport: streamable-http
   url: https://task-mcp.parallel.ai/mcp
@@ -66,47 +78,43 @@ servers:
   oauth:
     protected_resource_metadata: https://task-mcp.parallel.ai/.well-known/oauth-protected-resource
     authorization_server: https://platform.parallel.ai
-    scopes: [key:read]
+    scopes:
+    - key:read
     see: scopes/parallel-scopes.yml
-  notes: >-
-    Requires OAuth (dynamic client registration + PKCE) or a Parallel API key as a
-    Bearer token from https://platform.parallel.ai. Async architecture: start a
-    task, poll status, fetch the result in a later turn.
+  notes: 'Requires OAuth (dynamic client registration + PKCE) or a Parallel API key as a Bearer token
+    from https://platform.parallel.ai. Async architecture: start a task, poll status, fetch the result
+    in a later turn.'
   tools:
   - name: createDeepResearch
     description: Initiates a deep research task; multi-step research with citations.
     source: https://docs.parallel.ai/integrations/mcp/task-mcp
-    rest: [tasks_runs_post_v1_tasks_runs_post]
+    rest:
+    - tasks_runs_post_v1_tasks_runs_post
   - name: createTaskGroup
     description: Initiates a task group to enrich multiple items in parallel.
     source: https://docs.parallel.ai/integrations/mcp/task-mcp
-    rest: [tasks_taskgroups_post_v1_tasks_groups_post]
+    rest:
+    - tasks_taskgroups_post_v1_tasks_groups_post
   - name: getStatus
     description: Lightweight status check for an in-flight task (~50 tokens).
     source: https://docs.parallel.ai/integrations/mcp/task-mcp
-    rest: [tasks_runs_get_v1_tasks_runs__run_id__get]
+    rest:
+    - tasks_runs_get_v1_tasks_runs__run_id__get
   - name: getResultMarkdown
     description: Retrieves the final output of a deep research or task group as markdown.
     source: https://docs.parallel.ai/integrations/mcp/task-mcp
-    rest: [tasks_runs_result_get_v1_tasks_runs__run_id__result_get]
+    rest:
+    - tasks_runs_result_get_v1_tasks_runs__run_id__result_get
 deployment:
   mode: remote
   endpoint: https://search.parallel.ai/mcp
-  auth: none
   verified: probed
-  checked: '2026-08-14'
-  additional_endpoints:
-  - {url: 'https://task-mcp.parallel.ai/mcp', auth: oauth}
-  - {url: 'https://search.parallel.ai/mcp-oauth', auth: oauth}
-  install: null
-  package: null
-  note: >-
-    Remote-only. Parallel ships hosted HTTP MCP endpoints; there is no first-party
-    stdio package to install. One-click install links exist for Cursor, VS Code,
-    LM Studio and Goose, but they configure the same remote URL.
+  probe: live
+  tools: 2
+  checked: '2026-08-12'
+  source: catalog MCP census
 mcp_as_client:
-  note: >-
-    Parallel is also an MCP CONSUMER — the Task API can call external MCP servers
-    as tools during a run.
+  note: Parallel is also an MCP CONSUMER — the Task API can call external MCP servers as tools during
+    a run.
   docs: https://docs.parallel.ai/task-api/mcp-tool-call
 crosswalk: mcp/parallel-tool-crosswalk.yml
