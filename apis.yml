@@ -65,6 +65,7 @@ tags:
 - Data Enrichment
 - Web Monitoring
 - LLM Tools
+- A2A
 tags_raw:
 - Company
 - Ai
@@ -75,6 +76,7 @@ tags_raw:
 - Data Enrichment
 - Web Monitoring
 - LLM Tools
+- A2A
 apis:
 - aid: parallel:parallel-chat-api-beta-api
   name: Parallel Chat API (Beta) API
@@ -393,3 +395,10 @@ x-enrichment:
   status: enriched
   artifacts_added: 12
   pass: local-v1
+x-a2a:
+  verified: true
+  probed: '2026-09-26'
+  url: "https://api.parallel.ai/.well-known/agent-card.json"
+  grade: "conformant"
+  protocol_version: "0.3.0"
+  control: 404
