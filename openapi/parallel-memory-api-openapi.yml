@@ -159,37 +159,32 @@ components:
       - input_excerpt
       - status
       title: MonitorMemoryResult
-    MemoryEvictRequest:
+    MonitorMemoryEvent:
       properties:
-        memory_scope_key:
-          anyOf:
-          - type: string
-            maxLength: 128
-            minLength: 1
-            pattern: ^[a-zA-Z0-9_-]+$
-          - type: 'null'
-          title: Memory Scope Key
-          description: User-provided key identifying the memory scope to use. Omit to use personal memory, if available.
-        kind:
+        event_id:
           type: string
-          enum:
-          - task
-          - monitor
-          - findall
-          title: Kind
-          description: 'Kind of source to evict: `task`, `monitor`, or `findall`.'
-        id:
+          title: Event Id
+          description: ID of the monitor event.
+        event_group_id:
           type: string
-          maxLength: 128
-          minLength: 1
-          pattern: ^[a-zA-Z0-9_-]+$
-          title: Id
-          description: ID of the task run, monitor, or FindAll run to evict.
+          title: Event Group Id
+          description: ID of the execution that produced this event.
+        detected_at:
+          type: string
+          format: date-time
+          title: Detected At
+          description: When the event was detected, as an RFC 3339 timestamp.
+        excerpt:
+          type: string
+          title: Excerpt
+          description: Excerpt of the monitor event. May be truncated.
       type: object
       required:
-      - kind
-      - id
-      title: MemoryEvictRequest
+      - event_id
+      - event_group_id
+      - detected_at
+      - excerpt
+      title: MonitorMemoryEvent
     MemoryRetrieveRequest:
       properties:
         query:
@@ -267,35 +262,37 @@ components:
       - input_excerpt
       - output_excerpt
       title: TaskMemoryResult
-    MemoryRetrieveResponse:
+    MemoryEvictRequest:
       properties:
-        results:
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/TaskMemoryResult'
-            - $ref: '#/components/schemas/MonitorMemoryResult'
-            - $ref: '#/components/schemas/FindAllMemoryResult'
-            discriminator:
-              propertyName: kind
-              mapping:
-                findall: '#/components/schemas/FindAllMemoryResult'
-                monitor: '#/components/schemas/MonitorMemoryResult'
-                task: '#/components/schemas/TaskMemoryResult'
-          type: array
-          title: Results
+        memory_scope_key:
+          anyOf:
+          - type: string
+            maxLength: 128
+            minLength: 1
+            pattern: ^[a-zA-Z0-9_-]+$
+          - type: 'null'
+          title: Memory Scope Key
+          description: User-provided key identifying the memory scope to use. Omit to use personal memory, if available.
+        kind:
+          type: string
+          enum:
+          - task
+          - monitor
+          - findall
+          title: Kind
+          description: 'Kind of source to evict: `task`, `monitor`, or `findall`.'
+        id:
+          type: string
+          maxLength: 128
+          minLength: 1
+          pattern: ^[a-zA-Z0-9_-]+$
+          title: Id
+          description: ID of the task run, monitor, or FindAll run to evict.
       type: object
       required:
-      - results
-      title: MemoryRetrieveResponse
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
+      - kind
+      - id
+      title: MemoryEvictRequest
     ValidationError:
       properties:
         loc:
@@ -317,32 +314,35 @@ components:
       - msg
       - type
       title: ValidationError
-    MonitorMemoryEvent:
+    HTTPValidationError:
       properties:
-        event_id:
-          type: string
-          title: Event Id
-          description: ID of the monitor event.
-        event_group_id:
-          type: string
-          title: Event Group Id
-          description: ID of the execution that produced this event.
-        detected_at:
-          type: string
-          format: date-time
-          title: Detected At
-          description: When the event was detected, as an RFC 3339 timestamp.
-        excerpt:
-          type: string
-          title: Excerpt
-          description: Excerpt of the monitor event. May be truncated.
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    MemoryRetrieveResponse:
+      properties:
+        results:
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/TaskMemoryResult'
+            - $ref: '#/components/schemas/MonitorMemoryResult'
+            - $ref: '#/components/schemas/FindAllMemoryResult'
+            discriminator:
+              propertyName: kind
+              mapping:
+                findall: '#/components/schemas/FindAllMemoryResult'
+                monitor: '#/components/schemas/MonitorMemoryResult'
+                task: '#/components/schemas/TaskMemoryResult'
+          type: array
+          title: Results
       type: object
       required:
-      - event_id
-      - event_group_id
-      - detected_at
-      - excerpt
-      title: MonitorMemoryEvent
+      - results
+      title: MemoryRetrieveResponse
     MemoryClearRequest:
       properties:
         memory_scope_key:
