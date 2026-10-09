@@ -1,4 +1,4 @@
-aid: parallel
+aid: parallel-ai
 name: Parallel
 description: >-
   Parallel Web Systems builds web APIs purpose-built for AI agents: a
@@ -17,7 +17,7 @@ description: >-
   markdown twins of every documentation page. Pricing is pay-as-you-go per
   request per product. Originally surfaced as a Kleiner Perkins portfolio
   company and enriched from Parallel's public developer surface.
-url: https://raw.githubusercontent.com/api-evangelist/parallel/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/parallel-ai/refs/heads/main/apis.yml
 deliveryModel:
   model: saas
   open_source: false
@@ -66,6 +66,12 @@ tags:
 - Web Monitoring
 - LLM Tools
 - A2A
+- Ai Ml
+- AI Agents
+- MCP
+- Agent Skills
+- Content Extraction
+- Entity Resolution
 tags_raw:
 - Company
 - Ai
@@ -77,8 +83,14 @@ tags_raw:
 - Web Monitoring
 - LLM Tools
 - A2A
+- Ai Ml
+- AI Agents
+- MCP
+- Agent Skills
+- Content Extraction
+- Entity Resolution
 apis:
-- aid: parallel:parallel-chat-api-beta-api
+- aid: parallel-ai:parallel-ai-chat-api-beta-api
   name: Parallel Chat API (Beta) API
   description: >-
     The Chat API provides a programmatic chat-style text generation interface. It accepts a sequence of
@@ -99,7 +111,7 @@ apis:
     url: https://docs.parallel.ai/getting-started/overview
   - type: Authentication
     url: authentication/parallel-authentication.yml
-- aid: parallel:parallel-extract-api
+- aid: parallel-ai:parallel-ai-extract-api
   name: Parallel Extract API
   description: >-
     Extract returns excerpts or full content from one or more URLs. Inputs are a list of URLs and an optional
@@ -122,7 +134,7 @@ apis:
     url: https://docs.parallel.ai/getting-started/overview
   - type: Authentication
     url: authentication/parallel-authentication.yml
-- aid: parallel:parallel-findall-api
+- aid: parallel-ai:parallel-ai-findall-api
   name: Parallel FindAll API
   description: >-
     The FindAll API discovers and evaluates entities that match complex criteria from natural language
@@ -145,7 +157,7 @@ apis:
     url: https://docs.parallel.ai/getting-started/overview
   - type: Authentication
     url: authentication/parallel-authentication.yml
-- aid: parallel:parallel-monitor-api
+- aid: parallel-ai:parallel-ai-monitor-api
   name: Parallel Monitor API
   description: >-
     The Monitor API watches the web for material changes on a fixed frequency. Each monitor runs once
@@ -174,7 +186,7 @@ apis:
     url: https://docs.parallel.ai/getting-started/overview
   - type: Authentication
     url: authentication/parallel-authentication.yml
-- aid: parallel:parallel-search-api
+- aid: parallel-ai:parallel-ai-search-api
   name: Parallel Search API
   description: >-
     Search returns ranked URLs with extended excerpts suitable for LLM consumption. Inputs are a natural-language
@@ -198,7 +210,7 @@ apis:
     url: https://docs.parallel.ai/getting-started/overview
   - type: Authentication
     url: authentication/parallel-authentication.yml
-- aid: parallel:parallel-tasks-api
+- aid: parallel-ai:parallel-ai-tasks-api
   name: Parallel Tasks API
   description: >-
     The Task API executes web research and extraction tasks. Clients submit a natural-language objective
@@ -239,7 +251,7 @@ apis:
     url: https://docs.parallel.ai/getting-started/overview
   - type: Authentication
     url: authentication/parallel-authentication.yml
-- aid: parallel:parallel-memory-api
+- aid: parallel-ai:parallel-ai-memory-api
   name: Parallel Memory API
   description: >-
     The Memory API lets agents search and reuse the results of past Task, Monitor and FindAll runs so
@@ -261,7 +273,7 @@ apis:
     url: https://docs.parallel.ai/getting-started/overview
   - type: Authentication
     url: authentication/parallel-authentication.yml
-- aid: parallel:parallel-responses-api-api
+- aid: parallel-ai:parallel-ai-responses-api-api
   name: Parallel Responses API
   description: >-
     An OpenAI-Responses-compatible interface for answers grounded in live web research, with URL citations.
@@ -390,6 +402,12 @@ common:
   url: https://www.postman.com/kinlaneapi/parallel/overview
 - type: Contact
   url: mailto:partnerships@parallel.ai
+- type: Website
+  url: https://parallel.ai/
+- type: Documentation
+  url: https://docs.parallel.ai
+- type: APIReference
+  url: https://docs.parallel.ai/api-reference/search/search
 x-enrichment:
   date: '2026-08-14'
   status: enriched

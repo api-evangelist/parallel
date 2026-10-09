@@ -1,22 +1,24 @@
-generated: '2026-07-20'
+generated: '2026-09-23'
 method: generated
-source: openapi/parallel-openapi-original.json
+source: openapi/parallel-chat-api-beta-api-openapi.yml, openapi/parallel-extract-api-openapi.yml,
+  openapi/parallel-findall-api-openapi.yml, openapi/parallel-memory-api-openapi.yml, openapi/parallel-monitor-api-openapi.yml,
+  openapi/parallel-responses-api-api-openapi.yml, openapi/parallel-search-api-openapi.yml, openapi/parallel-tasks-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
-  operations: 32
+  operations: 36
   by_action_class:
-    acting: 16
-    connected: 16
+    acting: 18
+    connected: 18
   by_consequence:
-    write: 16
-    read: 16
+    write: 18
+    read: 18
   human_in_the_loop_required: 0
 operations:
-- path: /v1/search
+- path: /v1beta/chat/completions
   method: post
-  operationId: v1_search_v1_search_post
+  operationId: chat_completions_v1beta_chat_completions_post
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -46,6 +48,304 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /v1beta/findall/entity-search
+  method: post
+  operationId: findall_entity_search_v1beta_findall_entity_search_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/findall/ingest
+  method: post
+  operationId: ingest_findall_run_v1beta_findall_ingest_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/findall/runs
+  method: post
+  operationId: findall_runs_v1_v1beta_findall_runs_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/findall/runs/{findall_id}
+  method: get
+  operationId: findall_runs_v1_get_v1beta_findall_runs__findall_id__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1beta/findall/runs/{findall_id}/cancel
+  method: post
+  operationId: cancel_findall_run_v1beta_findall_runs__findall_id__cancel_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/findall/runs/{findall_id}/enrich
+  method: post
+  operationId: enrich_findall_run_v1beta_findall_runs__findall_id__enrich_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/findall/runs/{findall_id}/events
+  method: get
+  operationId: get_findall_events_v1beta_findall_runs__findall_id__events_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1beta/findall/runs/{findall_id}/extend
+  method: post
+  operationId: extend_findall_run_v1beta_findall_runs__findall_id__extend_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/findall/runs/{findall_id}/result
+  method: get
+  operationId: get_findall_result_v1beta_findall_runs__findall_id__result_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1beta/findall/runs/{findall_id}/schema
+  method: get
+  operationId: get_findall_schema_v1beta_findall_runs__findall_id__schema_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1beta/memory/clear
+  method: post
+  operationId: clear_memory_v1beta_memory_clear_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/memory/evict
+  method: post
+  operationId: evict_memory_source_v1beta_memory_evict_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1beta/memory/retrieve
+  method: post
+  operationId: retrieve_memory_v1beta_memory_retrieve_post
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/monitors
+  method: post
+  operationId: create_monitor_v1_monitors_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/monitors
+  method: get
+  operationId: list_monitors_v1_monitors_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/monitors/{monitor_id}
+  method: get
+  operationId: retrieve_monitor_v1_monitors__monitor_id__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/monitors/{monitor_id}/cancel
+  method: post
+  operationId: cancel_monitor_v1_monitors__monitor_id__cancel_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/monitors/{monitor_id}/events
+  method: get
+  operationId: list_monitor_events_v1_monitors__monitor_id__events_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/monitors/{monitor_id}/trigger
+  method: post
+  operationId: trigger_monitor_run_v1_monitors__monitor_id__trigger_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/monitors/{monitor_id}/update
+  method: post
+  operationId: update_monitor_v1_monitors__monitor_id__update_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/responses
+  method: post
+  operationId: create_response_v1_responses_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/search
+  method: post
+  operationId: v1_search_v1_search_post
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /v1/tasks/groups
   method: post
   operationId: tasks_taskgroups_post_v1_tasks_groups_post
@@ -184,249 +484,3 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /v1beta/findall/entity-search
-  method: post
-  operationId: findall_entity_search_v1beta_findall_entity_search_post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1beta/findall/ingest
-  method: post
-  operationId: ingest_findall_run_v1beta_findall_ingest_post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1beta/findall/runs
-  method: post
-  operationId: findall_runs_v1_v1beta_findall_runs_post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1beta/findall/runs/{findall_id}
-  method: get
-  operationId: findall_runs_v1_get_v1beta_findall_runs__findall_id__get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1beta/findall/runs/{findall_id}/cancel
-  method: post
-  operationId: cancel_findall_run_v1beta_findall_runs__findall_id__cancel_post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1beta/findall/runs/{findall_id}/enrich
-  method: post
-  operationId: enrich_findall_run_v1beta_findall_runs__findall_id__enrich_post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1beta/findall/runs/{findall_id}/events
-  method: get
-  operationId: get_findall_events_v1beta_findall_runs__findall_id__events_get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1beta/findall/runs/{findall_id}/extend
-  method: post
-  operationId: extend_findall_run_v1beta_findall_runs__findall_id__extend_post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1beta/findall/runs/{findall_id}/result
-  method: get
-  operationId: get_findall_result_v1beta_findall_runs__findall_id__result_get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1beta/findall/runs/{findall_id}/schema
-  method: get
-  operationId: get_findall_schema_v1beta_findall_runs__findall_id__schema_get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/monitors
-  method: post
-  operationId: create_monitor_v1_monitors_post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1/monitors
-  method: get
-  operationId: list_monitors_v1_monitors_get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/monitors/{monitor_id}
-  method: get
-  operationId: retrieve_monitor_v1_monitors__monitor_id__get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/monitors/{monitor_id}/cancel
-  method: post
-  operationId: cancel_monitor_v1_monitors__monitor_id__cancel_post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1/monitors/{monitor_id}/events
-  method: get
-  operationId: list_monitor_events_v1_monitors__monitor_id__events_get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/monitors/{monitor_id}/trigger
-  method: post
-  operationId: trigger_monitor_run_v1_monitors__monitor_id__trigger_post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1/monitors/{monitor_id}/update
-  method: post
-  operationId: update_monitor_v1_monitors__monitor_id__update_post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1beta/chat/completions
-  method: post
-  operationId: chat_completions_v1beta_chat_completions_post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
